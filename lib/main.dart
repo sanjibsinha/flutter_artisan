@@ -19,7 +19,7 @@ void main() {
                 ),
                 onPressed: null,
                 child: const Text(
-                  'Text Button',
+                  'Text Button Disabled',
                 ),
               ),
               const SizedBox(height: 30),
@@ -31,7 +31,7 @@ void main() {
                 ),
                 onPressed: () {},
                 child: const Text(
-                  'Text Button',
+                  'Text Button Enabled',
                 ),
               ),
             ],
