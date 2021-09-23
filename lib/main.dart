@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'controllers/text_button_widget.dart';
 
 void main() {
   runApp(
@@ -8,35 +8,7 @@ void main() {
         appBar: AppBar(
           title: const Text('Material Design'),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                onPressed: null,
-                child: const Text(
-                  'Text Button Disabled',
-                ),
-              ),
-              const SizedBox(height: 30),
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Text Button Enabled',
-                ),
-              ),
-            ],
-          ),
-        ),
+        body: const TextButtonWidget(),
       ),
     ),
   );
