@@ -22,6 +22,13 @@ class AppBarHome extends StatelessWidget {
             },
           ),
           IconButton(
+            icon: const Icon(Icons.search_outlined),
+            tooltip: 'Search',
+            onPressed: () {
+              // our code
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.navigate_next),
             tooltip: 'Next page',
             onPressed: () {
