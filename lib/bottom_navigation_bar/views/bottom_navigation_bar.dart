@@ -68,7 +68,6 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
         unselectedItemColor: Colors.deepOrangeAccent,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-
         type: BottomNavigationBarType.shifting,
         selectedFontSize: 20,
         selectedIconTheme: const IconThemeData(
@@ -96,7 +95,7 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
           ),
         ],
         currentIndex: _selectedIndex,
-        iconSize: 30,
+        iconSize: 50,
         onTap: _onItemTapped,
         elevation: 5,
       ),
