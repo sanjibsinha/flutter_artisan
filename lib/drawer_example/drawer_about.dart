@@ -1,41 +1,20 @@
 import 'package:flutter/material.dart';
-import '/drawer_example/drawer_about.dart';
 import '/drawer_example/drawer_contact.dart';
+import '/drawer_example/drawer_example.dart';
 
-class DrawerExample extends StatelessWidget {
-  const DrawerExample({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Drawer Example',
-      home: const DrawerHome(),
-      routes: {
-        DrawerAbout.routename: (context) => const DrawerAbout(),
-        DrawerContact.routename: (context) => const DrawerContact(),
-      },
-    );
-  }
-}
-
-class DrawerHome extends StatelessWidget {
-  const DrawerHome({Key? key}) : super(key: key);
-  static const routename = "/";
+class DrawerAbout extends StatelessWidget {
+  const DrawerAbout({Key? key}) : super(key: key);
+  static const routename = "/about";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('A Drawer Example')),
-      body: Center(
-        child: Container(
-          margin: const EdgeInsets.all(20),
-          padding: const EdgeInsets.all(20),
-          child: const Text(
-            'A Drawer Example.',
-            style: TextStyle(fontSize: 50.0),
-          ),
-        ),
-      ),
+      appBar: AppBar(title: const Text('About Us Page')),
+      body: const Center(
+          child: Text(
+        'About Us Page.',
+        style: TextStyle(fontSize: 50.0),
+      )),
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
@@ -56,14 +35,7 @@ class DrawerHome extends StatelessWidget {
               leading: const Icon(Icons.home),
               title: const Text("Home"),
               onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text("About"),
-              onTap: () {
-                Navigator.of(context).pushNamed(DrawerAbout.routename);
+                Navigator.of(context).pushNamed(DrawerHome.routename);
               },
             ),
             ListTile(
