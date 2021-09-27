@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'material_app.dart/material_app.dart';
 import 'bottom_navigation_bar/models/select_index.dart';
-import 'drawer_example/drawer_example.dart';
+//import 'drawer_example/drawer_example.dart';
 //import 'bottom_navigation_bar/views/bottom_navigation_bar.dart';
 
 //import 'bottom_navigation_bar/bottom_navigation_bar.dart';
@@ -18,7 +19,8 @@ void main() {
         ),
       ],
       //child: const BottomNavigationBarTest(),
-      child: const DrawerExample(),
+      //child: const DrawerExample(),
+      child: const MaterialAppExample(),
     ),
   );
 }
