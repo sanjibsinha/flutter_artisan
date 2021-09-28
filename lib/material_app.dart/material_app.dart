@@ -12,15 +12,20 @@ class MaterialAppExample extends StatelessWidget {
     return MaterialApp(
       title: 'Daily News',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.brown,
         primaryColor: Colors.blue,
         canvasColor: const Color.fromRGBO(255, 254, 229, 1),
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyText2: const TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
+                color: Color.fromRGBO(0, 155, 0, 1.0),
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                //fontFamily: 'Allison',
               ),
               bodyText1: const TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
               headline6: const TextStyle(
                 fontSize: 20,

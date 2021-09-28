@@ -74,6 +74,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+  
+    - family: Allison
+      fonts:
+        - asset: lib/fonts/Allison-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -85,6 +90,7 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+    
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

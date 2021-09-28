@@ -18,19 +18,55 @@ class FirstPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const SecondPage()),
           );
         },
-        child: Container(
-          margin: const EdgeInsets.all(10.0),
-          padding: const EdgeInsets.all(10.0),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(15.0),
-              topRight: Radius.circular(15.0),
-              bottomLeft: Radius.circular(15.0),
-              bottomRight: Radius.circular(15.0),
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15.0),
+                  topRight: Radius.circular(15.0),
+                  bottomLeft: Radius.circular(15.0),
+                  bottomRight: Radius.circular(15.0),
+                ),
+                child: Image.network(
+                    'https://cdn.pixabay.com/photo/2021/07/12/19/43/swans-6421355_960_720.jpg'),
+              ),
             ),
-            child: Image.network(
-                'https://cdn.pixabay.com/photo/2021/07/12/19/43/swans-6421355_960_720.jpg'),
-          ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Using Color Constants',
+              style: TextStyle(
+                fontSize: 28,
+                fontFamily: 'Allison',
+                color: Colors.blue,
+              ),
+            ),
+            Text(
+              'Using Hexadecimal Color',
+              style: TextStyle(
+                fontSize: 28,
+                color: Color(0xFF89B5F7),
+              ),
+            ),
+            Text(
+              'Using ARGB Color',
+              style: TextStyle(
+                fontSize: 28,
+                color: Color.fromARGB(255, 255, 128, 200),
+              ),
+            ),
+            Text(
+              'Using RGBO Color',
+              style: TextStyle(
+                fontSize: 28,
+                color: Color.fromRGBO(0, 255, 0, 100),
+              ),
+            )
+          ],
         ),
       ),
     );
