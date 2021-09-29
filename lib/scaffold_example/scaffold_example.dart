@@ -87,15 +87,15 @@ class ScaffoldHome extends StatelessWidget {
         TextButton(
           onPressed: () {},
           child: const Icon(
-            Icons.add,
-            color: Colors.white,
+            Icons.backpack_rounded,
+            color: Colors.green,
           ),
         ),
         TextButton(
           onPressed: () {},
           child: const Icon(
-            Icons.add,
-            color: Colors.white,
+            Icons.handyman_rounded,
+            color: Colors.red,
           ),
         ),
       ],
