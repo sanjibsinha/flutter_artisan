@@ -14,6 +14,6 @@ import 'tab_bar_example/tabbar_example.dart';
 
 void main() {
   runApp(
-    TabBarExample(),
+    const TabBarExample(),
   );
 }
