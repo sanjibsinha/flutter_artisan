@@ -8,7 +8,7 @@ class TabBarHome extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(20),
-      child: Text(
+      child: const Text(
         'Home Page',
         style: TextStyle(
           fontFamily: "Allison",

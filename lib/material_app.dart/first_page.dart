@@ -37,7 +37,7 @@ class FirstPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Using Color Constants',
               style: TextStyle(
                 fontSize: 28,
@@ -45,21 +45,21 @@ class FirstPage extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
-            Text(
+            const Text(
               'Using Hexadecimal Color',
               style: TextStyle(
                 fontSize: 28,
                 color: Color(0xFF89B5F7),
               ),
             ),
-            Text(
+            const Text(
               'Using ARGB Color',
               style: TextStyle(
                 fontSize: 28,
                 color: Color.fromARGB(255, 255, 128, 200),
               ),
             ),
-            Text(
+            const Text(
               'Using RGBO Color',
               style: TextStyle(
                 fontSize: 28,
