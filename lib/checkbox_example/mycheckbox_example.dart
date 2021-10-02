@@ -23,10 +23,12 @@ class _MyCheckBoxExampleState extends State<MyCheckBoxExample> {
             children: <Widget>[
               Checkbox(
                 value: _value,
-                onChanged: (value) {
-                  setState(() {
-                    _value = value!;
-                  });
+                onChanged: (bool? value) {
+                  setState(
+                    () {
+                      _value = value!;
+                    },
+                  );
                 },
                 activeColor: Colors.blue,
                 tristate: true,
@@ -35,10 +37,12 @@ class _MyCheckBoxExampleState extends State<MyCheckBoxExample> {
                 value: _value,
                 activeColor: Colors.redAccent,
                 activeTrackColor: Colors.redAccent,
-                onChanged: (value) {
-                  setState(() {
-                    _value = value;
-                  });
+                onChanged: (bool? value) {
+                  setState(
+                    () {
+                      _value = value!;
+                    },
+                  );
                 },
               ),
             ],
