@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'material_state/material_state_example.dart';
+import 'package:flutter_artisan/checkbox_example/checkbox_example.dart';
+import 'checkbox_example/mycheckbox_example.dart';
+//import 'material_state/material_state_example.dart';
 //import 'dropdownbutton_example/dropdownbutton_example.dart';
 //import 'tab_bar_example/tabbar_example.dart';
 //import 'scaffold_example/scaffold_example.dart';
@@ -18,6 +20,8 @@ void main() {
   runApp(
     // const TabBarExample(),
     //const DropDownButtonPage(),
-    const MaterialStateExamle(),
+    //const MaterialStateExamle(),
+    //const MyCheckBoxExample(),
+    const CheckBoxExample(),
   );
 }
