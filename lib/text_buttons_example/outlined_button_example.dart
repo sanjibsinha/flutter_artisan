@@ -85,6 +85,27 @@ class OutlinedButtonHome extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              primary: Colors.white,
+              backgroundColor: Colors.red,
+              side: BorderSide(
+                color: const Color(4278190000),
+              ),
+              elevation: 40.0,
+            ),
+            onPressed: () {},
+            child: Text(
+              'Press OutlineButton',
+              style: TextStyle(
+                fontFamily: 'Allison',
+                fontSize: 50,
+              ),
+            ),
+          ),
         ],
       ),
     );

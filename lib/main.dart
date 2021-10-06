@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_artisan/text_buttons_example/outlined_button_example.dart';
-import 'package:flutter_artisan/text_buttons_example/text_button_example.dart';
-import 'elevated_button/elevated_button_example.dart';
+import 'text_buttons_example/outlined_button_example.dart';
+//import 'text_buttons_example/text_button_example.dart';
+//import 'elevated_button/elevated_button_example.dart';
 //import 'checkbox_example/checkbox_example.dart';
 //import 'checkbox_example/checkbox_listtile_example.dart';
 //import 'checkbox_example/mycheckbox_example.dart';
