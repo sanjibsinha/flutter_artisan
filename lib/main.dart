@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'text_buttons_example/outlined_button_example.dart';
+import 'icon_buttons/icon_button_example.dart';
+//import 'text_buttons_example/outlined_button_example.dart';
 //import 'text_buttons_example/text_button_example.dart';
 //import 'elevated_button/elevated_button_example.dart';
 //import 'checkbox_example/checkbox_example.dart';
@@ -30,6 +31,7 @@ void main() {
     //const CheckboxListtileExample(),
     //const ElevatedButtonExample(),
     //const TextButtonExample(),
-    const OutlinedButtonExample(),
+    //const OutlinedButtonExample(),
+    const IconExample(),
   );
 }
