@@ -26,11 +26,22 @@ class TextExampleHome extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
+              'First Text Example',
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Allison',
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
               'Hello Text Controller',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 25.0,
-                color: Colors.greenAccent,
+                fontSize: 35.0,
+                color: Colors.blue,
                 decoration: TextDecoration.combine(
                   [
                     TextDecoration.underline,
@@ -44,7 +55,7 @@ class TextExampleHome extends StatelessWidget {
                 shadows: [
                   Shadow(
                     color: Colors.black,
-                    blurRadius: 2.0,
+                    blurRadius: 4.0,
                     offset: Offset(5, 1),
                   ),
                 ],
@@ -59,12 +70,13 @@ class TextExampleHome extends StatelessWidget {
             child: Text(
               'More Style',
               style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.normal,
-                  foreground: Paint()
-                    ..color = Colors.red
-                    ..strokeWidth = 2.0
-                    ..style = PaintingStyle.stroke),
+                fontSize: 60.0,
+                fontWeight: FontWeight.normal,
+                foreground: Paint()
+                  ..color = Colors.red
+                  ..strokeWidth = 3.0
+                  ..style = PaintingStyle.stroke,
+              ),
             ),
           ),
           SizedBox(
@@ -73,16 +85,15 @@ class TextExampleHome extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'I am going to write some gibberish! What does that mean? Actually nothing! '
-              'Now you may ask should an adjective always align with the noun? Or, an '
-              'adverb should follow a verb like its shadow?',
+              'I am going to write something that will end with dots...',
               style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.normal,
-                  foreground: Paint()
-                    ..color = Colors.blue
-                    ..strokeWidth = 1.0
-                    ..style = PaintingStyle.stroke),
+                fontSize: 45.0,
+                fontWeight: FontWeight.normal,
+                foreground: Paint()
+                  ..color = Colors.black
+                  ..strokeWidth = 2.0
+                  ..style = PaintingStyle.stroke,
+              ),
               textAlign: TextAlign.left,
               maxLines: 2,
               // it means some more text are there waiting for you to be read
