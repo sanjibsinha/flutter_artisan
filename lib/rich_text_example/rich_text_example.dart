@@ -6,9 +6,12 @@ class RichTextMaterial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Rich Text Examples',
-      home: RichTextScaffold(),
+      home: const RichTextScaffold(),
+      routes: {
+        AnotherRicTextPage.routename: (context) => const AnotherRicTextPage(),
+      },
     );
   }
 }
@@ -78,5 +81,15 @@ class RichTextExample extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class AnotherRicTextPage extends StatelessWidget {
+  const AnotherRicTextPage({Key? key}) : super(key: key);
+  static const routename = '/all';
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
