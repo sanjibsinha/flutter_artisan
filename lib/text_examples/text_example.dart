@@ -62,9 +62,6 @@ class TextExampleHome extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 10.0,
-          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -78,9 +75,6 @@ class TextExampleHome extends StatelessWidget {
                   ..style = PaintingStyle.stroke,
               ),
             ),
-          ),
-          SizedBox(
-            height: 10.0,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -98,6 +92,20 @@ class TextExampleHome extends StatelessWidget {
               maxLines: 2,
               // it means some more text are there waiting for you to be read
               overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'I am going to write something that will end with dots...',
+              style: TextStyle(
+                fontSize: 55.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Allison',
+              ),
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.clip,
+              maxLines: 1,
             ),
           ),
         ],
