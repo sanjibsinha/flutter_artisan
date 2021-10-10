@@ -25,18 +25,13 @@ class RichTextScaffold extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Rich text examples'),
       ),
-      body: RichTextExample(),
+      body: const RichTextExample(),
     );
   }
 }
 
 class RichTextExample extends StatelessWidget {
-  RichTextExample({Key? key}) : super(key: key);
-
-  final TapGestureRecognizer _tapGestureRecognizer = TapGestureRecognizer()
-    ..onTap = () {
-      debugPrint('Tapped!');
-    };
+  const RichTextExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +42,28 @@ class RichTextExample extends StatelessWidget {
         children: <Widget>[
           RichText(
             text: TextSpan(
-              text: 'Tap ',
+              text: 'Tap ....',
               style: const TextStyle(
                 fontSize: 30.0,
                 color: Colors.blue,
               ),
               children: [
                 TextSpan(
-                    text: 'this link to read more...',
-                    style: const TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.red,
-                    ),
-                    recognizer: _tapGestureRecognizer),
+                  text: 'this link to go to another RichText example page...',
+                  style: const TextStyle(
+                    fontSize: 30.0,
+                    color: Colors.red,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AnotherRicTextPage(),
+                        ),
+                      );
+                    },
+                ),
               ],
             ),
           ),
@@ -86,10 +90,54 @@ class RichTextExample extends StatelessWidget {
 
 class AnotherRicTextPage extends StatelessWidget {
   const AnotherRicTextPage({Key? key}) : super(key: key);
-  static const routename = '/all';
+  static const routename = '/another';
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(32.0),
+      child: Column(
+        children: <Widget>[
+          RichText(
+            text: TextSpan(
+              text: 'Tap ...',
+              style: const TextStyle(
+                fontSize: 30.0,
+                color: Colors.blue,
+              ),
+              children: [
+                TextSpan(
+                  text: 'this link to back to the page from where you came...',
+                  style: const TextStyle(
+                    fontSize: 30.0,
+                    color: Colors.red,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.pop(context);
+                    },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: RichText(
+              text: const TextSpan(
+                text: 'Share',
+                style: TextStyle(
+                  fontSize: 40.0,
+                  color: Colors.green,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
