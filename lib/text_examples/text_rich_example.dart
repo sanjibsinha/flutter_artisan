@@ -5,7 +5,7 @@ class TextRichExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Text Rich example',
       home: TextRichHome(),
     );
@@ -19,13 +19,13 @@ class TextRichHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Text rich example'),
+        title: const Text('Text rich example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            Text.rich(
+            const Text.rich(
               TextSpan(
                 text: 'Flutter',
                 style: TextStyle(
