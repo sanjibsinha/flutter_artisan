@@ -5,7 +5,7 @@ class TextExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Text Examples in Flutter',
       home: TextExampleHome(),
     );
@@ -19,12 +19,12 @@ class TextExampleHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Text Examples in Flutter'),
+        title: const Text('Text Examples in Flutter'),
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               'First Text Example',
               style: TextStyle(
@@ -52,7 +52,7 @@ class TextExampleHome extends StatelessWidget {
                 decorationStyle: TextDecorationStyle.wavy,
                 letterSpacing: 5.0,
                 wordSpacing: 10.0,
-                shadows: [
+                shadows: const [
                   Shadow(
                     color: Colors.black,
                     blurRadius: 4.0,
@@ -94,8 +94,8 @@ class TextExampleHome extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               'I am going to write something that will end with dots...',
               style: TextStyle(

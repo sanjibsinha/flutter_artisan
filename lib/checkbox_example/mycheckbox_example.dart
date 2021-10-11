@@ -16,7 +16,7 @@ class _MyCheckBoxExampleState extends State<MyCheckBoxExample> {
       title: 'Checkbox Example',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Checkbox Example'),
+          title: const Text('Checkbox Example'),
         ),
         body: SingleChildScrollView(
           child: Column(
