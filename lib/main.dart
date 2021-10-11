@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_artisan/text_examples/text_rich_example.dart';
 import 'rich_text_example/rich_text_example.dart';
 //import 'text_examples/text_example.dart';
 //import 'icon_buttons/icon_button_example.dart';
@@ -36,6 +37,7 @@ void main() {
     //const OutlinedButtonExample(),
     //const IconExample(),
     //const TextExample(),
-    const RichTextMaterial(),
+    //const RichTextMaterial(),
+    const TextRichExample(),
   );
 }
