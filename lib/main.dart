@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'text_examples/text_rich_example.dart';
+import 'package:provider/provider.dart';
+import 'models/counter.dart';
+import 'views/conter_app.dart';
+
+//import 'text_examples/text_rich_example.dart';
 //import 'rich_text_example/rich_text_example.dart';
 //import 'text_examples/text_example.dart';
 //import 'icon_buttons/icon_button_example.dart';
@@ -38,6 +42,12 @@ void main() {
     //const IconExample(),
     //const TextExample(),
     //const RichTextMaterial(),
-    const TextRichExample(),
+    //const TextRichExample(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Counter()),
+      ],
+      child: const CounterApp(),
+    ),
   );
 }

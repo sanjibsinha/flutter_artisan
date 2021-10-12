@@ -26,8 +26,28 @@ class CounterHomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('You have pushed the button this many times:'),
+          children: <Widget>[
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: 'You have ',
+                style: const TextStyle(
+                  fontSize: 40.0,
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: [
+                  TextSpan(
+                    text: 'pushed this button ...',
+                    style: const TextStyle(
+                      fontSize: 40.0,
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
             /// Extracted as a separate widget for performance optimization.
             /// As a separate widget, it will rebuild
@@ -36,6 +56,13 @@ class CounterHomePage extends StatelessWidget {
             /// This is totally optional (and rarely needed).
             /// Similarly, we could also use [Consumer] or [Selector].
             Count(),
+            Text(
+              ' ...times.',
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            )
           ],
         ),
       ),
@@ -59,11 +86,15 @@ class Count extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-
-        /// Calls `context.watch` to make [Count]
-        /// rebuild when [Counter] changes.
-        '${context.watch<Counter>().count}',
-        key: const Key('counterState'),
-        style: Theme.of(context).textTheme.headline4);
+      /// Calls `context.watch` to make [Count]
+      /// rebuild when [Counter] changes.
+      '${context.watch<Counter>().count}',
+      key: const Key('counterState'),
+      style: TextStyle(
+        fontFamily: 'Allison',
+        fontSize: 160,
+        fontWeight: FontWeight.bold,
+      ),
+    );
   }
 }
