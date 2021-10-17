@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+/// this shuold be named ChipExample
 class WrapExample extends StatelessWidget {
   const WrapExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '',
       home: WrapHome(),
@@ -20,7 +21,7 @@ class WrapHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wrap Example'),
+        title: const Text('Wrap Example'),
       ),
       body: Center(
         child: Wrap(
@@ -30,7 +31,7 @@ class WrapHome extends StatelessWidget {
             Container(
               margin: const EdgeInsets.all(20),
               padding: const EdgeInsets.all(20),
-              child: Text(
+              child: const Text(
                 'Choose Locations',
                 style: TextStyle(
                   fontFamily: 'Allison',
