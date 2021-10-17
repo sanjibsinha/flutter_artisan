@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'wrap_examples/wrap_example.dart';
 import 'package:provider/provider.dart';
 import 'models/counter.dart';
-import 'views/conter_app.dart';
+//import 'views/conter_app.dart';
 
 //import 'text_examples/text_rich_example.dart';
 //import 'rich_text_example/rich_text_example.dart';
@@ -47,7 +48,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => Counter()),
       ],
-      child: const CounterApp(),
+      //child: const CounterApp(),
+      child: WrapExample(),
     ),
   );
 }
