@@ -56,6 +56,7 @@ class WrapHome extends StatelessWidget {
               ),
               shadowColor: Colors.black,
               elevation: 20,
+              onDeleted: () {},
             ),
             Chip(
               avatar: CircleAvatar(
