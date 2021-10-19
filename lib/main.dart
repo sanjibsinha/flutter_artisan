@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'sliver_examples/sliver_appbar_example.dart';
+import 'package:provider/provider.dart';
+import 'sliver_examples/sliver_nested_example.dart';
+//import 'sliver_examples/sliver_appbar_example.dart';
 
 //import 'wrap_examples/wrap_example.dart';
-import 'package:provider/provider.dart';
+
 import 'models/counter.dart';
 //import 'views/conter_app.dart';
 
@@ -52,7 +54,8 @@ void main() {
       ],
       //child: const CounterApp(),
       //child: const WrapExample(),
-      child: SliverAppBarExample(),
+      //child: SliverAppBarExample(),
+      child: SliverNestedExample(),
     ),
   );
 }

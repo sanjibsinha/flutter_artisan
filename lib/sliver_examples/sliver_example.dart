@@ -6,7 +6,7 @@ class SliverExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Coding with Curry',
+      title: 'Sliver Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
