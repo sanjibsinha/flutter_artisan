@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SliverBasicExample extends StatelessWidget {
+  const SliverBasicExample({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        SliverAppBar(
+        const SliverAppBar(
           //pinned: true,
           floating: false,
           expandedHeight: 120.0,
@@ -45,7 +47,7 @@ class SliverBasicExample extends StatelessWidget {
             },
             childCount: 30,
           ),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             mainAxisSpacing: 15,
             crossAxisSpacing: 15,
@@ -56,7 +58,7 @@ class SliverBasicExample extends StatelessWidget {
           child: Container(
             color: Colors.yellow,
             padding: const EdgeInsets.all(8.0),
-            child: Text('Grid Header', style: TextStyle(fontSize: 24)),
+            child: const Text('Grid Header', style: TextStyle(fontSize: 24)),
           ),
         ),
         SliverGrid.count(

@@ -5,7 +5,7 @@ class SliverNestedExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Sliver and Nested Scroll',
       home: NestedSliverHome(),
     );
@@ -29,7 +29,7 @@ class NestedSliverHome extends StatelessWidget {
                 centerTitle: true,
                 title: Container(
                   color: Colors.blue,
-                  child: Text(
+                  child: const Text(
                     "The Toolbar Collapses",
                     style: TextStyle(
                       color: Colors.white,

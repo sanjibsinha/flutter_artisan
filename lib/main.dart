@@ -33,6 +33,8 @@ import 'models/counter.dart';
 //import 'controllers/app_bar_widget.dart';
 //import 'controllers/text_button_widget.dart';
 
+/// added a comment to test
+
 void main() {
   runApp(
     // const TabBarExample(),
@@ -55,7 +57,7 @@ void main() {
       //child: const CounterApp(),
       //child: const WrapExample(),
       //child: SliverAppBarExample(),
-      child: SliverNestedExample(),
+      child: const SliverNestedExample(),
     ),
   );
 }

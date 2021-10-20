@@ -5,7 +5,7 @@ class SliverAppBarExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Sliver AppBar Example',
       home: SliverAppBarHome(),
     );
@@ -26,7 +26,7 @@ class SliverAppBarHome extends StatelessWidget {
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
-              title: Text(
+              title: const Text(
                 'It will collapse',
                 style: TextStyle(
                   color: Colors.white,

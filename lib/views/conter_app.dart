@@ -29,9 +29,9 @@ class CounterHomePage extends StatelessWidget {
           children: <Widget>[
             RichText(
               textAlign: TextAlign.center,
-              text: TextSpan(
+              text: const TextSpan(
                 text: 'You have ',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 40.0,
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
@@ -39,7 +39,7 @@ class CounterHomePage extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: 'pushed this button ...',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 40.0,
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
@@ -55,8 +55,8 @@ class CounterHomePage extends StatelessWidget {
             ///
             /// This is totally optional (and rarely needed).
             /// Similarly, we could also use [Consumer] or [Selector].
-            Count(),
-            Text(
+            const Count(),
+            const Text(
               ' ...times.',
               style: TextStyle(
                 fontSize: 40,
@@ -90,7 +90,7 @@ class Count extends StatelessWidget {
       /// rebuild when [Counter] changes.
       '${context.watch<Counter>().count}',
       key: const Key('counterState'),
-      style: TextStyle(
+      style: const TextStyle(
         fontFamily: 'Allison',
         fontSize: 160,
         fontWeight: FontWeight.bold,
