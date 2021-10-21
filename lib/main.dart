@@ -52,7 +52,9 @@ void main() {
     //const TextRichExample(),
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => Counter()),
+        ChangeNotifierProvider(
+          create: (_) => Counter(),
+        ),
       ],
       //child: const CounterApp(),
       //child: const WrapExample(),
