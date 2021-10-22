@@ -39,7 +39,7 @@ class SliverFixedExtentListSample extends StatelessWidget {
           ),
         ),
         SliverFixedExtentList(
-          delegate: CustomChildDelegate([
+          delegate: SliverChildListDelegate([
             Container(color: Colors.red),
             Container(color: Colors.green),
             Container(color: Colors.blue),
