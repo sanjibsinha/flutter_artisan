@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'custom_delegate.dart';
 
-class SliverFixedExtentListHome extends StatelessWidget {
-  const SliverFixedExtentListHome({Key? key}) : super(key: key);
+class SliverFixedExtentListAndOthers extends StatelessWidget {
+  const SliverFixedExtentListAndOthers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
