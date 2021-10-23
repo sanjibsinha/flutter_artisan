@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_artisan/models/counter.dart';
@@ -9,7 +7,7 @@ class CustomScrollSample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'CustomScroll Sample',
       home: CustomScrollHome(),
     );
@@ -17,32 +15,48 @@ class CustomScrollSample extends StatelessWidget {
 }
 
 class CustomScrollHome extends StatelessWidget {
-  const CustomScrollHome({Key? key}) : super(key: key);
+  CustomScrollHome({Key? key}) : super(key: key);
+  List<int> top = <int>[];
+  List<int> bottom = <int>[0];
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          expandedHeight: 200.0,
-          floating: false,
-          pinned: true,
-          flexibleSpace: FlexibleSpaceBar(
-            centerTitle: true,
-            title: const Text(
-              'It will collapse',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
+    int index = context.watch<Counter>().count;
+    const Key centerKey = ValueKey<String>('bottom-sliver-list');
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Press on the plus to add items above and below'),
+        leading: IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () {
+            top.add(-top.length - 1);
+            bottom.add(bottom.length);
+            context.read<Counter>().increment();
+          },
+        ),
+      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 200.0,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              title: const Text(
+                'It will collapse',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
+              ),
+              background: Image.network(
+                'https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717_960_720.jpg',
+                fit: BoxFit.cover,
               ),
             ),
-            background: Image.network(
-              'https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717_960_720.jpg',
-              fit: BoxFit.cover,
-            ),
           ),
-        ),
-        Center(
+          /* Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,14 +72,36 @@ class CustomScrollHome extends StatelessWidget {
               Count(),
             ],
           ),
-        ),
-        FloatingActionButton(
-          key: const Key('increment_floatingActionButton'),
-          onPressed: () => context.read<Counter>().increment(),
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ),
-      ],
+        ), */
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue[200 + top[index] % 4 * 100],
+                  height: 100 + top[index] % 4 * 20.0,
+                  child: Text('Item: ${top[index]}'),
+                );
+              },
+              childCount: top.length,
+            ),
+          ),
+          SliverList(
+            key: centerKey,
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue[200 + bottom[index] % 4 * 100],
+                  height: 100 + bottom[index] % 4 * 20.0,
+                  child: Text('Item: ${bottom[index]}'),
+                );
+              },
+              childCount: bottom.length,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

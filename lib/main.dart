@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'custom_and_nested_scroll/custom_scroll_sample.dart';
 
 import 'package:provider/provider.dart';
-import 'sliver_examples/sliver_fixed_extent_list_sample.dart';
+//import 'sliver_examples/sliver_fixed_extent_list_sample.dart';
 //import 'sliver_examples/sliver_persistent_header_sample.dart';
 //import 'sliver_examples/sliver_grid_example.dart';
 //import 'sliver_examples/sliver_nested_example.dart';
@@ -66,7 +67,8 @@ void main() {
       //child: const SliverNestedExample(),
       //child: const SliverGridExample(),
       //child: const SliverPersistentHeaderSample(),
-      child: const SliverFixedExtentListAndOthers(),
+      //child: const SliverFixedExtentListAndOthers(),
+      child: CustomScrollSample(),
     ),
   );
 }
