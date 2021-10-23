@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_artisan/models/counter.dart';
+import '/models/counter.dart';
 
 class CustomScrollSample extends StatelessWidget {
   const CustomScrollSample({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class CustomScrollHome extends StatelessWidget {
     const Key centerKey = ValueKey<String>('bottom-sliver-list');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Press on the plus to add items above and below'),
+        title: const Text('Press to add items above and below'),
         leading: IconButton(
           icon: const Icon(Icons.add),
           onPressed: () {
@@ -56,23 +56,6 @@ class CustomScrollHome extends StatelessWidget {
               ),
             ),
           ),
-          /* Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                'You have pushed the button this many times:',
-                style: TextStyle(
-                  fontFamily: 'Allison',
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Count(),
-            ],
-          ),
-        ), */
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
@@ -101,23 +84,6 @@ class CustomScrollHome extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Count extends StatelessWidget {
-  const Count({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      '${context.watch<Counter>().count}',
-      key: const Key('counterState'),
-      style: const TextStyle(
-        fontFamily: 'Allison',
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
       ),
     );
   }
