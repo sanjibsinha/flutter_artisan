@@ -26,8 +26,10 @@ class NestedScrollViewFirstHome extends StatelessWidget {
           return <Widget>[
             SliverAppBar(
               expandedHeight: 200.0,
-              floating: false,
-              pinned: true,
+              forceElevated: innerBoxIsScrolled,
+              floating: true,
+
+              //pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Container(
