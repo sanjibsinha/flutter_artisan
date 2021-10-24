@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'custom_delegate.dart';
 
 class SliverFixedExtentListAndOthers extends StatelessWidget {
   const SliverFixedExtentListAndOthers({Key? key}) : super(key: key);
