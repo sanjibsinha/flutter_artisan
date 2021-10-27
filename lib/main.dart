@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 //import 'page_view_samples/page_view_builder_sample_stateful.dart';
-import 'page_view_samples/page_view_builder_simple.dart';
+import 'models/countering.dart';
+//import 'page_view_samples/page_view_builder_simple.dart';
 
 //import 'page_view_samples/page_view_builder_sample.dart';
 //import 'custom_and_nested_scroll/nested_scroll_view_sample_one.dart';
@@ -18,7 +20,7 @@ import 'page_view_samples/page_view_builder_simple.dart';
 
 //import 'wrap_examples/wrap_example.dart';
 
-import 'models/counter.dart';
+//import 'models/counter.dart';
 //import 'views/conter_app.dart';
 
 //import 'text_examples/text_rich_example.dart';
@@ -50,6 +52,7 @@ import 'models/counter.dart';
 
 void main() {
   runApp(
+    const ProviderScope(child: MyApp()),
     // const TabBarExample(),
     //const DropDownButtonPage(),
     //const MaterialStateExamle(),
@@ -63,7 +66,7 @@ void main() {
     //const TextExample(),
     //const RichTextMaterial(),
     //const TextRichExample(),
-    MultiProvider(
+    /* MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => Counter(),
@@ -85,6 +88,42 @@ void main() {
       //child: const PageViewBuilderSample(),
       //child: const PageViewBuilderSampleStateful(),
       child: const PageViewBuilderSimple(),
-    ),
+    ), */
   );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(home: HomeView());
+  }
+}
+
+final counterProvider =
+    StateNotifierProvider<Countering, int>((ref) => Countering());
+
+class HomeView extends ConsumerWidget {
+  const HomeView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterProvider);
+    return Scaffold(
+      body: Text(
+        '$counter',
+        style: TextStyle(
+          fontSize: 60,
+          color: Colors.red,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Call `increment()` on the `Countering` class
+          ref.read(counterProvider.notifier).increment();
+        },
+      ),
+    );
+  }
 }
