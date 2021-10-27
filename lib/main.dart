@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'page_view_samples/page_view_custom_sample.dart';
 
 //import 'page_view_samples/page_view_builder_sample_stateful.dart';
-import 'page_view_samples/page_view_builder_simple.dart';
+//import 'page_view_samples/page_view_builder_simple.dart';
 
 //import 'page_view_samples/page_view_builder_sample.dart';
 //import 'custom_and_nested_scroll/nested_scroll_view_sample_one.dart';
@@ -84,7 +85,8 @@ void main() {
       //child: NestedScrollViewSampleOne(),
       //child: const PageViewBuilderSample(),
       //child: const PageViewBuilderSampleStateful(),
-      child: const PageViewBuilderSimple(),
+      //child: const PageViewBuilderSimple(),
+      child: const PageViewCustomSimple(),
     ),
   );
 }
