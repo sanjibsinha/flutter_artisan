@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 
 //import 'package:provider/provider.dart';
 
 //import 'page_view_samples/page_view_builder_sample_stateful.dart';
-import 'models/countering.dart';
+
 //import 'page_view_samples/page_view_builder_simple.dart';
 
 //import 'page_view_samples/page_view_builder_sample.dart';
@@ -52,7 +54,9 @@ import 'models/countering.dart';
 
 void main() {
   runApp(
-    const ProviderScope(child: MyApp()),
+    const ProviderScope(
+      child: StateNotifierProviderAppSample(),
+    ),
     // const TabBarExample(),
     //const DropDownButtonPage(),
     //const MaterialStateExamle(),
@@ -90,40 +94,4 @@ void main() {
       child: const PageViewBuilderSimple(),
     ), */
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(home: HomeView());
-  }
-}
-
-final counterProvider =
-    StateNotifierProvider<Countering, int>((ref) => Countering());
-
-class HomeView extends ConsumerWidget {
-  const HomeView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final counter = ref.watch(counterProvider);
-    return Scaffold(
-      body: Text(
-        '$counter',
-        style: TextStyle(
-          fontSize: 60,
-          color: Colors.red,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Call `increment()` on the `Countering` class
-          ref.read(counterProvider.notifier).increment();
-        },
-      ),
-    );
-  }
 }
