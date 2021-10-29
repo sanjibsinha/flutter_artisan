@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_artisan/state_management/riverpod_example/provider_example.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
@@ -56,6 +57,7 @@ void main() {
   runApp(
     const ProviderScope(
       child: StateNotifierProviderAppSample(),
+      //child: ProviderAppSample(),
     ),
     // const TabBarExample(),
     //const DropDownButtonPage(),
