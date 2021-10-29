@@ -13,29 +13,30 @@ class ProviderAppSample extends StatelessWidget {
   }
 }
 
-final valueProvider = Provider<int>((ref) {
-  return 36;
-});
-
-final counterProvider = StateProvider((ref) => 0);
+final referenceValue = StateProvider((ref) => 0);
 
 class ProviderHome extends ConsumerWidget {
   const ProviderHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counterWatch = ref.watch(counterProvider);
-    final counterRead = ref.read(counterProvider);
+    final counterWatch = ref.watch(referenceValue);
+    final counterRead = ref.read(referenceValue);
     return Scaffold(
       body: Center(
         child: Column(
           children: [
-            Text(
-              'Value: ${counterWatch.state}',
-              style: const TextStyle(
-                fontSize: 60,
-                fontFamily: 'Allison',
-                color: Colors.red,
+            Container(
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                '${counterWatch.state}',
+                style: const TextStyle(
+                  fontSize: 100,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                ),
               ),
             ),
             const SizedBox(
@@ -44,7 +45,7 @@ class ProviderHome extends ConsumerWidget {
             ElevatedButton(
               onPressed: () => counterRead.state++,
               child: const Text(
-                'Increment',
+                'Press to Increment',
                 style: TextStyle(
                   fontSize: 30,
                   color: Colors.white,
