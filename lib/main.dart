@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_artisan/state_management/riverpod_example/provider_using_consumer.dart';
+import 'state_management/provider_example/provider_example.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
+//import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 
 //import 'package:provider/provider.dart';
@@ -57,8 +57,8 @@ import 'state_management/riverpod_example/state_notifier_provider_app_sample.dar
 void main() {
   runApp(
     const ProviderScope(
-      child: StateNotifierProviderAppSample(),
-      //child: ProviderUsingConsumer(),
+      //child: StateNotifierProviderAppSample(),
+      child: ProviderAppSample(),
     ),
     // const TabBarExample(),
     //const DropDownButtonPage(),
