@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'state_management/provider_example/provider_example.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'state_management/provider_example/provider_example.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 
