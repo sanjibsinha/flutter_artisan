@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'custom_and_nested_scroll/draggable_scrollable_sheet_sample.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'state_management/provider_example/provider_example.dart';
+//import 'package:flutter_riverpod/flutter_riverpod.dart';
+//import 'state_management/provider_example/provider_example.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 
@@ -56,10 +57,11 @@ import 'state_management/provider_example/provider_example.dart';
 
 void main() {
   runApp(
-    const ProviderScope(
+    const DraggableScrollableSheetSample(),
+    /* const ProviderScope(
       //child: StateNotifierProviderAppSample(),
       child: ProviderAppSample(),
-    ),
+    ), */
     // const TabBarExample(),
     //const DropDownButtonPage(),
     //const MaterialStateExamle(),
