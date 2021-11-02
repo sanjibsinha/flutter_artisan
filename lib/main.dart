@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'scrollable_widgets/scrollbar_sample.dart';
 
-import 'scrollable_widgets/page_view_samples/page_view_another_builder.dart';
+//import 'scrollable_widgets/page_view_samples/page_view_another_builder.dart';
 
 //import 'custom_and_nested_scroll/draggable_scrollable_sheet_sample.dart';
 
@@ -60,8 +61,9 @@ import 'scrollable_widgets/page_view_samples/page_view_another_builder.dart';
 
 void main() {
   runApp(
+    const ScrollbarSample(),
     //const DraggableScrollableSheetSample(),
-    const PageViewAnotherBuilder(),
+    //const PageViewAnotherBuilder(),
     //const StatefulSampleOne(),
 
     /* const ProviderScope(
