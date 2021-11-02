@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'scrollable_widgets/scrollbar_sample.dart';
+import 'scrollable_widgets/scrollbar_controller_sample.dart';
+//import 'scrollable_widgets/scrollbar_sample.dart';
 
 //import 'scrollable_widgets/page_view_samples/page_view_another_builder.dart';
 
@@ -61,7 +62,8 @@ import 'scrollable_widgets/scrollbar_sample.dart';
 
 void main() {
   runApp(
-    const ScrollbarSample(),
+    const ScrollbarControllerSample(),
+    //const ScrollbarSample(),
     //const DraggableScrollableSheetSample(),
     //const PageViewAnotherBuilder(),
     //const StatefulSampleOne(),
