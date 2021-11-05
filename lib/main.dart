@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_artisan/state_management/provider_example/provider_sample_one.dart';
 import 'package:provider/provider.dart';
 import 'models/counter.dart';
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
@@ -66,6 +67,11 @@ import 'models/counter.dart';
 
 void main() {
   runApp(
+    ChangeNotifierProvider(
+      create: (context) =>
+          Counter(), // designed Model is provided to the desired widgets
+      child: const ProviderSampleOne(),
+    ),
     //const ReorderableListViewBuilderSample(),
 
     //const ReorderableListViewSample(),
@@ -92,14 +98,16 @@ void main() {
     //const TextExample(),
     //const RichTextMaterial(),
     //const TextRichExample(),
-    MultiProvider(
+    /* MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => Counter(),
         ),
       ],
-    ),
+      child: const ProviderSampleOne(),
+    ), */
     /*
+    
       //child: const CounterApp(),
       //child: const WrapExample(),
       //child: SliverAppBarExample(),

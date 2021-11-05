@@ -11,6 +11,11 @@ class Counter with ChangeNotifier {
     notifyListeners();
   }
 
+  void decrement() {
+    _count--;
+    notifyListeners();
+  }
+
   void increase() {
     x = x + 1.0;
     notifyListeners();
