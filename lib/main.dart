@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
+import 'package:provider/provider.dart';
+import 'models/counter.dart';
+//import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
 //import 'scrollable_widgets/scrollbar_controller_sample.dart';
 //import 'scrollable_widgets/scrollbar_sample.dart';
@@ -64,7 +66,7 @@ import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 
 void main() {
   runApp(
-    const ReorderableListViewBuilderSample(),
+    //const ReorderableListViewBuilderSample(),
 
     //const ReorderableListViewSample(),
     //const ScrollbarControllerSample(),
@@ -90,12 +92,14 @@ void main() {
     //const TextExample(),
     //const RichTextMaterial(),
     //const TextRichExample(),
-    /* MultiProvider(
+    MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => Counter(),
         ),
       ],
+    ),
+    /*
       //child: const CounterApp(),
       //child: const WrapExample(),
       //child: SliverAppBarExample(),
