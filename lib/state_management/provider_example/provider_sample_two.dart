@@ -28,23 +28,23 @@ class ProviderSampleTwoHome extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Consumer Example'),
       ),
-      body: Column(
+      body: ListView(
         /// building a humongous widget tree
         children: [
           Center(
             child: Container(
-                margin: const EdgeInsets.all(
-                  25.0,
-                ),
-                padding: const EdgeInsets.all(
-                  25.0,
-                ),
-                child: Consumer<Counter>(
-                  builder: (context, cart, child) => Stack(
-                    children: [
-                      // Use SomeExpensiveWidget here, without rebuilding every time.
-                      if (child != null) child,
-                      Text(
+              margin: const EdgeInsets.all(
+                25.0,
+              ),
+              padding: const EdgeInsets.all(
+                25.0,
+              ),
+              child: Consumer<Counter>(
+                builder: (context, cart, child) => Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Text(
                         'You pressed: ${cart.count} times!',
                         style: const TextStyle(
                           fontFamily: 'Allison',
@@ -52,132 +52,30 @@ class ProviderSampleTwoHome extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                  // Build the expensive widget here.
+                    ),
+                    const SizedBox(
+                      height: 160,
+                    ),
+                    // Use SomeExpensiveWidget here, without rebuilding every time.
+                    const ExpensiveWidget(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    if (child != null) child,
+                  ],
+                ),
+                // Build the expensive widget here.
+                child: Container(
+                  padding: const EdgeInsets.only(top: 160),
                   child: const HumongousWidget(),
-                )),
-          ),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: const [
-                    Text(
-                      'First Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Second Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
                 ),
-                const Divider(
-                  color: Colors.black,
-                  height: 60,
-                  thickness: 15,
-                  indent: 20,
-                  endIndent: 0,
-                ),
-                Column(
-                  children: const [
-                    Text(
-                      'First Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.red,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Second Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 10.0),
-          Center(
-            /// building another humongous widget tree
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: const [
-                    Text(
-                      'First Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Second Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
-                ),
-                const Divider(
-                  color: Colors.black,
-                  height: 20,
-                  thickness: 5,
-                  indent: 20,
-                  endIndent: 0,
-                ),
-                Column(
-                  children: const [
-                    Text(
-                      'First Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.red,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Second Row',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blue,
-                        backgroundColor: Colors.yellow,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
           ),
           Center(
             child: Container(
-              margin: const EdgeInsets.all(
-                5.0,
-              ),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Consumer<Counter>(
                 builder: (context, message, _) {
                   return Column(
@@ -206,17 +104,110 @@ class HumongousWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(30),
-      padding: const EdgeInsets.all(30),
-      child: const Text(
-        'data',
-        style: TextStyle(
-          fontFamily: 'Allison',
-          fontSize: 60,
-          fontWeight: FontWeight.bold,
-          color: Colors.red,
-        ),
+    return Center(
+      /// building another humongous widget tree
+      child: Wrap(
+        direction: Axis.vertical,
+        children: [
+          Column(
+            children: const [
+              Text(
+                'First Row of Consumer Child',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.blue,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                'Second Row of Consumer Child',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.blue,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const Divider(
+            color: Colors.black,
+            height: 20,
+            thickness: 5,
+            indent: 20,
+            endIndent: 0,
+          ),
+          Column(
+            children: const [
+              Text(
+                'Third Row of Consumer Child',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.blue,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                'Fourth Row of Consumer Child',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.blue,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ExpensiveWidget extends StatelessWidget {
+  const ExpensiveWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      /// building another humongous widget tree
+      child: Wrap(
+        direction: Axis.vertical,
+        children: [
+          Column(
+            children: const [
+              Text(
+                'First Row inside Consumer',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.blue,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                'Second Row inside Consumer',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.blue,
+                  fontFamily: 'Allison',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
