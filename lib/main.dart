@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_artisan/state_management/provider_example/provider_sample_one.dart';
+
 import 'package:provider/provider.dart';
+//import 'state_management/provider_example/provider_sample_one.dart';
+import 'state_management/provider_example/provider_sample_two.dart';
 import 'models/counter.dart';
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
@@ -70,7 +72,8 @@ void main() {
     ChangeNotifierProvider(
       create: (context) =>
           Counter(), // designed Model is provided to the desired widgets
-      child: const ProviderSampleOne(),
+      //child: const ProviderSampleOne(),
+      child: const ProviderSampleTwo(),
     ),
     //const ReorderableListViewBuilderSample(),
 
