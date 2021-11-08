@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 //import 'state_management/provider_example/provider_sample_one.dart';
-import 'state_management/provider_example/provider_sample_two.dart';
+//import 'state_management/provider_example/provider_sample_two.dart';
+import 'state_management/provider_example/provider_sample_three.dart';
 import 'models/counter.dart';
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
@@ -66,15 +67,30 @@ import 'models/counter.dart';
 //import 'controllers/text_button_widget.dart';
 
 /// added a comment to test
+///
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
+    /// Providers are above [MyApp] instead of inside it, so that tests
+    /// can use [MyApp] while mocking the providers
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Counter()),
+      ],
+      child: const ProviderSampleThree(),
+    ),
+  );
+}
+
+/* void main() {
+  runApp(
+    /* ChangeNotifierProvider(
       create: (context) =>
           Counter(), // designed Model is provided to the desired widgets
       //child: const ProviderSampleOne(),
-      child: const ProviderSampleTwo(),
-    ),
+      //child: const ProviderSampleTwo(),
+      child: const ProviderSampleThree(),
+    ) */,
     //const ReorderableListViewBuilderSample(),
 
     //const ReorderableListViewSample(),
@@ -130,3 +146,4 @@ void main() {
     ), */
   );
 }
+ */
