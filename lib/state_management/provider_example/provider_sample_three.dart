@@ -21,53 +21,115 @@ class ProviderSampleThreeHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Home page building');
     return Scaffold(
       body: Center(
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                '${context.watch<Counter>().count}',
-                style: const TextStyle(
-                  fontSize: 100,
-                  fontFamily: 'Allison',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              child: const SelectorValue(),
+            ),
+            Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              child: const SelectorAnotherValue(),
             ),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
-            ElevatedButton(
-              //onPressed: () => context.read<Counter>().increment(),
-              onPressed: context.select((Counter c) => c.increment),
-              child: const Text(
-                'Press to Increment',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            const SelectorFirstMethod(),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
-            ElevatedButton(
-              //onPressed: () => context.read<Counter>().decrement(),
-              onPressed: context.select((Counter c) => c.decrement),
-              child: const Text(
-                'Press to Decrement',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            const SelectorSecondMethod(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SelectorSecondMethod extends StatelessWidget {
+  const SelectorSecondMethod({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Counter second method building');
+    return ElevatedButton(
+      //onPressed: () => context.read<Counter>().decrement(),
+      onPressed: context.select((Counter c) => c.addOne),
+      child: const Text(
+        'Increment second value',
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+class SelectorFirstMethod extends StatelessWidget {
+  const SelectorFirstMethod({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Counter first method building');
+    return ElevatedButton(
+      //onPressed: () => context.read<Counter>().increment(),
+      onPressed: context.select((Counter c) => c.increment),
+      child: const Text(
+        'Increment first value',
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+class SelectorValue extends StatelessWidget {
+  const SelectorValue({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Counter first value building');
+    return Text(
+      'You pressed this ${context.select((Counter c) => c.count)} times.',
+      style: const TextStyle(
+        fontSize: 45,
+        fontFamily: 'Allison',
+        fontWeight: FontWeight.bold,
+        color: Colors.red,
+      ),
+    );
+  }
+}
+
+class SelectorAnotherValue extends StatelessWidget {
+  const SelectorAnotherValue({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Counter second value building');
+    return Text(
+      'You pressed this ${context.select((Counter c) => c.num)} times.',
+      style: const TextStyle(
+        fontSize: 45,
+        fontFamily: 'Allison',
+        fontWeight: FontWeight.bold,
+        color: Colors.red,
       ),
     );
   }

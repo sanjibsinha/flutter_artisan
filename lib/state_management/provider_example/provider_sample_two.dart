@@ -9,6 +9,7 @@ class ProviderSampleTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Root widget rebuilds');
     return const MaterialApp(
       home: ProviderSampleTwoHome(),
     );
@@ -20,6 +21,8 @@ class ProviderSampleTwoHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Scaffold widget rebuilds');
+
     /// Only this widget will be rebuilt
     //final CountingTheNumber message = Provider.of<CountingTheNumber>(context);
     /// we're using Consumer widget instead of Provider.of().
@@ -30,70 +33,94 @@ class ProviderSampleTwoHome extends StatelessWidget {
       ),
       body: ListView(
         /// building a humongous widget tree
-        children: [
+        children: const [
           Center(
-            child: Container(
-              margin: const EdgeInsets.all(
-                25.0,
-              ),
-              padding: const EdgeInsets.all(
-                25.0,
-              ),
-              child: Consumer<Counter>(
-                builder: (context, cart, child) => Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Text(
-                        'You pressed: ${cart.count} times!',
-                        style: const TextStyle(
-                          fontFamily: 'Allison',
-                          fontSize: 60,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 160,
-                    ),
-                    // Use SomeExpensiveWidget here, without rebuilding every time.
-                    const ExpensiveWidget(),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    if (child != null) child,
-                  ],
-                ),
-                // Build the expensive widget here.
-                child: Container(
-                  padding: const EdgeInsets.only(top: 160),
-                  child: const HumongousWidget(),
-                ),
-              ),
-            ),
+            child: ConsumenrValueWidget(),
           ),
           Center(
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(10),
-              child: Consumer<Counter>(
-                builder: (context, message, _) {
-                  return Column(
-                    children: [
-                      FloatingActionButton(
-                        onPressed: () {
-                          message.increment();
-                        },
-                        tooltip: 'Increment',
-                        child: const Icon(Icons.add),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
+            child: ConsumerMethodWidget(),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ConsumerMethodWidget extends StatelessWidget {
+  const ConsumerMethodWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Consumer method widget rebuilds');
+    return Container(
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      child: Consumer<Counter>(
+        builder: (context, message, _) {
+          return Column(
+            children: [
+              FloatingActionButton(
+                onPressed: () {
+                  message.increment();
+                },
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ConsumenrValueWidget extends StatelessWidget {
+  const ConsumenrValueWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Consumer widget rebuilds');
+    return Container(
+      margin: const EdgeInsets.all(
+        25.0,
+      ),
+      padding: const EdgeInsets.all(
+        25.0,
+      ),
+      child: Consumer<Counter>(
+        builder: (context, cart, child) => Stack(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 60),
+              child: Text(
+                'You pressed: ${cart.count} times!',
+                style: const TextStyle(
+                  fontFamily: 'Allison',
+                  fontSize: 60,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 160,
+            ),
+            // Use SomeExpensiveWidget here, without rebuilding every time.
+            const ExpensiveWidget(),
+            const SizedBox(
+              height: 30,
+            ),
+            if (child != null) child,
+          ],
+        ),
+        // Build the expensive widget here.
+        child: Container(
+          padding: const EdgeInsets.only(top: 160),
+          child: const HumongousWidget(),
+        ),
       ),
     );
   }
@@ -104,6 +131,7 @@ class HumongousWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Homongous widget rebuilds');
     return Center(
       /// building another humongous widget tree
       child: Wrap(
@@ -177,6 +205,7 @@ class ExpensiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Expensive widget rebuilds');
     return Center(
       /// building another humongous widget tree
       child: Wrap(

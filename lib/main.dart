@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_artisan/state_management/provider_example/provider_sample_three.dart';
+//import 'package:flutter_artisan/state_management/provider_example/provider_sample_two.dart';
 
 import 'package:provider/provider.dart';
 //import 'state_management/provider_example/provider_sample_one.dart';
 //import 'state_management/provider_example/provider_sample_two.dart';
-import 'state_management/provider_example/provider_sample_three.dart';
+
 import 'models/counter.dart';
+
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
 //import 'scrollable_widgets/scrollbar_controller_sample.dart';
@@ -78,6 +81,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => Counter()),
       ],
       child: const ProviderSampleThree(),
+      //child: const ProviderSampleTwo(),
     ),
   );
 }
