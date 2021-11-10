@@ -21,20 +21,20 @@ class ProviderSampleFourHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Home page building');
+    //print('Home page building');
     return Scaffold(
       body: Center(
         child: Column(
           children: [
             Selector<Counter, int>(
               selector: (_, provider) => provider.count,
-              builder: (context, secondValue, child) {
-                print('Building first value');
+              builder: (context, firstValue, child) {
+//                print('Building first value');
                 return Container(
                   margin: const EdgeInsets.all(10),
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    'You pressed $secondValue times',
+                    'You pressed $firstValue times',
                     style: const TextStyle(
                       fontSize: 60,
                       fontFamily: 'Allison',
@@ -48,7 +48,7 @@ class ProviderSampleFourHome extends StatelessWidget {
             Selector<Counter, int>(
               selector: (_, provider) => provider.num,
               builder: (context, secondValue, child) {
-                print('Building second value');
+                //              print('Building second value');
                 return Container(
                   margin: const EdgeInsets.all(10),
                   padding: const EdgeInsets.all(10),
@@ -86,7 +86,7 @@ class SelectorSecondMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter second method building');
+    //print('Counter second method building');
     return ElevatedButton(
       onPressed: context.select((Counter c) => c.addOne),
       child: const Text(
@@ -107,7 +107,7 @@ class SelectorFirstMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter first method building');
+    //print('Counter first method building');
     return ElevatedButton(
       onPressed: context.select((Counter c) => c.increment),
       child: const Text(
