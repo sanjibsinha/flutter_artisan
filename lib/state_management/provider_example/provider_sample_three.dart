@@ -21,7 +21,7 @@ class ProviderSampleThreeHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Home page building');
+    //print('Home page building');
     return Scaffold(
       body: Center(
         child: Column(
@@ -58,7 +58,7 @@ class SelectorSecondMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter second method building');
+//    print('Counter second method building');
     return ElevatedButton(
       //onPressed: () => context.read<Counter>().decrement(),
       onPressed: context.select((Counter c) => c.addOne),
@@ -80,7 +80,7 @@ class SelectorFirstMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter first method building');
+    //  print('Counter first method building');
     return ElevatedButton(
       //onPressed: () => context.read<Counter>().increment(),
       onPressed: context.select((Counter c) => c.increment),
@@ -102,7 +102,7 @@ class SelectorValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter first value building');
+    //print('Counter first value building');
     return Text(
       'You pressed this ${context.select((Counter c) => c.count)} times.',
       style: const TextStyle(
@@ -122,7 +122,7 @@ class SelectorAnotherValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter second value building');
+    //print('Counter second value building');
     return Text(
       'You pressed this ${context.select((Counter c) => c.num)} times.',
       style: const TextStyle(

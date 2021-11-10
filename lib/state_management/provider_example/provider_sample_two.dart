@@ -9,7 +9,7 @@ class ProviderSampleTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Root widget rebuilds');
+    //print('Root widget rebuilds');
     return const MaterialApp(
       home: ProviderSampleTwoHome(),
     );
@@ -21,7 +21,7 @@ class ProviderSampleTwoHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Scaffold widget rebuilds');
+    //print('Scaffold widget rebuilds');
 
     /// Only this widget will be rebuilt
     //final CountingTheNumber message = Provider.of<CountingTheNumber>(context);
@@ -53,7 +53,7 @@ class ConsumerMethodWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Consumer method widget rebuilds');
+    //print('Consumer method widget rebuilds');
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
@@ -83,7 +83,7 @@ class ConsumenrValueWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Consumer widget rebuilds');
+    //print('Consumer widget rebuilds');
     return Container(
       margin: const EdgeInsets.all(
         25.0,
@@ -131,7 +131,7 @@ class HumongousWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Homongous widget rebuilds');
+    //print('Homongous widget rebuilds');
     return Center(
       /// building another humongous widget tree
       child: Wrap(
@@ -205,7 +205,7 @@ class ExpensiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Expensive widget rebuilds');
+    //print('Expensive widget rebuilds');
     return Center(
       /// building another humongous widget tree
       child: Wrap(
