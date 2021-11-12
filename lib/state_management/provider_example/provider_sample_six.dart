@@ -19,7 +19,7 @@ class ProviderSampleSixHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Home page building');
+    //print('Home page building');
     return Scaffold(
       body: Center(
         child: ListView(
@@ -47,7 +47,7 @@ class FirstConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Counter>(
       builder: (context, firstValue, child) {
-        print('Building first value');
+        //  print('Building first value');
         return Column(
           children: [
             const HumongousWidget(),
@@ -86,7 +86,7 @@ class SecondConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Counter>(
       builder: (context, secondValue, child) {
-        print('Building second value');
+        //print('Building second value');
         return Column(
           children: [
             const HumongousWidget(),
@@ -123,7 +123,7 @@ class SelectorSecondMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter second method building');
+    //print('Counter second method building');
     return ElevatedButton(
       onPressed: context.select((Counter c) => c.addOne),
       child: const Text(
@@ -144,7 +144,7 @@ class SelectorFirstMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Counter first method building');
+    //print('Counter first method building');
     return ElevatedButton(
       onPressed: context.select((Counter c) => c.increment),
       child: const Text(
@@ -163,7 +163,7 @@ class HumongousWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Homongous widget building');
+    //print('Homongous widget building');
     return Center(
       /// building another humongous widget tree
       child: Wrap(
@@ -205,7 +205,7 @@ class ExpensiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Expensive widget building');
+    //print('Expensive widget building');
     return Center(
       /// building another humongous widget tree
       child: Wrap(
