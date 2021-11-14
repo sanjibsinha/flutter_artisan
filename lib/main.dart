@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'state_management/provider_example/provider_sample_eight.dart';
+import 'state_management/provider_example/provider_sample_nine.dart';
+//import 'state_management/provider_example/provider_sample_eight.dart';
 //import 'state_management/provider_example/provider_sample_seven.dart';
 //import 'state_management/provider_example/provider_sample_six.dart';
 //import 'state_management/provider_example/provider_sample_five.dart';
@@ -87,7 +88,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => Counter()),
         ChangeNotifierProvider(create: (_) => WordPairing()),
       ],
-      child: const ProviderSampleEight(),
+      child: const ProviderSampleNine(),
+      //child: const ProviderSampleEight(),
       //child: const ProviderSampleSeven(),
       //child: const ProviderSampleSix(),
       //child: const ProviderSampleFive(),
