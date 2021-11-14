@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-import 'state_management/provider_example/provider_sample_six.dart';
+
+import 'state_management/provider_example/provider_sample_seven.dart';
+//import 'state_management/provider_example/provider_sample_six.dart';
 //import 'state_management/provider_example/provider_sample_five.dart';
 //import 'state_management/provider_example/provider_sample_one.dart';
 //import 'state_management/provider_example/provider_sample_two.dart';
@@ -9,6 +10,7 @@ import 'state_management/provider_example/provider_sample_six.dart';
 //import 'state_management/provider_example/provider_sample_three.dart';
 //import 'state_management/provider_example/provider_sample_two.dart';
 import 'models/counter.dart';
+import 'models/wordpair.dart';
 
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
@@ -81,8 +83,10 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Counter()),
+        ChangeNotifierProvider(create: (_) => WordPairing()),
       ],
-      child: const ProviderSampleSix(),
+      child: const ProviderSampleSeven(),
+      //child: const ProviderSampleSix(),
       //child: const ProviderSampleFive(),
       //child: const ProviderSampleFour(),
       //child: const ProviderSampleThree(),
