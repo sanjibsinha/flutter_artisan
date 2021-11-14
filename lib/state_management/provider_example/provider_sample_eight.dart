@@ -33,45 +33,25 @@ class SevenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Building home page');
     final wordPair = WordPair.random();
-    final word = Provider.of<WordPairing>(context, listen: false);
+
     return ListView(
       children: [
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(10),
-          child: Text(
-            wordPair.asCamelCase,
-            style: const TextStyle(
-              fontFamily: 'Allison',
-              fontWeight: FontWeight.bold,
-              fontSize: 60,
-            ),
-          ),
+          child: FirstWord(wordPair: wordPair),
         ),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(10),
-          child: Text(
-            word.word.asSnakeCase,
-            style: const TextStyle(
-              fontFamily: 'Allison',
-              fontWeight: FontWeight.bold,
-              fontSize: 80,
-            ),
-          ),
+          child: const SecondWord(),
         ),
         Container(
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(10),
-          child: Text(
-            context.watch<WordPairing>().wording.toString(),
-            style: const TextStyle(
-              fontFamily: 'Allison',
-              fontWeight: FontWeight.bold,
-              fontSize: 60,
-            ),
-          ),
+          child: const ThirdWord(),
         ),
         ElevatedButton(
           onPressed: context.read<WordPairing>().changeWord,
@@ -83,6 +63,66 @@ class SevenBody extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ThirdWord extends StatelessWidget {
+  const ThirdWord({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Building third word');
+    return Text(
+      context.watch<WordPairing>().wording.toString(),
+      style: const TextStyle(
+        fontFamily: 'Allison',
+        fontWeight: FontWeight.bold,
+        fontSize: 60,
+      ),
+    );
+  }
+}
+
+class SecondWord extends StatelessWidget {
+  const SecondWord({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('Building second word');
+    return Text(
+      context.watch<WordPairing>().word.asSnakeCase,
+      style: const TextStyle(
+        fontFamily: 'Allison',
+        fontWeight: FontWeight.bold,
+        fontSize: 80,
+      ),
+    );
+  }
+}
+
+class FirstWord extends StatelessWidget {
+  const FirstWord({
+    Key? key,
+    required this.wordPair,
+  }) : super(key: key);
+
+  final WordPair wordPair;
+
+  @override
+  Widget build(BuildContext context) {
+    print('Building first word');
+    return Text(
+      wordPair.asCamelCase,
+      style: const TextStyle(
+        fontFamily: 'Allison',
+        fontWeight: FontWeight.bold,
+        fontSize: 60,
+      ),
     );
   }
 }
