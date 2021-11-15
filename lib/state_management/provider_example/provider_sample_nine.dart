@@ -33,7 +33,7 @@ class NineBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Building home page');
+    //print('Building home page');
     final wordPair = WordPair.random();
 
     return ListView(
@@ -74,7 +74,7 @@ class ThirdWord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Building third word');
+    //print('Building third word');
     return Text(
       '${context.select((WordPairing w) => w.wording)}',
       style: const TextStyle(
@@ -93,7 +93,7 @@ class SecondWord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Building second word');
+    //print('Building second word');
     return Text(
       context.select((WordPairing w2) => w2.word.asSnakeCase),
       style: const TextStyle(
@@ -115,7 +115,7 @@ class FirstWord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Building first word');
+    //print('Building first word');
     return Text(
       wordPair.asCamelCase,
       style: const TextStyle(
