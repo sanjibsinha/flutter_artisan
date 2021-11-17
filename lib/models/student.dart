@@ -34,4 +34,9 @@ class Students with ChangeNotifier {
           'https://cdn.pixabay.com/photo/2017/09/21/13/32/girl-2771936_960_720.jpg',
     ),
   ];
+
+  void reverse() {
+    students = students.reversed.toList();
+    notifyListeners();
+  }
 }
