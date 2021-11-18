@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
-import 'scrollable_widgets/listview_all/listvew_custom_sample.dart';
+import 'scrollable_widgets/listview_all/listview_sample.dart';
+//import 'scrollable_widgets/listview_all/listvew_custom_sample.dart';
 //import 'scrollable_widgets/listview_all/listview_seperated_sample.dart';
 //import 'scrollable_widgets/listview_all/listview_builder_sample.dart';
 //import 'state_management/provider_example/provider_sample_nine.dart';
@@ -92,7 +94,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => WordPairing()),
         ChangeNotifierProvider(create: (_) => Students()),
       ],
-      child: const ListViewCustomSample(),
+      child: const ListViewSample(),
+      //child: const ListViewCustomSample(),
       //child: const ListViewSeperatedSample(),
       //child: const ListViewBuilderSample(),
       //child: const ProviderSampleNine(),
