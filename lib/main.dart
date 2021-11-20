@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'scrollable_widgets/single_child_scroll_view.dart';
+import '/user_interface/constraint_sammple.dart';
+//import 'scrollable_widgets/single_child_scroll_view.dart';
 //import 'scrollable_widgets/listview_all/listview_sample.dart';
 //import 'scrollable_widgets/listview_all/listvew_custom_sample.dart';
 //import 'scrollable_widgets/listview_all/listview_seperated_sample.dart';
@@ -95,7 +96,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => WordPairing()),
         ChangeNotifierProvider(create: (_) => Students()),
       ],
-      child: const SingleChildScrollViewSample(),
+      child: const ConstraintSample(),
+      //child: const SingleChildScrollViewSample(),
       //child: const ListViewSample(),
       //child: const ListViewCustomSample(),
       //child: const ListViewSeperatedSample(),
