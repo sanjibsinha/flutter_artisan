@@ -21,6 +21,15 @@ import '/user_interface/constraint_sammple.dart';
 import 'models/counter.dart';
 import 'models/wordpair.dart';
 import 'models/student.dart';
+import 'widgets/first_flutter_app.dart';
+
+void main() {
+  runApp(
+    const FirstFlutterApp(),
+  );
+}
+
+
 
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
@@ -83,6 +92,8 @@ import 'models/student.dart';
 //import 'controllers/app_bar_widget.dart';
 //import 'controllers/text_button_widget.dart';
 
+/*
+
 /// added a comment to test
 ///
 
@@ -113,7 +124,7 @@ void main() {
     ),
   );
 }
-
+*/
 /* void main() {
   runApp(
     /* ChangeNotifierProvider(
