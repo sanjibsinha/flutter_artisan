@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'widgets/understanding_element.dart';
+import 'layout/align_sample.dart';
+//import 'widgets/understanding_element.dart';
 //import 'user_interface/box_constraint_sample.dart';
 //import '/user_interface/constraint_sammple.dart';
 //import 'scrollable_widgets/single_child_scroll_view.dart';
@@ -106,7 +107,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => WordPairing()),
         ChangeNotifierProvider(create: (_) => Students()),
       ],
-      child: const UnderstandingElement(),
+      child: const AlignSample(),
+      //child: const UnderstandingElement(),
       //child: const BoxConstraintsSample(),
       //child: const ConstraintSample(),
       //child: const SingleChildScrollViewSample(),
