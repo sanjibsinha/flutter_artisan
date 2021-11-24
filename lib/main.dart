@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'layout/align_sample.dart';
+import 'layout/aspect_ratio_sample.dart';
+//import 'layout/align_sample.dart';
 //import 'widgets/understanding_element.dart';
 //import 'user_interface/box_constraint_sample.dart';
 //import '/user_interface/constraint_sammple.dart';
@@ -107,7 +108,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => WordPairing()),
         ChangeNotifierProvider(create: (_) => Students()),
       ],
-      child: const AlignSample(),
+      child: const AspectRatioSample(),
+      //child: const AlignSample(),
       //child: const UnderstandingElement(),
       //child: const BoxConstraintsSample(),
       //child: const ConstraintSample(),
