@@ -67,7 +67,7 @@ class BaselineSampleHomme extends StatelessWidget {
               height: 100,
               color: Colors.green,
               child: Baseline(
-                baseline: 100,
+                baseline: 110,
                 baselineType: TextBaseline.alphabetic,
                 child: Container(
                   width: 50,
