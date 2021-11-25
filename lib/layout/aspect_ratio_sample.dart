@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class BaselineSample extends StatelessWidget {
-  const BaselineSample({Key? key}) : super(key: key);
+class AspectRatioSample extends StatelessWidget {
+  const AspectRatioSample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Baseline Sample',
       debugShowCheckedModeBanner: false,
-      home: BaselineSampleHomme(),
+      home: AspectRatioSampleHomme(),
     );
   }
 }
 
-class BaselineSampleHomme extends StatelessWidget {
-  const BaselineSampleHomme({Key? key}) : super(key: key);
+class AspectRatioSampleHomme extends StatelessWidget {
+  const AspectRatioSampleHomme({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
