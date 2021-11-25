@@ -66,10 +66,10 @@ class BaselineSampleHomme extends StatelessWidget {
               width: 100.0,
               height: 100.0,
               child: AspectRatio(
-                aspectRatio: 0.5,
+                aspectRatio: 1.5,
                 child: Container(
-                  width: 100.0,
-                  height: 50.0,
+                  width: 25.0,
+                  height: 25.0,
                   color: Colors.black26,
                 ),
               ),
