@@ -6,7 +6,7 @@ class BaselineSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'AspectRatio Sample',
+      title: 'Baseline Sample',
       debugShowCheckedModeBanner: false,
       home: BaselineSampleHomme(),
     );
@@ -20,66 +20,64 @@ class BaselineSampleHomme extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AspectRatio Sample'),
+        title: const Text('Baseline Sample'),
       ),
       body: Center(
         child: Column(
           children: [
-            Container(
-              color: Colors.red,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              width: 100.0,
-              height: 100.0,
-              child: AspectRatio(
-                aspectRatio: 2.0,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.yellow,
-                ),
-              ),
-            ),
             const SizedBox(
-              height: 10,
+              height: 100,
             ),
             Container(
-              color: Colors.blue,
-              alignment: Alignment.center,
-              width: 100.0,
-              height: 100.0,
-              child: AspectRatio(
-                aspectRatio: 2.0,
-                child: Container(
-                  width: 80.0,
-                  height: 70.0,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
+              width: 100,
+              height: 100,
               color: Colors.green,
-              alignment: Alignment.center,
-              width: 100.0,
-              height: 100.0,
-              child: AspectRatio(
-                aspectRatio: 0.5,
+              child: Baseline(
+                baseline: 0,
+                baselineType: TextBaseline.alphabetic,
                 child: Container(
-                  width: 100.0,
-                  height: 50.0,
-                  color: Colors.black26,
+                  width: 50,
+                  height: 50,
+                  color: Colors.purple,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.green,
+              child: Baseline(
+                baseline: 50,
+                baselineType: TextBaseline.alphabetic,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.purple,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.green,
+              child: Baseline(
+                baseline: 100,
+                baselineType: TextBaseline.alphabetic,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.purple,
                 ),
               ),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add_a_photo),
       ),
     );
   }
