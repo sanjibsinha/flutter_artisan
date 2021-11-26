@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 final globalTheme = ThemeData(
   primarySwatch: Colors.deepOrange,
   textTheme: const TextTheme(
     bodyText1: TextStyle(
-      fontSize: 25,
-      height: 1.5,
+      fontSize: 22,
+      height: 1.2,
     ),
     bodyText2: TextStyle(
+      color: Colors.blue,
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      height: 1.2,
+      height: 1.0,
     ),
     caption: TextStyle(
       fontSize: 16,
@@ -19,15 +21,14 @@ final globalTheme = ThemeData(
       height: 1.2,
     ),
     headline1: TextStyle(
-      fontSize: 60,
-      height: 3.0,
-      fontWeight: FontWeight.bold,
+      color: Colors.deepOrange,
       fontFamily: 'Allison',
-      color: Colors.black38,
+      fontWeight: FontWeight.bold,
+      fontSize: 60,
     ),
     headline2: TextStyle(
-      fontSize: 40,
-      height: 2.4,
+      color: Colors.black38,
+      fontSize: 30,
       fontWeight: FontWeight.bold,
     ),
   ),
@@ -84,6 +85,8 @@ class GlobalThemeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String stringDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
     return Center(
       child: Column(
         children: [
@@ -104,15 +107,40 @@ class GlobalThemeBody extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          SizedBox(
-            height: 60.0,
-            child: Text(
-              'A Sample of Global Theme',
-              style: globalTheme.textTheme.headline1,
-            ),
+          Text(
+            'Headline 1',
+            style: globalTheme.textTheme.headline1,
           ),
           const SizedBox(
             height: 10,
+          ),
+          Text(
+            'Headline 2',
+            style: globalTheme.textTheme.headline2,
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              'Body Text 1: Here goes some introduction about yourself.',
+              style: globalTheme.textTheme.bodyText1,
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              'Body Text 2: Here goes some more information regarding your works.',
+              style: globalTheme.textTheme.bodyText2,
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              stringDate,
+              style: globalTheme.textTheme.caption,
+            ),
           ),
         ],
       ),
