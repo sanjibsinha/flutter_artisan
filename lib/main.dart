@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'models/counter.dart';
+import 'models/wordpair.dart';
+import 'models/student.dart';
 
-import 'layout/baseline_sample.dart';
+import 'global_theme/global_theme_sample.dart';
+//import 'layout/baseline_sample.dart';
 //import 'layout/aspect_ratio_sample.dart';
 //import 'layout/align_sample.dart';
 //import 'widgets/understanding_element.dart';
@@ -23,55 +27,31 @@ import 'layout/baseline_sample.dart';
 //import 'state_management/provider_example/provider_sample_four.dart';
 //import 'state_management/provider_example/provider_sample_three.dart';
 //import 'state_management/provider_example/provider_sample_two.dart';
-
-import 'models/counter.dart';
-import 'models/wordpair.dart';
-import 'models/student.dart';
-
-//import 'widgets/first_flutter_app.dart';
-
-/* void main() {
-  runApp(
-    const FirstFlutterApp(),
-  );
-} */
-
 //import 'scrollable_widgets/reorderable_listview_builder_sample.dart';
 //import 'scrollable_widgets/reorderable_listview_sample.dart';
 //import 'scrollable_widgets/scrollbar_controller_sample.dart';
 //import 'scrollable_widgets/scrollbar_sample.dart';
-
 //import 'scrollable_widgets/page_view_samples/page_view_another_builder.dart';
-
 //import 'custom_and_nested_scroll/draggable_scrollable_sheet_sample.dart';
-
 //import 'package:flutter_riverpod/flutter_riverpod.dart';
 //import 'state_management/provider_example/provider_example.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
 //import 'state_management/riverpod_example/state_notifier_provider_app_sample.dart';
-
 //import 'package:provider/provider.dart';
-
 //import 'page_view_samples/page_view_builder_sample_stateful.dart';
-
 //import 'page_view_samples/page_view_builder_simple.dart';
-
 //import 'page_view_samples/page_view_builder_sample.dart';
 //import 'custom_and_nested_scroll/nested_scroll_view_sample_one.dart';
 //import 'page_view_samples/page_view_sample_simple.dart';
-
 //import 'custom_and_nested_scroll/custom_scroll_sample.dart';
 //import 'sliver_examples/sliver_fixed_extent_list_sample.dart';
 //import 'sliver_examples/sliver_persistent_header_sample.dart';
 //import 'sliver_examples/sliver_grid_example.dart';
 //import 'sliver_examples/sliver_nested_example.dart';
 //import 'sliver_examples/sliver_appbar_example.dart';
-
 //import 'wrap_examples/wrap_example.dart';
-
 //import 'models/counter.dart';
 //import 'views/conter_app.dart';
-
 //import 'text_examples/text_rich_example.dart';
 //import 'rich_text_example/rich_text_example.dart';
 //import 'text_examples/text_example.dart';
@@ -91,9 +71,7 @@ import 'models/student.dart';
 //import 'bottom_navigation_bar/models/select_index.dart';
 //import 'drawer_example/drawer_example.dart';
 //import 'bottom_navigation_bar/views/bottom_navigation_bar.dart';
-
 //import 'bottom_navigation_bar/bottom_navigation_bar.dart';
-
 //import 'controllers/app_bar_widget.dart';
 //import 'controllers/text_button_widget.dart';
 
@@ -110,7 +88,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => WordPairing()),
         ChangeNotifierProvider(create: (_) => Students()),
       ],
-      child: const BaselineSample(),
+      child: const GlobalThemeSample(),
+      //child: const BaselineSample(),
       //child: const AspectRatioSample(),
       //child: const AlignSample(),
       //child: const UnderstandingElement(),
@@ -198,3 +177,11 @@ void main() {
   );
 }
  */
+
+//import 'widgets/first_flutter_app.dart';
+
+/* void main() {
+  runApp(
+    const FirstFlutterApp(),
+  );
+} */
