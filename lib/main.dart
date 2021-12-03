@@ -26,7 +26,7 @@ class MediaQuerySample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var screenSize = MediaQuery.maybeOf(context)!.size;
+    //var screenSize = MediaQuery.maybeOf(context).size;
     var screenSize = MediaQuery.maybeOf(context)!.size;
 
     return Scaffold(
@@ -55,7 +55,7 @@ class MediaQuerySample extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Row(
             children: [
-              const Text('EXPLORE'),
+              const Text('Portrait'),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -63,18 +63,11 @@ class MediaQuerySample extends StatelessWidget {
                     InkWell(
                       onTap: () {},
                       child: const Text(
-                        'Discover',
-                        style: TextStyle(color: Colors.black),
+                        'Landscape',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                     SizedBox(width: screenSize.width / 20),
-                    InkWell(
-                      onTap: () {},
-                      child: const Text(
-                        'Contact Us',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -82,7 +75,7 @@ class MediaQuerySample extends StatelessWidget {
                 onTap: () {},
                 child: const Text(
                   'Sign Up',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               SizedBox(
@@ -92,7 +85,7 @@ class MediaQuerySample extends StatelessWidget {
                 onTap: () {},
                 child: const Text(
                   'Login',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
