@@ -45,6 +45,11 @@ class MediaQuerySample extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.all(5),
+        width: screenSize.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.0),
+          color: Colors.yellowAccent,
+        ),
         child: Text(
           'MediaQuery Sample',
           style: Theme.of(context).textTheme.headline1,
