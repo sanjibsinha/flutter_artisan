@@ -55,7 +55,10 @@ class MediaQuerySample extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Row(
             children: [
-              const Text('Portrait'),
+              const Text(
+                'Portrait',
+                style: TextStyle(color: Colors.white),
+              ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
