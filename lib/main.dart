@@ -30,59 +30,7 @@ class MediaQuerySample extends StatelessWidget {
     var screenSize = MediaQuery.maybeOf(context)!.size;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(screenSize.width, 1000),
-        child: Container(
-          color: Colors.blue,
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              children: [
-                const Text('EXPLORE'),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: const Text(
-                          'Discover',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                      SizedBox(width: screenSize.width / 20),
-                      InkWell(
-                        onTap: () {},
-                        child: const Text(
-                          'Contact Us',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-                SizedBox(
-                  width: screenSize.width / 50,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: appBarSize(screenSize),
       body: Container(
         margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.all(5),
@@ -92,6 +40,62 @@ class MediaQuerySample extends StatelessWidget {
             fontFamily: 'Allison',
             fontSize: 70,
             fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  PreferredSize appBarSize(Size screenSize) {
+    return PreferredSize(
+      preferredSize: Size(screenSize.width, 1000),
+      child: Container(
+        color: Colors.blue,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              const Text('EXPLORE'),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        'Discover',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    SizedBox(width: screenSize.width / 20),
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        'Contact Us',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              SizedBox(
+                width: screenSize.width / 50,
+              ),
+              InkWell(
+                onTap: () {},
+                child: const Text(
+                  'Login',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
           ),
         ),
       ),
