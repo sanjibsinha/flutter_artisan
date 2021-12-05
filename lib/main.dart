@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_artisan/models/global_pink_theme.dart';
 import 'package:provider/provider.dart';
-import 'models/global_theme.dart';
 
 void main() {
   runApp(
@@ -8,101 +8,65 @@ void main() {
     /// can use [Root App] while mocking the providers
     MultiProvider(
       providers: [
-        Provider<GlobalTheme>(
-          create: (context) => GlobalTheme(),
+        Provider<GlobalPinkTheme>(
+          create: (context) => GlobalPinkTheme(),
         )
       ],
-      child: const MediaQueryHome(),
+      child: const MaterialBannerHome(),
     ),
   );
 }
 
-class MediaQueryHome extends StatelessWidget {
-  const MediaQueryHome({Key? key}) : super(key: key);
+class MaterialBannerHome extends StatelessWidget {
+  const MaterialBannerHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData globalTheme = Provider.of<GlobalTheme>(context).globalTheme;
+    final ThemeData globalTheme =
+        Provider.of<GlobalPinkTheme>(context).globalTheme;
     return MaterialApp(
-      title: 'MediaQuery Sample',
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      home: const MyHomePage(),
       theme: globalTheme,
-      home: const MediaQuerySample(),
     );
   }
 }
 
-class MediaQuerySample extends StatelessWidget {
-  const MediaQuerySample({Key? key}) : super(key: key);
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //var screenSize = MediaQuery.maybeOf(context).size;
-    var screenSize = MediaQuery.maybeOf(context)!.size;
-
     return Scaffold(
-      appBar: appBarSize(screenSize),
-      body: Container(
-        margin: const EdgeInsets.all(5),
-        padding: const EdgeInsets.all(5),
-        width: screenSize.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
-          color: Colors.yellowAccent,
-        ),
-        child: Text(
-          'MediaQuery Sample',
-          style: Theme.of(context).textTheme.headline1,
+      appBar: AppBar(
+        title: Text(
+          'Banners',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-    );
-  }
-
-  PreferredSize appBarSize(Size screenSize) {
-    return PreferredSize(
-      preferredSize: Size(screenSize.width, 1000),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          children: [
-            const Text(
-              'Portrait',
-              style: TextStyle(color: Colors.blue),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      'Landscape',
-                      style: TextStyle(color: Colors.deepOrange),
-                    ),
-                  ),
-                  SizedBox(width: screenSize.width / 20),
-                ],
-              ),
-            ),
-            InkWell(
-              onTap: () {},
-              child: const Text(
-                'Sign Up',
-                style: TextStyle(color: Colors.deepPurple),
-              ),
-            ),
-            SizedBox(
-              width: screenSize.width / 50,
-            ),
-            InkWell(
-              onTap: () {},
-              child: const Text(
-                'Login',
-                style: TextStyle(color: Colors.green),
-              ),
-            ),
-          ],
+      body: MaterialBanner(
+        content: Text(
+          'Ignore or Proceed',
+          style: Theme.of(context).textTheme.headline1,
         ),
+        leading: const CircleAvatar(child: Icon(Icons.delete)),
+        actions: [
+          TextButton(
+            child: Text(
+              'Page 1',
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            onPressed: () {},
+          ),
+          TextButton(
+            child: Text(
+              'Page 2',
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }
