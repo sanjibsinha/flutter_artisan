@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_artisan/models/global_pink_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -12,61 +14,62 @@ void main() {
           create: (context) => GlobalPinkTheme(),
         )
       ],
-      child: const MaterialBannerHome(),
+      child: const AboutDialogHome(),
     ),
   );
 }
 
-class MaterialBannerHome extends StatelessWidget {
-  const MaterialBannerHome({Key? key}) : super(key: key);
+class AboutDialogHome extends StatelessWidget {
+  const AboutDialogHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData globalTheme =
         Provider.of<GlobalPinkTheme>(context).globalTheme;
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'About Dialog Sample',
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
+      home: const AboutDialogBody(),
       theme: globalTheme,
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class AboutDialogBody extends StatelessWidget {
+  const AboutDialogBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Banners',
+          'About Dialog Sample',
           style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-      body: MaterialBanner(
-        content: Text(
-          'Ignore or Proceed',
-          style: Theme.of(context).textTheme.headline1,
+      body: Center(
+        child: TextButton(
+          child: Text(
+            'Show AboutDialog',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          onPressed: () {
+            showAboutDialog(
+              context: context,
+              applicationIcon: const FlutterLogo(),
+              applicationName: 'sanjibsinha.com',
+              applicationVersion: '0.0.1',
+              applicationLegalese: 'CopyLeft sanjibsinha.com',
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Text('About Us',
+                      style: Theme.of(context).textTheme.button),
+                )
+              ],
+            );
+          },
         ),
-        leading: const CircleAvatar(child: Icon(Icons.delete)),
-        actions: [
-          TextButton(
-            child: Text(
-              'Page 1',
-              style: Theme.of(context).textTheme.headline2,
-            ),
-            onPressed: () {},
-          ),
-          TextButton(
-            child: Text(
-              'Page 2',
-              style: Theme.of(context).textTheme.headline2,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
     );
   }
