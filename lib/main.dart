@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_artisan/models/global_pink_theme.dart';
+
 import 'package:provider/provider.dart';
+import '/models/global_pink_theme.dart';
 
 void main() {
   runApp(
