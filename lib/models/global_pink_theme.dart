@@ -6,43 +6,43 @@ class GlobalPinkTheme {
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontSize: 22,
-        color: pinkBrown600,
+        color: naplesYellow,
       ),
       bodyText2: TextStyle(
-        color: pinkBrown900,
+        color: maze,
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        backgroundColor: pinkPink50,
+        backgroundColor: yellowJasmin,
       ),
       caption: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,
-        color: pinkPink400,
-        backgroundColor: pinkBackgroundWhite,
+        color: mango,
+        backgroundColor: darkYellow,
       ),
       headline1: TextStyle(
-        color: pinkErrorRed,
+        color: naplesYellow,
         fontSize: 60,
         fontFamily: 'Allison',
         fontWeight: FontWeight.bold,
       ),
       headline2: TextStyle(
-        color: pinkPink300,
+        color: lemonYellow,
         fontSize: 25,
         fontWeight: FontWeight.bold,
       ),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: pinkPink300,
+      backgroundColor: lemonYellow,
       // This will control the "back" icon
       iconTheme: IconThemeData(color: Colors.red),
       // This will control action icon buttons that locates on the right
-      actionsIconTheme: IconThemeData(color: pinkPink300),
+      actionsIconTheme: IconThemeData(color: lemonYellow),
       centerTitle: false,
       elevation: 15,
       titleTextStyle: TextStyle(
-        color: pinkBrown600,
+        color: musterdYello,
         fontWeight: FontWeight.bold,
         fontFamily: 'Allison',
         fontSize: 40,
@@ -51,17 +51,17 @@ class GlobalPinkTheme {
   );
 }
 
-const Color pinkPink50 = Color(0xFFFEEAE6);
-const Color pinkPink100 = Color(0xFFFEDBD0);
-const Color pinkPink300 = Color(0xFFFBB8AC);
-const Color pinkPink400 = Color(0xFFEAA4A4);
+const Color yellowJasmin = Color(0x00f8de7e);
+const Color khaki = Color(0x00f0e68c);
+const Color lemonYellow = Color(0x00FAFA33);
+const Color mango = Color(0x00F4BB44);
 
-const Color pinkBrown900 = Color(0xFF442B2D);
-const Color pinkBrown600 = Color(0xFF7D4F52);
+const Color maze = Color(0x00FBEC5D);
+const Color musterdYello = Color(0x00FFDB58);
 
-const Color pinkErrorRed = Color(0xFFC5032B);
+const Color naplesYellow = Color(0x00FADA5E);
 
-const Color pinkSurfaceWhite = Color(0xFFFFFBFA);
-const Color pinkBackgroundWhite = Colors.white;
+const Color periDot = Color(0x00B4C424);
+const Color darkYellow = Color(0x008B8000);
 
 const defaultLetterSpacing = 0.03;
