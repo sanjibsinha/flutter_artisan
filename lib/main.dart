@@ -12,6 +12,7 @@ import 'global_theme/global_theme_sample.dart';
  * this time material banner
  * adding branch about dialog
  * adding branch about list tile again
+ * adding branch color scheme
  * 
  */
 
