@@ -10,8 +10,8 @@ void main() {
     /// can use [Root App] while mocking the providers
     MultiProvider(
       providers: [
-        Provider<GlobalPinkTheme>(
-          create: (context) => GlobalPinkTheme(),
+        Provider<GlobalTheme>(
+          create: (context) => GlobalTheme(),
         )
       ],
       child: const AboutDialogHome(),
@@ -24,8 +24,7 @@ class AboutDialogHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData globalTheme =
-        Provider.of<GlobalPinkTheme>(context).globalTheme;
+    final ThemeData globalTheme = Provider.of<GlobalTheme>(context).globalTheme;
     return MaterialApp(
       title: 'About Dialog Sample',
       debugShowCheckedModeBanner: false,
