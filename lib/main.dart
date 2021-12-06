@@ -29,30 +29,41 @@ class AboutDialogHome extends StatelessWidget {
     return MaterialApp(
       title: 'About Dialog Sample',
       debugShowCheckedModeBanner: false,
-      home: const AboutDialogBody(),
+      home: const AboutListTileBody(),
       theme: globalTheme,
     );
   }
 }
 
-class AboutDialogBody extends StatelessWidget {
-  const AboutDialogBody({Key? key}) : super(key: key);
+class AboutListTileBody extends StatelessWidget {
+  const AboutListTileBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'About Dialog Sample',
-          style: Theme.of(context).appBarTheme.titleTextStyle,
+        title: const Text('About sanjibsinha.com'),
+      ),
+      drawer: const Drawer(
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: AboutListTile(
+              icon: Icon(Icons.info),
+              applicationIcon: FlutterLogo(),
+              applicationName: 'sanjibsinha.com',
+              applicationVersion: '0.0.1',
+              applicationLegalese: 'CopyLeft sanjibsinha.com',
+              aboutBoxChildren: [
+                SizedBox(height: 30),
+                AboutSanjibSinha(),
+              ],
+            ),
+          ),
         ),
       ),
       body: Center(
-        child: TextButton(
-          child: Text(
-            'Show AboutDialog',
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
+        child: ElevatedButton(
+          child: const Text('About sanjibsinha.com'),
           onPressed: () {
             showAboutDialog(
               context: context,
@@ -60,16 +71,38 @@ class AboutDialogBody extends StatelessWidget {
               applicationName: 'sanjibsinha.com',
               applicationVersion: '0.0.1',
               applicationLegalese: 'CopyLeft sanjibsinha.com',
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Text('About Us',
-                      style: Theme.of(context).textTheme.button),
-                )
+              children: [
+                const SizedBox(height: 30),
+                const AboutSanjibSinha(),
               ],
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class AboutSanjibSinha extends StatelessWidget {
+  const AboutSanjibSinha({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: <TextSpan>[
+          TextSpan(
+              style: Theme.of(context).textTheme.bodyText1,
+              text: 'sanjibsinha.com is a learning place for beginners. '
+                  'Learn how to build Flutter applications for mobile, web, and desktop '
+                  'from a single codebase. Get updated articles on Flutter at '),
+          TextSpan(
+              style: Theme.of(context).textTheme.caption,
+              text: 'https://sanjibsinha.com'),
+          TextSpan(style: Theme.of(context).textTheme.bodyText1, text: '.'),
+        ],
       ),
     );
   }
