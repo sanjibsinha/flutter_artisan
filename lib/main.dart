@@ -13,7 +13,7 @@ import 'global_theme/global_theme_sample.dart';
  * adding branch about dialog
  * adding branch about list tile again
  * adding branch color scheme
- * 
+ * pushing clor scheme from another machine
  */
 
 //import 'layout/baseline_sample.dart';
