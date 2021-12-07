@@ -15,6 +15,7 @@ const Color customBackgroundWhite = Colors.white;
 
 class GlobalTheme {
   final globalTheme = ThemeData(
+    colorScheme: _customColorScheme,
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontSize: 22,
@@ -62,3 +63,19 @@ class GlobalTheme {
     ),
   );
 }
+
+const ColorScheme _customColorScheme = ColorScheme(
+  primary: customMagenta50,
+  primaryVariant: customMagenta600,
+  secondary: Colors.amber,
+  secondaryVariant: customMagenta400,
+  surface: Colors.purpleAccent,
+  background: customSurfaceWhite,
+  error: customMagenta900,
+  onPrimary: Colors.red,
+  onSecondary: Colors.deepOrange,
+  onSurface: customMagenta300,
+  onBackground: customMagenta100,
+  onError: Colors.redAccent,
+  brightness: Brightness.light,
+);
