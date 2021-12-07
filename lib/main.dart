@@ -5,6 +5,8 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import '/models/global_pink_theme.dart';
 
+/// pushing to git branch color scheme
+
 void main() {
   runApp(
     /// Providers are above [Root App] instead of inside it, so that tests
