@@ -15,6 +15,7 @@ import 'global_theme/global_theme_sample.dart';
  * adding branch color scheme
  * pushing clor scheme from another machine
  * pushing clor scheme finally
+ * pushing green color sheme
  * 
  */
 
@@ -266,7 +267,7 @@ void main() {
       ),
     );
   }
->>>>>>> Stashed changes
+
 }
  */
 
