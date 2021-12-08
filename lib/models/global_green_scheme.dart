@@ -17,6 +17,11 @@ class GlobalGreenScheme {
   final globalTheme = ThemeData(
     colorScheme: _customColorScheme,
     textTheme: const TextTheme(
+      button: TextStyle(
+        fontSize: 25,
+        color: customGreen50,
+        backgroundColor: customGreen900,
+      ),
       bodyText1: TextStyle(
         fontSize: 22,
         color: customGreen600,

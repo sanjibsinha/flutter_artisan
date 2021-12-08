@@ -43,10 +43,47 @@ class AboutListTileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Save The Planet',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: [
+                  Text(
+                    'Plant Tress and reduce Carbon Emission.',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  Text(
+                    'Would you like to approve of this message?',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Approve'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'sanjibsinha.com',
+          'ExploreNature',
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
@@ -56,9 +93,9 @@ class AboutListTileBody extends StatelessWidget {
             child: AboutListTile(
               icon: Icon(Icons.info),
               applicationIcon: FlutterLogo(),
-              applicationName: 'sanjibsinha.com',
+              applicationName: 'ExploreNature',
               applicationVersion: '0.0.1',
-              applicationLegalese: 'CopyLeft sanjibsinha.com',
+              applicationLegalese: '@explorenature.com',
               aboutBoxChildren: [
                 SizedBox(height: 30),
                 AboutSanjibSinha(),
@@ -68,64 +105,83 @@ class AboutListTileBody extends StatelessWidget {
         ),
       ),
       body: Center(
-          child: ListView(
-        children: [
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            child: Text(
-              'This Flutter Application is for Learning purpose.'
-              ' Learn to build from Scratch.',
-              style: Theme.of(context).textTheme.headline2,
+        child: ListView(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: Text(
+                  'ExploreNature is an Educational App.'
+                  ' Plant more trees to Save the Climate and Earth.',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+              ),
             ),
-          ),
-          Wrap(
-            children: [
-              Container(
-                margin: const EdgeInsets.all(5),
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  'Flutter :',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.all(5),
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  'Flutter is an open-source UI software development kit created by Google. It is used to develop cross platform applications for Android, iOS, Linux, Mac, Windows, Google Fuchsia, and the web from a single codebase. First described in 2015, Flutter was released in May 2017. - Wikipedia',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ),
-            ],
-          ),
-          Container(
-            margin: const EdgeInsets.all(15),
-            padding: const EdgeInsets.all(15),
-            width: 50,
-            height: 50,
-            child: ElevatedButton(
-              child: Text(
-                'View License Pages',
-                style: Theme.of(context).textTheme.caption,
-              ),
-              onPressed: () {
-                showAboutDialog(
-                  context: context,
-                  applicationIcon: const FlutterLogo(),
-                  applicationName: 'sanjibsinha.com',
-                  applicationVersion: '0.0.1',
-                  applicationLegalese: 'CopyLeft sanjibsinha.com',
+            Row(
+              children: [
+                Column(
                   children: [
-                    const SizedBox(height: 30),
-                    const AboutSanjibSinha(),
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      width: 120,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Image.network(
+                          'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      width: 120,
+                      child: Text(
+                        'Take Action ',
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
+                    ),
                   ],
-                );
-              },
+                ),
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      width: 350,
+                      child: Text(
+                        'Trees contribute to environment by oxygen, improving air'
+                        '  quality, climate amelioration, conserving water, preserving'
+                        ' soil, and supporting wildlife. During the process'
+                        ' of photosynthesis, trees take in carbon dioxide and produce'
+                        ' the oxygen we breathe.'
+                        '  - savetree.com',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      width: 180,
+                      height: 50,
+                      child: ElevatedButton(
+                        child: Text(
+                          'Do You Agree?',
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                        onPressed: () {
+                          _showMyDialog();
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
