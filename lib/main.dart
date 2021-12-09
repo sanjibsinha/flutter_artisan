@@ -122,12 +122,16 @@ class BottomNavigationHome extends StatelessWidget {
         ),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(Icons.home),
+            icon: const Icon(
+              Icons.favorite_border_outlined,
+            ),
             label: 'First Page',
             backgroundColor: Colors.green[200],
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.holiday_village),
+            icon: const Icon(
+              Icons.place_outlined,
+            ),
             label: 'Second Page',
             backgroundColor: Colors.green[400],
           ),
