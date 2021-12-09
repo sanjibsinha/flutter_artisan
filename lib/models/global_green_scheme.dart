@@ -16,6 +16,7 @@ const Color customBackgroundWhite = Colors.white;
 class GlobalGreenScheme {
   final globalTheme = ThemeData(
     colorScheme: _customColorScheme,
+    bottomAppBarColor: customGreen100,
     textTheme: const TextTheme(
       button: TextStyle(
         fontSize: 25,
@@ -52,7 +53,7 @@ class GlobalGreenScheme {
       ),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: customGreen100,
+      backgroundColor: customGreen50,
       // This will control the "back" icon
       iconTheme: IconThemeData(color: Colors.red),
       // This will control action icon buttons that locates on the right
@@ -60,7 +61,7 @@ class GlobalGreenScheme {
       centerTitle: false,
       elevation: 15,
       titleTextStyle: TextStyle(
-        color: customGreen400,
+        color: customGreen900,
         fontWeight: FontWeight.bold,
         fontFamily: 'Allison',
         fontSize: 40,
