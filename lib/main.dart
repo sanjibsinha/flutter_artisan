@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
 import 'models/global_green_scheme.dart';
+import 'models/counter.dart';
 
 void main() {
   runApp(
@@ -9,9 +11,12 @@ void main() {
     /// can use [Root App] while mocking the providers
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (cntext) => Counter(),
+        ),
         Provider<GlobalGreenScheme>(
           create: (context) => GlobalGreenScheme(),
-        )
+        ),
       ],
       child: const BottomNavigationBarTest(),
     ),
@@ -28,42 +33,24 @@ class BottomNavigationBarTest extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: globalTheme,
-      home: const BottomNavigationHome(),
+      home: BottomNavigationHome(),
     );
   }
 }
 
-class BottomNavigationHome extends StatefulWidget {
-  const BottomNavigationHome({Key? key}) : super(key: key);
+class BottomNavigationHome extends StatelessWidget {
+  BottomNavigationHome({Key? key}) : super(key: key);
 
-  @override
-  _BottomNavigationHomeState createState() => _BottomNavigationHomeState();
-}
+  static const TextStyle pageStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
 
-class _BottomNavigationHomeState extends State<BottomNavigationHome> {
-  static const TextStyle pageStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'First Page',
-      style: pageStyle,
-    ),
-    Text(
-      'Second Page',
-      style: pageStyle,
-    ),
-    Text(
-      'Third Page',
-      style: pageStyle,
-    ),
+    FirstPage(pageStyle: pageStyle),
+    SecondPage(pageStyle: pageStyle),
+    ThirdPage(pageStyle: pageStyle),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +62,7 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
         ),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions.elementAt(context.watch<Counter>().count),
       ),
       bottomNavigationBar: BottomNavigationBar(
         /// customizing background color
@@ -112,11 +99,62 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
           ),
         ],
         selectedItemColor: Colors.green[800],
-        currentIndex: _selectedIndex,
+        currentIndex: context.watch<Counter>().count,
         iconSize: 50,
-        onTap: _onItemTapped,
+        onTap: context.read<Counter>().onItemTapped,
         elevation: 5,
       ),
+    );
+  }
+}
+
+class ThirdPage extends StatelessWidget {
+  const ThirdPage({
+    Key? key,
+    required this.pageStyle,
+  }) : super(key: key);
+
+  final TextStyle pageStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Third Page',
+      style: pageStyle,
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({
+    Key? key,
+    required this.pageStyle,
+  }) : super(key: key);
+
+  final TextStyle pageStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Second Page',
+      style: pageStyle,
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({
+    Key? key,
+    required this.pageStyle,
+  }) : super(key: key);
+
+  final TextStyle pageStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'First Page',
+      style: pageStyle,
     );
   }
 }
