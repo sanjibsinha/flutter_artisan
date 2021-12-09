@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import 'models/element_at.dart';
 import 'models/global_green_scheme.dart';
-import 'models/counter.dart';
+
+import 'views/app_bar_next.dart';
+import 'views/first_page.dart';
+import 'views/second_page.dart';
+import 'views/third_page.dart';
 
 void main() {
   runApp(
@@ -12,7 +17,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (cntext) => Counter(),
+          create: (cntext) => ElementAt(),
         ),
         Provider<GlobalGreenScheme>(
           create: (context) => GlobalGreenScheme(),
@@ -33,13 +38,13 @@ class BottomNavigationBarTest extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: globalTheme,
-      home: BottomNavigationHome(),
+      home: const BottomNavigationHome(),
     );
   }
 }
 
 class BottomNavigationHome extends StatelessWidget {
-  BottomNavigationHome({Key? key}) : super(key: key);
+  const BottomNavigationHome({Key? key}) : super(key: key);
 
   static const TextStyle pageStyle = TextStyle(
     fontSize: 30,
@@ -47,9 +52,9 @@ class BottomNavigationHome extends StatelessWidget {
   );
 
   static const List<Widget> _widgetOptions = <Widget>[
-    FirstPage(pageStyle: pageStyle),
-    SecondPage(pageStyle: pageStyle),
-    ThirdPage(pageStyle: pageStyle),
+    FirstPage(),
+    SecondPage(),
+    ThirdPage(),
   ];
 
   @override
@@ -57,12 +62,46 @@ class BottomNavigationHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'BottomNavigationBar Example',
+          'Home Page',
           style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add_alert),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('A SnackBar'),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.search_outlined),
+            tooltip: 'Search',
+            onPressed: () {
+              // our code
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Next page',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) {
+                    return const AppBarNext();
+                  },
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
-        child: _widgetOptions.elementAt(context.watch<Counter>().count),
+        child: _widgetOptions.elementAt(context.watch<ElementAt>().count),
       ),
       bottomNavigationBar: BottomNavigationBar(
         /// customizing background color
@@ -99,62 +138,11 @@ class BottomNavigationHome extends StatelessWidget {
           ),
         ],
         selectedItemColor: Colors.green[800],
-        currentIndex: context.watch<Counter>().count,
+        currentIndex: context.watch<ElementAt>().count,
         iconSize: 50,
-        onTap: context.read<Counter>().onItemTapped,
+        onTap: context.read<ElementAt>().onItemTapped,
         elevation: 5,
       ),
-    );
-  }
-}
-
-class ThirdPage extends StatelessWidget {
-  const ThirdPage({
-    Key? key,
-    required this.pageStyle,
-  }) : super(key: key);
-
-  final TextStyle pageStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Third Page',
-      style: pageStyle,
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({
-    Key? key,
-    required this.pageStyle,
-  }) : super(key: key);
-
-  final TextStyle pageStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Second Page',
-      style: pageStyle,
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  const FirstPage({
-    Key? key,
-    required this.pageStyle,
-  }) : super(key: key);
-
-  final TextStyle pageStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'First Page',
-      style: pageStyle,
     );
   }
 }
