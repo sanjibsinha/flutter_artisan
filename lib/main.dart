@@ -6,21 +6,6 @@ import 'models/wordpair.dart';
 import 'models/student.dart';
 
 import 'global_theme/global_theme_sample.dart';
-/**
- * adding branches separately
- * and modifying
- * this time material banner
- * adding branch about dialog
- * adding branch about list tile again
- * adding branch color scheme
- * pushing clor scheme from another machine
- * pushing clor scheme finally
- * pushing green color sheme
- * pushing green color sheme finally
- * pushing branch bottom navigation bar modified
- * pulling branch bottom navigation bar modified
- * changing
- */
 
 /// added a comment to test
 ///
@@ -38,3 +23,20 @@ void main() {
     ),
   );
 }
+
+/**
+ * adding branches separately
+ * and modifying
+ * this time material banner
+ * adding branch about dialog
+ * adding branch about list tile again
+ * adding branch color scheme
+ * pushing clor scheme from another machine
+ * pushing clor scheme finally
+ * pushing green color sheme
+ * pushing green color sheme finally
+ * pushing branch bottom navigation bar modified
+ * pulling branch bottom navigation bar modified
+ * adding basic widgets branch
+ * 
+ */
