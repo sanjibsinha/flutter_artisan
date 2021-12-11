@@ -17,7 +17,7 @@ import 'global_theme/global_theme_sample.dart';
  * pushing clor scheme finally
  * pushing green color sheme
  * pushing green color sheme finally
- * pushing branch bottom navigation bar modified
+ * pushing branch bottom navigation bar modified finally
  */
 
 /// added a comment to test
