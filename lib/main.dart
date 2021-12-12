@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const OurSecondApp(),
+    const OurThirdApp(),
   );
 }
 
-class OurSecondApp extends StatelessWidget {
-  const OurSecondApp({Key? key}) : super(key: key);
+class OurThirdApp extends StatelessWidget {
+  const OurThirdApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'First Material App',
       debugShowCheckedModeBanner: false,
-      home: OurSecondAppHome(),
+      home: OurThirdAppHome(),
     );
   }
 }
 
-class OurSecondAppHome extends StatelessWidget {
-  const OurSecondAppHome({Key? key}) : super(key: key);
+class OurThirdAppHome extends StatelessWidget {
+  const OurThirdAppHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,13 @@ class OurSecondAppHome extends StatelessWidget {
       appBar: AppBar(
         title: const Text('First Material App'),
       ),
-      body: const OurSecondAppBody(),
+      body: const OurThirdAppBody(),
     );
   }
 }
 
-class OurSecondAppBody extends StatelessWidget {
-  const OurSecondAppBody({Key? key}) : super(key: key);
+class OurThirdAppBody extends StatelessWidget {
+  const OurThirdAppBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,128 +42,122 @@ class OurSecondAppBody extends StatelessWidget {
     /// such as, Text, Container, Row, Column, etc.
     ///
     return Column(
-      children: [
-        Center(
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'ID',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Name',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              const Expanded(
-                child: Text(
-                  'Phone Number',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Gender',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Country',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Center(
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  '1',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'John',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              const Expanded(
-                child: Text(
-                  '123645',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Male',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Germany',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Center(
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  '2',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Jenifer',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              const Expanded(
-                child: Text(
-                  '652341',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Female',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'France',
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-        ),
+      children: const [
+        ColumnOne(),
+        ColumnThree(),
+        ColumnTwo(),
       ],
+    );
+  }
+}
+
+class ModelContainer extends StatelessWidget {
+  const ModelContainer({
+    Key? key,
+    required this.modelText,
+  }) : super(key: key);
+
+  final Text modelText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      color: Colors.amber,
+      child: modelText,
+    );
+  }
+}
+
+class ColumnOne extends StatelessWidget {
+  const ColumnOne({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: const [
+          ModelContainer(
+            modelText: Text('ID'),
+          ),
+          ModelContainer(
+            modelText: Text('Name'),
+          ),
+          ModelContainer(
+            modelText: Text('Phone'),
+          ),
+          ModelContainer(
+            modelText: Text('Gender'),
+          ),
+          ModelContainer(
+            modelText: Text('Country'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ColumnTwo extends StatelessWidget {
+  const ColumnTwo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: const [
+          ModelContainer(
+            modelText: Text('2'),
+          ),
+          ModelContainer(
+            modelText: Text('Juliet'),
+          ),
+          ModelContainer(
+            modelText: Text('100023'),
+          ),
+          ModelContainer(
+            modelText: Text('Female'),
+          ),
+          ModelContainer(
+            modelText: Text('Britain'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ColumnThree extends StatelessWidget {
+  const ColumnThree({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: const [
+          ModelContainer(
+            modelText: Text('1'),
+          ),
+          ModelContainer(
+            modelText: Text('Romeo'),
+          ),
+          ModelContainer(
+            modelText: Text('489023'),
+          ),
+          ModelContainer(
+            modelText: Text('Male'),
+          ),
+          ModelContainer(
+            modelText: Text('France'),
+          ),
+        ],
+      ),
     );
   }
 }
