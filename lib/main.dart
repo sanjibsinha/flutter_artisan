@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //var size = MediaQuery.of(context).size;
     return const MaterialApp(
+      title: 'A Custom Home Page',
       home: DashBoard(
           // size: size,
           ),
@@ -27,16 +28,21 @@ class DashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'A Custom Home Page',
+
+      /// ignore: todo
+      ///TODO: we'll make a custom global theme later
+      ///
+
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.black12,
           leading: const Icon(Icons.menu),
           title: const Text(
-            "Dashboard",
+            "A Custom Home Page",
             textAlign: TextAlign.center,
           ),
         ),
@@ -45,9 +51,9 @@ class DashBoard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(5),
               child: CustomPaint(
-                painter: ShapesPainter(),
+                painter: ShapingPainter(),
                 child: Container(
-                  height: size.height / 2,
+                  height: size.height / 1,
                 ),
               ),
             ),
@@ -57,13 +63,15 @@ class DashBoard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: GridView.count(
                   crossAxisCount: 2,
-                  children: <Widget>[
-                    createGridItem(0),
-                    createGridItem(1),
-                    createGridItem(2),
-                    createGridItem(3),
-                    createGridItem(4),
-                    createGridItem(5),
+                  children: const <Widget>[
+                    Text(
+                      'We\'ll make a list of GridItems later.',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -73,8 +81,66 @@ class DashBoard extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget createGridItem(int position) {
+class ShapingPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint();
+
+    /// setting the paint color greyish
+    /// so it could cover the lower half of the screen
+    ///
+    paint.color = Colors.black12;
+
+    /// Creating a rectangle with size and width same as the canvas
+    /// It'll be going to cover the whole screen
+    ///
+    var rect = Rect.fromLTWH(0, 0, size.width, size.height);
+
+    /// Drawing the rectangle using the paint
+    ///
+    canvas.drawRect(rect, paint);
+
+    /// Covering the upper half of the rectangle
+    ///
+    paint.color = Colors.purpleAccent;
+    // Firstly, creating a path to form the shape
+    var path = Path();
+    path.lineTo(0, size.height);
+    path.lineTo(size.width, 0);
+    // Secondly, closing the path to form a bounded shape
+    path.close();
+    canvas.drawPath(path, paint);
+    // Setting the color property of the paint
+    paint.color = Colors.white;
+    // Center of the canvas is (x,y) => (width/2, height/2)
+    var center = Offset(size.width / 2, size.height / 2);
+    // Finally, drawing the circle with center having radius 95.0
+    canvas.drawCircle(center, 95.0, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+/* CustomGridItem(position: 0),
+                    CustomGridItem(position: 1),
+                    CustomGridItem(position: 2),
+                    CustomGridItem(position: 3),
+                    CustomGridItem(position: 4),
+                    CustomGridItem(position: 5), */
+
+class CustomGridItem extends StatelessWidget {
+  const CustomGridItem({
+    Key? key,
+    required this.position,
+  }) : super(key: key);
+
+  final int position;
+
+  @override
+  Widget build(BuildContext context) {
     Color? color = Colors.white;
     var icondata = Icons.add;
 
@@ -146,34 +212,4 @@ class DashBoard extends StatelessWidget {
       );
     });
   }
-}
-
-class ShapesPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint();
-    // set the paint color to be white
-    paint.color = Colors.white;
-    // Create a rectangle with size and width same as the canvas
-    var rect = Rect.fromLTWH(0, 0, size.width, size.height);
-    // draw the rectangle using the paint
-    canvas.drawRect(rect, paint);
-    paint.color = Colors.greenAccent;
-    // create a path
-    var path = Path();
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, 0);
-    // close the path to form a bounded shape
-    path.close();
-    canvas.drawPath(path, paint);
-    // set the color property of the paint
-    paint.color = Colors.deepOrange;
-    // center of the canvas is (x,y) => (width/2, height/2)
-    var center = Offset(size.width / 2, size.height / 2);
-    // draw the circle with center having radius 75.0
-    canvas.drawCircle(center, 75.0, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
