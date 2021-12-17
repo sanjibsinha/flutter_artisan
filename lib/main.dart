@@ -39,4 +39,6 @@ void main() {
  * pulling branch bottom navigation bar modified
  * adding basic widgets branch
  * added a branch basic layout
+ * added a branch layout part one
+ * 
  */
