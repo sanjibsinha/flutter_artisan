@@ -58,19 +58,72 @@ class DashBoard extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 40),
+              margin: const EdgeInsets.all(10),
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  children: const <Widget>[
-                    Text(
-                      'We\'ll make a list of GridItems later.',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://cdn.pixabay.com/photo/2021/12/05/10/28/nature-6847175_960_720.jpg',
+                          width: 150,
+                          height: 100,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(7),
+                          child: const Text(
+                            'Let\'s go',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg',
+                          width: 150,
+                          height: 100,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(7),
+                          child: const Text(
+                            'Let\'s go',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://cdn.pixabay.com/photo/2021/12/12/20/26/flow-6866055_960_720.jpg',
+                          width: 150,
+                          height: 100,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(7),
+                          child: const Text(
+                            'Let\'s go',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -122,94 +175,4 @@ class ShapingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
-
-/* CustomGridItem(position: 0),
-                    CustomGridItem(position: 1),
-                    CustomGridItem(position: 2),
-                    CustomGridItem(position: 3),
-                    CustomGridItem(position: 4),
-                    CustomGridItem(position: 5), */
-
-class CustomGridItem extends StatelessWidget {
-  const CustomGridItem({
-    Key? key,
-    required this.position,
-  }) : super(key: key);
-
-  final int position;
-
-  @override
-  Widget build(BuildContext context) {
-    Color? color = Colors.white;
-    var icondata = Icons.add;
-
-    switch (position) {
-      case 0:
-        color = Colors.cyan;
-        icondata = Icons.map;
-        break;
-      case 1:
-        color = Colors.deepPurple;
-
-        icondata = Icons.add_location;
-        break;
-      case 2:
-        color = Colors.orange[300];
-        icondata = Icons.library_books;
-        break;
-      case 3:
-        color = Colors.pinkAccent;
-        icondata = Icons.access_time;
-        break;
-      case 4:
-        color = Colors.teal[900];
-        icondata = Icons.add_shopping_cart;
-        break;
-      case 5:
-        color = Colors.green[600];
-        icondata = Icons.list;
-        break;
-    }
-
-    return Builder(builder: (context) {
-      return Padding(
-        padding:
-            const EdgeInsets.only(left: 10.0, right: 10, bottom: 5, top: 5),
-        child: Card(
-          elevation: 10,
-          color: color,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            side: BorderSide(color: Colors.white),
-          ),
-          child: InkWell(
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Selected Item $position")));
-            },
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Icon(
-                    icondata,
-                    size: 40,
-                    color: Colors.white,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Add",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    });
-  }
 }
