@@ -2,8 +2,10 @@ A new Flutter project for Developing Flutter App from Scratch
 
 - [Lab: Read the Latest Updated Articles on Flutter Tool Kit](https://sanjibsinha.com/category/flutter)
 
+
 ## Get the necessary Guide
 
+- [Flutter Artisan](https://leanpub.com/flutter-artisan)
 - [Beginning Flutter with Dart](https://leanpub.com/beginningflutterwithdart)
 - [Better Flutter](https://leanpub.com/betterflutter)
 - [State in Flutter](https://leanpub.com/stateinflutter)
