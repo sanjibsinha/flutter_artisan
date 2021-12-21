@@ -6,13 +6,11 @@ import 'all_containers.dart';
 class DashBoardHome extends StatelessWidget {
   const DashBoardHome({
     Key? key,
-    required this.size,
   }) : super(key: key);
-
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black12,
