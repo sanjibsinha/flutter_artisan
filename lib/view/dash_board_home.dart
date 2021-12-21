@@ -1,9 +1,9 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import '/model/all_tab_bars.dart';
 import '/model/shaping_painter.dart';
 
 import 'all_containers.dart';
+import 'all_pages.dart';
 
 class DashBoardHome extends StatelessWidget {
   const DashBoardHome({
@@ -31,91 +31,46 @@ class DashBoardHome extends StatelessWidget {
             ),
           ),
           elevation: 20,
+          titleSpacing: 80,
           leading: const Icon(Icons.menu),
           title: const Text(
             'Let\'s Go!',
             textAlign: TextAlign.center,
           ),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.ac_unit),
+            buildIcons(
+              const Icon(Icons.ac_unit),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
+            buildIcons(
+              const Icon(
                 Icons.notification_add,
               ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-              ),
+            buildIcons(
+              const Icon(Icons.ac_unit),
+            ),
+            buildIcons(
+              const Icon(Icons.search),
             ),
           ],
-          bottom: TabBar(
-            tabs: [
-              Tab(
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.home,
-                  ),
-                ),
-                text: 'Home',
-              ),
-              Tab(
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.account_box,
-                  ),
-                ),
-                text: 'Log in',
-              ),
-              Tab(
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.security,
-                  ),
-                ),
-                text: 'Account',
-              ),
-              Tab(
-                icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.settings,
-                  ),
-                ),
-                text: 'Settings',
-              ),
-            ],
-          ),
+          bottom: allTabBars(),
         ),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(5),
-              child: CustomPaint(
-                painter: ShapingPainter(),
-                child: Container(
-                  height: size.height / 1,
-                ),
-              ),
-            ),
-            ListView(
-              children: const [
-                FirstContainer(),
-                SecondContainer(),
-                ThirdContainer()
-              ],
-            ),
+        body: TabBarView(
+          children: [
+            FirstPage(size: size),
+            SecondPage(size: size),
+            ThirdPage(size: size),
+            FourthPage(size: size),
           ],
         ),
       ),
+    );
+  }
+
+  IconButton buildIcons(Icon icon) {
+    return IconButton(
+      onPressed: () {},
+      icon: const Icon(Icons.ac_unit),
     );
   }
 }
