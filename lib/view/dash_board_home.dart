@@ -31,6 +31,7 @@ class DashBoardHome extends StatelessWidget {
             ),
           ),
           elevation: 20,
+          titleSpacing: 20,
           leading: const Icon(Icons.menu),
           title: const Text(
             'Let\'s Go!',
