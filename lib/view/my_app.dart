@@ -6,12 +6,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var size = MediaQuery.of(context).size;
-    return const MaterialApp(
+    return MaterialApp(
       title: 'A Custom Home Page',
-      home: DashBoardHome(
-          // size: size,
-          ),
+
+     
+
+      /// ignore: todo
+      ///TODO: we'll make a custom global theme later
+      ///
+
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: DashBoardHome(),
+
     );
   }
 }
