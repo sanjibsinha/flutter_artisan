@@ -3,6 +3,9 @@ import '/model/all_tab_bars.dart';
 
 import 'all_pages.dart';
 
+/// adding transparent appbar
+/// modifying build icons
+
 class DashBoardHome extends StatelessWidget {
   const DashBoardHome({
     Key? key,
@@ -15,6 +18,12 @@ class DashBoardHome extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.elliptical(10, 5),
+            ),
+          ),
           //backgroundColor: Colors.grey[400],
           flexibleSpace: Container(
             decoration: const BoxDecoration(
@@ -45,7 +54,9 @@ class DashBoardHome extends StatelessWidget {
               ),
             ),
             buildIcons(
-              const Icon(Icons.ac_unit),
+              const Icon(
+                Icons.settings,
+              ),
             ),
             buildIcons(
               const Icon(Icons.search),
@@ -68,7 +79,7 @@ class DashBoardHome extends StatelessWidget {
   IconButton buildIcons(Icon icon) {
     return IconButton(
       onPressed: () {},
-      icon: const Icon(Icons.ac_unit),
+      icon: icon,
     );
   }
 }
