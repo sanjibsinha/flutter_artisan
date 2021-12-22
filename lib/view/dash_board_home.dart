@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '/model/all_tab_bars.dart';
-import '/model/shaping_painter.dart';
 
-import 'all_containers.dart';
 import 'all_pages.dart';
 
 class DashBoardHome extends StatelessWidget {
