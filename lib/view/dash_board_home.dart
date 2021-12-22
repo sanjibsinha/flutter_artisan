@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/model/all_tab_bars.dart';
 
-import 'all_pages.dart';
+//import 'all_pages.dart';
 
 /// adding transparent appbar
 /// modifying build icons
@@ -13,7 +13,7 @@ class DashBoardHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    //var size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -21,7 +21,11 @@ class DashBoardHome extends StatelessWidget {
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
+
+              bottom: Radius.circular(10),
+
               bottom: Radius.elliptical(10, 5),
+
             ),
           ),
           //backgroundColor: Colors.grey[400],
@@ -46,7 +50,7 @@ class DashBoardHome extends StatelessWidget {
           ),
           actions: [
             buildIcons(
-              const Icon(Icons.ac_unit),
+              const Icon(Icons.add_a_photo),
             ),
             buildIcons(
               const Icon(
@@ -62,14 +66,44 @@ class DashBoardHome extends StatelessWidget {
               const Icon(Icons.search),
             ),
           ],
-          bottom: allTabBars(),
+          bottom: const TabBar(
+            isScrollable: true,
+            indicatorColor: Colors.red,
+            indicatorWeight: 10,
+            tabs: [
+              Tab(
+                icon: Icon(
+                  Icons.home,
+                ),
+                text: 'Home',
+              ),
+              Tab(
+                icon: Icon(
+                  Icons.panorama_fish_eye,
+                ),
+                text: 'Log in',
+              ),
+              Tab(
+                icon: Icon(
+                  Icons.settings,
+                ),
+                text: 'Settings',
+              ),
+              Tab(
+                icon: Icon(
+                  Icons.local_activity,
+                ),
+                text: 'Location',
+              ),
+            ],
+          ),
         ),
         body: TabBarView(
           children: [
-            FirstPage(size: size),
-            SecondPage(size: size),
-            ThirdPage(size: size),
-            FourthPage(size: size),
+            newPage('Home'),
+            newPage('Log in'),
+            newPage('Settings'),
+            newPage('Location'),
           ],
         ),
       ),
@@ -82,4 +116,15 @@ class DashBoardHome extends StatelessWidget {
       icon: icon,
     );
   }
+
+  Widget newPage(String text) => Center(
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 60,
+            fontWeight: FontWeight.bold,
+            color: Colors.red,
+          ),
+        ),
+      );
 }
