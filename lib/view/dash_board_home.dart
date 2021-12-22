@@ -4,6 +4,7 @@ import '/model/all_tab_bars.dart';
 import 'all_pages.dart';
 
 /// adding transparent appbar
+/// modifying build icons
 
 class DashBoardHome extends StatelessWidget {
   const DashBoardHome({
