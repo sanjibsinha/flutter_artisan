@@ -17,7 +17,6 @@ class FirstContainer extends StatelessWidget {
           children: const [
             FirstColumn(),
             SecondColumn(),
-            ThirdColumn(),
           ],
         ),
       ),
@@ -40,7 +39,6 @@ class SecondContainer extends StatelessWidget {
           children: const [
             FirstColumn(),
             SecondColumn(),
-            ThirdColumn(),
           ],
         ),
       ),
@@ -63,7 +61,6 @@ class ThirdContainer extends StatelessWidget {
           children: const [
             FirstColumn(),
             SecondColumn(),
-            ThirdColumn(),
           ],
         ),
       ),
