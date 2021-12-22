@@ -3,6 +3,9 @@ import '/model/all_tab_bars.dart';
 
 //import 'all_pages.dart';
 
+/// adding transparent appbar
+/// modifying build icons
+
 class DashBoardHome extends StatelessWidget {
   const DashBoardHome({
     Key? key,
@@ -18,7 +21,11 @@ class DashBoardHome extends StatelessWidget {
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
+
               bottom: Radius.circular(10),
+
+              bottom: Radius.elliptical(10, 5),
+
             ),
           ),
           //backgroundColor: Colors.grey[400],
