@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// modifying tabbars
+///
 TabBar allTabBars() => TabBar(
       isScrollable: true,
       indicatorColor: Colors.red,
