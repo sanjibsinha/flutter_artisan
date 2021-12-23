@@ -18,6 +18,7 @@ class DashBoardHome extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
+
           //backgroundColor: Colors.grey[400],
           flexibleSpace: Container(
             decoration: const BoxDecoration(
