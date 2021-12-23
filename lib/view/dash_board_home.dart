@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '/model/all_tab_bars.dart';
 
 //import 'all_pages.dart';
 
@@ -19,15 +18,6 @@ class DashBoardHome extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-
-              bottom: Radius.circular(10),
-
-              bottom: Radius.elliptical(10, 5),
-
-            ),
-          ),
           //backgroundColor: Colors.grey[400],
           flexibleSpace: Container(
             decoration: const BoxDecoration(
