@@ -21,11 +21,7 @@ class DashBoardHome extends StatelessWidget {
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-
               bottom: Radius.circular(10),
-
-              bottom: Radius.elliptical(10, 5),
-
             ),
           ),
           //backgroundColor: Colors.grey[400],
