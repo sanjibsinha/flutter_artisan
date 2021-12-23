@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import '/model/all_tab_bars.dart';
 
@@ -17,94 +19,33 @@ class DashBoardHome extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          title: const Text('Testing Transparency'),
           centerTitle: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-
-              bottom: Radius.circular(10),
-
-              bottom: Radius.elliptical(10, 5),
-
-            ),
-          ),
-          //backgroundColor: Colors.grey[400],
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.pink,
-                  Colors.grey,
-                ],
-                begin: Alignment.topRight,
-                end: Alignment.bottomRight,
-              ),
-            ),
-          ),
-          elevation: 20,
-          titleSpacing: 80,
-          leading: const Icon(Icons.menu),
-          title: const Text(
-            'Let\'s Go!',
-            textAlign: TextAlign.center,
+          leading: const BackButton(
+            color: Colors.red,
           ),
           actions: [
-            buildIcons(
-              const Icon(Icons.add_a_photo),
-            ),
-            buildIcons(
-              const Icon(
-                Icons.notification_add,
-              ),
-            ),
-            buildIcons(
-              const Icon(
-                Icons.settings,
-              ),
-            ),
-            buildIcons(
-              const Icon(Icons.search),
-            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.holiday_village),
+            )
           ],
-          bottom: const TabBar(
-            isScrollable: true,
-            indicatorColor: Colors.red,
-            indicatorWeight: 10,
-            tabs: [
-              Tab(
-                icon: Icon(
-                  Icons.home,
-                ),
-                text: 'Home',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.panorama_fish_eye,
-                ),
-                text: 'Log in',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.settings,
-                ),
-                text: 'Settings',
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.local_activity,
-                ),
-                text: 'Location',
-              ),
-            ],
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
           ),
+          //backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white.withOpacity(0.19),
+          elevation: 0,
         ),
-        body: TabBarView(
-          children: [
-            newPage('Home'),
-            newPage('Log in'),
-            newPage('Settings'),
-            newPage('Location'),
-          ],
+        body: Image.network(
+          'https://cdn.pixabay.com/photo/2021/10/19/10/56/cat-6723256_960_720.jpg',
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
         ),
       ),
     );
@@ -116,15 +57,4 @@ class DashBoardHome extends StatelessWidget {
       icon: icon,
     );
   }
-
-  Widget newPage(String text) => Center(
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 60,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
-          ),
-        ),
-      );
 }
