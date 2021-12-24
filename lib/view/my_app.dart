@@ -10,8 +10,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'A Custom Home Page',
 
-     
-
       /// ignore: todo
       ///TODO: we'll make a custom global theme later
       ///
@@ -19,8 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DashBoardHome(),
-
+      home: const DashBoardHome(),
     );
   }
 }
