@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//import 'view/my_app.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -9,188 +7,124 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String title = 'Basic Layout';
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: title,
-      home: MyAppHome(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyAppHome extends StatelessWidget {
-  const MyAppHome({Key? key}) : super(key: key);
-
-  static const String userUrl =
-      'https://cdn.pixabay.com/photo/2019/05/04/15/24/art-4178302_960_720.jpg';
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  static const String title = 'CustomPaint';
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            //backgroundColor: Colors.grey[400],
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.pink,
-                    Colors.grey,
-                  ],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomRight,
+    return Scaffold(
+      appBar: customAppBar(title),
+      body: CustomPaint(
+        painter: PinkPainter(),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  'You have pushed the FISH this many times:',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink.shade100,
+                  ),
                 ),
               ),
-            ),
-            //elevation: 20,
-            titleSpacing: 80,
-            leading: const Icon(Icons.menu),
-            title: const Text(
-              'Let\'s Go!',
-              textAlign: TextAlign.center,
-            ),
-            actions: [
-              buildIcons(
-                const Icon(Icons.add_a_photo),
-              ),
-              buildIcons(
-                const Icon(
-                  Icons.notification_add,
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  '$_counter',
+                  style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink.shade200,
+                  ),
                 ),
-              ),
-              buildIcons(
-                const Icon(
-                  Icons.settings,
-                ),
-              ),
-              buildIcons(
-                const Icon(Icons.search),
               ),
             ],
-            bottom: const TabBar(
-              isScrollable: true,
-              indicatorColor: Colors.red,
-              indicatorWeight: 10,
-              tabs: [
-                Tab(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  text: 'Home',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.panorama_fish_eye,
-                  ),
-                  text: 'Log in',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.settings,
-                  ),
-                  text: 'Settings',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.local_activity,
-                  ),
-                  text: 'Location',
-                ),
-              ],
-            ),
           ),
-          body: TabBarView(children: [
-            ListView(
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      height: 200,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.pink,
-                            Colors.grey,
-                          ],
-                          begin: Alignment.bottomRight,
-                          end: Alignment.topRight,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: -20,
-                      left: 0,
-                      right: 0,
-                      child: Center(
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.white,
-                                spreadRadius: 4,
-                              ),
-                            ],
-                            image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(userUrl),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: -150,
-                      left: 0,
-                      right: 0,
-                      child: Center(
-                        child: Container(
-                          margin: const EdgeInsets.all(17),
-                          width: 300,
-                          height: 100,
-                          child: const Text(
-                            'Lady Ada Lovelace',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 75),
-                  child: const Text(
-                    'Augusta Ada King, Countess of Lovelace (née Byron; 10 December 1815 - 27 November 1852) '
-                    'was an English mathematician and writer, chiefly known for her work on Charles Babbage\'s '
-                    'proposed mechanical general-purpose computer, the Analytical Engine. She was the '
-                    'first to recognise that the machine had applications beyond pure calculation, and '
-                    'to have published the first algorithm intended to be carried out by such a machine. '
-                    'As a result, she is often regarded as the first computer programmer.',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 22,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            newPage('Log in'),
-            newPage('Settings'),
-            newPage('Location'),
-          ])),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.pink.shade200,
+      ),
+    );
+  }
+
+  AppBar customAppBar(String title) {
+    return AppBar(
+      centerTitle: true,
+      //backgroundColor: Colors.grey[400],
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.pink,
+              Colors.grey,
+            ],
+            begin: Alignment.topRight,
+            end: Alignment.bottomRight,
+          ),
+        ),
+      ),
+      //elevation: 20,
+      titleSpacing: 80,
+      leading: const Icon(Icons.menu),
+      title: Text(
+        title,
+        textAlign: TextAlign.left,
+      ),
+      actions: [
+        buildIcons(
+          const Icon(Icons.add_a_photo),
+        ),
+        buildIcons(
+          const Icon(
+            Icons.notification_add,
+          ),
+        ),
+        buildIcons(
+          const Icon(
+            Icons.settings,
+          ),
+        ),
+        buildIcons(
+          const Icon(Icons.search),
+        ),
+      ],
     );
   }
 
@@ -200,15 +134,43 @@ class MyAppHome extends StatelessWidget {
       icon: icon,
     );
   }
+}
 
-  Widget newPage(String text) => Center(
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 60,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
-          ),
-        ),
-      );
+class PinkPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final height = size.height;
+    final width = size.width;
+    Paint paint = Paint();
+
+    /// creating path object that will paint the background
+    Path mainBackground = Path();
+    mainBackground.addRect(Rect.fromLTRB(0, 0, width, height));
+
+    /// setting color for the background
+    paint.color = Colors.pink.shade800;
+    canvas.drawPath(mainBackground, paint);
+
+    /// creating another Path object that will start painting
+    Path ovalPath = Path();
+
+    ovalPath.moveTo(0, height * 0.1);
+
+    ovalPath.quadraticBezierTo(
+        width * 0.45, height * 0.35, width * 0.51, height * 0.8);
+
+    ovalPath.quadraticBezierTo(width * 0.58, height * 0.8, width * 0.2, height);
+
+    ovalPath.lineTo(0, height);
+
+    ovalPath.close();
+
+    paint.color = Colors.pink.shade500;
+    canvas.drawPath(ovalPath, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return oldDelegate != this;
+  }
 }
