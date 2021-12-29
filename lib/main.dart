@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_artisan/model/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,14 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const String title = 'CustomPaint';
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  static const String title = 'Settings Buttons';
 
   @override
   @override
@@ -48,40 +44,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  'You have pushed the FISH this many times:',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.pink.shade100,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  '$_counter',
-                  style: TextStyle(
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.pink.shade200,
-                  ),
-                ),
+            children: const <Widget>[
+              Text(
+                'Body',
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.pink.shade200,
-      ),
     );
+  }
+
+  void choiceAction(String choice) {
+    if (choice == Settings.settings) {
+      print('settings');
+    } else if (choice == Settings.signOut) {
+      print('sign out');
+    } else if (choice == Settings.subscribe) {
+      print('subscribe');
+    }
   }
 
   AppBar customAppBar(String title) {
@@ -109,20 +90,23 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       actions: [
         buildIcons(
-          const Icon(Icons.add_a_photo),
-        ),
-        buildIcons(
-          const Icon(
-            Icons.notification_add,
-          ),
+          const Icon(Icons.search),
         ),
         buildIcons(
           const Icon(
             Icons.settings,
           ),
         ),
-        buildIcons(
-          const Icon(Icons.search),
+        PopupMenuButton<String>(
+          onSelected: choiceAction,
+          itemBuilder: (BuildContext context) {
+            return Settings.choices.map((String choice) {
+              return PopupMenuItem<String>(
+                value: choice,
+                child: Text(choice),
+              );
+            }).toList();
+          },
         ),
       ],
     );
@@ -172,5 +156,24 @@ class PinkPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return oldDelegate != this;
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings Page'),
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Settings Page'),
+        ),
+      ),
+    );
   }
 }
