@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_artisan/model/settings.dart';
 
@@ -57,12 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void choiceAction(String choice) {
     if (choice == Settings.settings) {
-      print('settings');
-    } else if (choice == Settings.signOut) {
-      print('sign out');
-    } else if (choice == Settings.subscribe) {
-      print('subscribe');
-    }
+    } else if (choice == Settings.signUp) {
+    } else if (choice == Settings.subscribe) {}
   }
 
   AppBar customAppBar(String title) {
@@ -100,12 +94,35 @@ class _MyHomePageState extends State<MyHomePage> {
         PopupMenuButton<String>(
           onSelected: choiceAction,
           itemBuilder: (BuildContext context) {
-            return Settings.choices.map((String choice) {
-              return PopupMenuItem<String>(
-                value: choice,
-                child: Text(choice),
-              );
-            }).toList();
+            return Settings.choices.map(
+              (String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: GestureDetector(
+                    child: Text(choice),
+                    onTap: () {
+                      choice == Settings.settings
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SettingsPage()))
+                          : choice == Settings.signUp
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SignUpPage()))
+                              : choice == Settings.subscribe
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SubscribePage()))
+                                  : const MyHomePage();
+                    },
+                  ),
+                );
+              },
+            ).toList();
           },
         ),
       ],
@@ -116,6 +133,63 @@ class _MyHomePageState extends State<MyHomePage> {
     return IconButton(
       onPressed: () {},
       icon: icon,
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings Page'),
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Settings Page'),
+        ),
+      ),
+    );
+  }
+}
+
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sign Up Page'),
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Sign Up Page'),
+        ),
+      ),
+    );
+  }
+}
+
+class SubscribePage extends StatelessWidget {
+  const SubscribePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Subscribe Page'),
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text('Subscribe Page'),
+        ),
+      ),
     );
   }
 }
@@ -156,24 +230,5 @@ class PinkPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return oldDelegate != this;
-  }
-}
-
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings Page'),
-      ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: const Text('Settings Page'),
-        ),
-      ),
-    );
   }
 }
