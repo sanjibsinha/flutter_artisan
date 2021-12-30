@@ -1,58 +1,60 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-import '/model/counter.dart';
+import '/model/user_provider.dart';
+import '/model/database_handler.dart';
+import '/model/user.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
-  static const String title = 'Counter';
+  static const String title = 'Database Handling';
 
   @override
   @override
   Widget build(BuildContext context) {
-    final counter = Provider.of<Counter>(context);
+    final userProvider = Provider.of<UserProvider>(context);
+
+    final handler = DatabaseHandler();
     return Scaffold(
       appBar: customAppBar(title),
-      body: CustomPaint(
-        painter: PinkPainter(),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  'You have pushed the FISH this many times:',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.pink.shade100,
+      body: FutureBuilder(
+        future: handler.retrieveUsers(),
+        builder: (BuildContext context, AsyncSnapshot<List<User>> snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: ListTile(
+                    key: ValueKey<int>(snapshot.data![index].id!),
+                    contentPadding: const EdgeInsets.all(8.0),
+                    title: Text(
+                      context.watch<User>().name,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        color: Colors.red,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  '${counter.counter}',
-                  style: TextStyle(
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.pink.shade200,
-                  ),
-                ),
-              ),
-            ],
+                );
+              },
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          userProvider.addingUsers('xxx');
+        },
+        label: const Text(
+          'Add Users',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          counter.incremenet();
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.pink.shade200,
       ),
     );
   }
