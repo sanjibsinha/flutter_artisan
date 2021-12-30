@@ -10,11 +10,25 @@ class MyHomePage extends StatelessWidget {
   static const String title = 'Database Handling';
 
   @override
-  @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
 
     final handler = DatabaseHandler();
+    Future<int> addUsers() async {
+      User firstUser = User(name: userProvider.userOne.name);
+      User secondUser = User(name: userProvider.userTwo.name);
+      User thirddUser = User(name: userProvider.userThree.name);
+      User user = User(name: userProvider.userFour.name);
+
+      List<User> listOfUsers = [
+        firstUser,
+        secondUser,
+        thirddUser,
+        user,
+      ];
+      return await handler.insertUser(listOfUsers);
+    }
+
     return Scaffold(
       appBar: customAppBar(title),
       body: FutureBuilder(
@@ -29,7 +43,7 @@ class MyHomePage extends StatelessWidget {
                     key: ValueKey<int>(snapshot.data![index].id!),
                     contentPadding: const EdgeInsets.all(8.0),
                     title: Text(
-                      context.watch<User>().name,
+                      snapshot.data![index].name,
                       style: const TextStyle(
                         fontSize: 30,
                         color: Colors.red,
@@ -46,7 +60,11 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          userProvider.addingUsers('xxx');
+          handler.initializeDB().whenComplete(() async {
+            await addUsers();
+          });
+
+          userProvider.addingUsers();
         },
         label: const Text(
           'Add Users',
@@ -108,44 +126,5 @@ class MyHomePage extends StatelessWidget {
       onPressed: () {},
       icon: icon,
     );
-  }
-}
-
-class PinkPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final height = size.height;
-    final width = size.width;
-    Paint paint = Paint();
-
-    /// creating path object that will paint the background
-    Path mainBackground = Path();
-    mainBackground.addRect(Rect.fromLTRB(0, 0, width, height));
-
-    /// setting color for the background
-    paint.color = Colors.pink.shade800;
-    canvas.drawPath(mainBackground, paint);
-
-    /// creating another Path object that will start painting
-    Path ovalPath = Path();
-
-    ovalPath.moveTo(0, height * 0.1);
-
-    ovalPath.quadraticBezierTo(
-        width * 0.45, height * 0.35, width * 0.51, height * 0.8);
-
-    ovalPath.quadraticBezierTo(width * 0.58, height * 0.8, width * 0.2, height);
-
-    ovalPath.lineTo(0, height);
-
-    ovalPath.close();
-
-    paint.color = Colors.pink.shade500;
-    canvas.drawPath(ovalPath, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return oldDelegate != this;
   }
 }

@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_artisan/model/user.dart';
+
 import 'database_handler.dart';
+import 'user.dart';
 
 final handler = DatabaseHandler();
 
 class UserProvider with ChangeNotifier {
-  String xName = '';
+  User _userOne = User(name: 'Hagudu');
+  User get userOne => _userOne;
+  User _userTwo = User(name: 'Mutudu');
+  User get userTwo => _userTwo;
+  User _userThree = User(name: 'Mutudu');
+  User get userThree => _userThree;
+  User _userFour = User(name: 'xxxxxx');
+  User get userFour => _userFour;
 
-  void addingUsers(String name) {
-    xName = name;
-    handler.initializeDB().whenComplete(() async {
-      await addUsers();
-    });
-
+  void addingUsers() {
+    _userOne = _userOne;
+    _userTwo = userTwo;
+    _userThree = userThree;
+    _userFour = userFour;
     notifyListeners();
-  }
-
-  Future<int> addUsers() async {
-    User firstUser = User(name: xName);
-    User secondUser = User(name: xName);
-    List<User> listOfUsers = [
-      firstUser,
-      secondUser,
-    ];
-    return await handler.insertUser(listOfUsers);
   }
 }
