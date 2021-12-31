@@ -15,16 +15,24 @@ class MyHomePage extends StatelessWidget {
 
     final handler = DatabaseHandler();
     Future<int> addUsers() async {
-      User firstUser = User(name: userProvider.userOne.name);
-      User secondUser = User(name: userProvider.userTwo.name);
-      User thirddUser = User(name: userProvider.userThree.name);
-      User user = User(name: userProvider.userFour.name);
+      /* User firstUser = User(
+        name: userProvider.userOne.name,
+        location: userProvider.userOne.location,
+      ); */
 
+      /* User secondUser = User(
+        name: userProvider.userTwo.name,
+        location: userProvider.userTwo.location,
+      ); */
+
+      User thirddUser = User(
+        name: userProvider.userThree.name,
+        location: userProvider.userThree.location,
+      );
       List<User> listOfUsers = [
-        firstUser,
-        secondUser,
+        //firstUser,
+        //secondUser,
         thirddUser,
-        user,
       ];
       return await handler.insertUser(listOfUsers);
     }
@@ -46,6 +54,13 @@ class MyHomePage extends StatelessWidget {
                       snapshot.data![index].name,
                       style: const TextStyle(
                         fontSize: 30,
+                        color: Colors.red,
+                      ),
+                    ),
+                    subtitle: Text(
+                      snapshot.data![index].location,
+                      style: const TextStyle(
+                        fontSize: 20,
                         color: Colors.red,
                       ),
                     ),
