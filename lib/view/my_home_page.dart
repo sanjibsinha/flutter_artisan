@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16.0, kToolbarHeight, 16.0, 16.0),
+        padding: const EdgeInsets.fromLTRB(16.0, kToolbarHeight, 20.0, 20.0),
         children: <Widget>[
           Align(
             child: SizedBox(
@@ -19,22 +19,22 @@ class MyHomePage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    buildTitle(theme),
-                    buildFacebookBtn(),
-                    buildText('or', 12.0, theme),
-                    buildText('Sign up with your email address', 12.0, theme),
-                    buildInputField('Email', 'Your@email.com', false, theme),
-                    buildInputField('Password', '', true, theme),
+                    createTitleDesign(theme),
+                    createButtonForFacebook(),
+                    designText('or', 15.0, theme),
+                    designText('Sign up with your email address', 15.0, theme),
+                    designInputField('Email', 'Your@email.com', false, theme),
+                    designInputField('Password', '', true, theme),
                     const SizedBox(
-                      height: 18.0,
+                      height: 20.0,
                     ),
-                    buildSignUpBtn(theme),
-                    buildText(
+                    designSignUp(theme),
+                    designText(
                         'By signing up you agree with our Terms & Conditions.',
-                        8.0,
+                        15.0,
                         theme),
                     const SizedBox(
-                      height: 18.0,
+                      height: 20.0,
                     ),
                   ],
                 ),
@@ -46,19 +46,22 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Container buildTitle(ThemeData theme) {
+  Container createTitleDesign(ThemeData theme) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       alignment: Alignment.bottomCenter,
       height: 60.0,
       child: Text(
         'Welcome!',
-        style: TextStyle(fontSize: 18.0, color: theme.primaryColorDark),
+        style: TextStyle(
+          fontSize: 20.0,
+          color: theme.primaryColorLight,
+        ),
       ),
     );
   }
 
-  SizedBox buildFacebookBtn() {
+  SizedBox createButtonForFacebook() {
     return SizedBox(
       width: 250.0,
       child: TextButton(
@@ -68,21 +71,21 @@ class MyHomePage extends StatelessWidget {
           children: const <Widget>[
             Icon(
               MdiIcons.facebook,
-              size: 16.0,
+              size: 20.0,
             ),
             SizedBox(
-              width: 8.0,
+              width: 10.0,
             ),
-            Text('Sign up with Facebook')
+            Text('Use Facebook Account'),
           ],
         ),
       ),
     );
   }
 
-  Padding buildText(String text, double fontSize, ThemeData theme) {
+  Padding designText(String text, double fontSize, ThemeData theme) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child: Text(
         text,
         style: TextStyle(
@@ -93,27 +96,27 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Padding buildInputField(
-      String labelText, String hintText, bool isObscured, ThemeData theme) {
+  Padding designInputField(
+      String labelText, String hintText, bool isHiding, ThemeData theme) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextField(
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
           hintStyle: TextStyle(color: theme.primaryColorDark),
         ),
-        obscureText: isObscured,
+        obscureText: isHiding,
       ),
     );
   }
 
-  SizedBox buildSignUpBtn(ThemeData theme) {
+  SizedBox designSignUp(ThemeData theme) {
     return SizedBox(
       width: 250.0,
       child: ElevatedButton(
         onPressed: () {},
-        child: const Text('Sign up with email'),
+        child: const Text('Sign up with your email'),
       ),
     );
   }
