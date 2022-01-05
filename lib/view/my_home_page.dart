@@ -6,181 +6,76 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16.0, kToolbarHeight, 20.0, 20.0),
-        children: <Widget>[
-          Align(
-            child: SizedBox(
-              width: 320.0,
-              child: Card(
-                color: theme.primaryColor,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    DesignTitle(),
-                    FacebookButtonDesign(),
-                    TextDesign(
-                      fontSize: 15.0,
-                      text: 'or',
-                    ),
-                    TextDesign(
-                      fontSize: 15.0,
-                      text: 'Sign up with your email address',
-                    ),
-                    InputFieldDesign(
-                      labelText: 'Email',
-                      hintText: 'name@yoursite.com',
-                      isHiding: false,
-                    ),
-                    InputFieldDesign(
-                      labelText: 'Password',
-                      hintText: '',
-                      isHiding: true,
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    SignUpDesign(),
-                    TextDesign(
-                      fontSize: 15.0,
-                      text:
-                          'By signing up you agree with our Terms & Conditions.',
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+      body: Center(
+        child: AnnimatedButton(
+          onTap: () {},
+          icon: const Icon(
+            MdiIcons.twitter,
+            size: 30.0,
+            color: Colors.blueGrey,
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
-class InputFieldDesign extends StatelessWidget {
-  const InputFieldDesign({
+class AnnimatedButton extends StatefulWidget {
+  const AnnimatedButton({
     Key? key,
-    required this.labelText,
-    required this.hintText,
-    required this.isHiding,
+    required this.onTap,
+    required this.icon,
   }) : super(key: key);
 
-  final String labelText;
-  final String hintText;
-  final bool isHiding;
+  final GestureTapCallback onTap;
+  final Icon icon;
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: labelText,
-          hintText: hintText,
-          hintStyle: TextStyle(color: theme.primaryColorDark),
-        ),
-        obscureText: isHiding,
-      ),
-    );
-  }
+  _AnnimatedButtonState createState() => _AnnimatedButtonState();
 }
 
-class SignUpDesign extends StatelessWidget {
-  const SignUpDesign({Key? key}) : super(key: key);
+class _AnnimatedButtonState extends State<AnnimatedButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation _animation;
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 250.0,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text('Sign up with your email'),
-      ),
+  void initState() {
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _animation = Tween(begin: 0.0, end: 12.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOut),
     );
+    _animationController.repeat(reverse: true);
+    super.initState();
   }
-}
-
-class TextDesign extends StatelessWidget {
-  const TextDesign({
-    Key? key,
-    required this.fontSize,
-    required this.text,
-  }) : super(key: key);
-
-  final double fontSize;
-  final String text;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: theme.primaryColorDark,
-          fontSize: fontSize,
-        ),
-      ),
-    );
-  }
-}
-
-class DesignTitle extends StatelessWidget {
-  const DesignTitle({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.only(bottom: 10.0),
-      alignment: Alignment.bottomCenter,
-      height: 60.0,
-      child: Text(
-        'Welcome!',
-        style: TextStyle(
-          fontSize: 20.0,
-          color: theme.primaryColorLight,
-        ),
-      ),
-    );
-  }
-}
-
-class FacebookButtonDesign extends StatelessWidget {
-  const FacebookButtonDesign({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return SizedBox(
-      width: 250.0,
-      child: TextButton(
-        onPressed: () {},
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(
-              MdiIcons.facebook,
-              size: 20.0,
+    return InkWell(
+      borderRadius: BorderRadius.circular(100),
+      onTap: widget.onTap,
+      child: AnimatedBuilder(
+        animation: _animation,
+        builder: (context, _) {
+          return Ink(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [
+                for (int i = 1; i <= 2; i++)
+                  BoxShadow(
+                    color: Colors.white
+                        .withOpacity(_animationController.value / 2),
+                    spreadRadius: _animation.value * i,
+                  )
+              ],
             ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            Text(
-              'Use Facebook Account',
-              style: TextStyle(
-                color: theme.primaryColorLight,
-              ),
-            ),
-          ],
-        ),
+            child: widget.icon,
+          );
+        },
       ),
     );
   }
