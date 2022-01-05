@@ -13,7 +13,7 @@ class MyHomePage extends StatelessWidget {
           icon: const Icon(
             MdiIcons.twitter,
             size: 30.0,
-            color: Colors.blueGrey,
+            color: Colors.redAccent,
           ),
         ),
       ),
@@ -54,7 +54,7 @@ class _AnnimatedButtonState extends State<AnnimatedButton>
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(100),
+      borderRadius: BorderRadius.circular(400),
       onTap: widget.onTap,
       child: AnimatedBuilder(
         animation: _animation,
@@ -65,9 +65,9 @@ class _AnnimatedButtonState extends State<AnnimatedButton>
               color: Colors.white,
               shape: BoxShape.circle,
               boxShadow: [
-                for (int i = 1; i <= 2; i++)
+                for (int i = 1; i <= 8; i++)
                   BoxShadow(
-                    color: Colors.white
+                    color: Colors.black38
                         .withOpacity(_animationController.value / 2),
                     spreadRadius: _animation.value * i,
                   )
