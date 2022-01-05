@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.amber.shade100,
+        scaffoldBackgroundColor: Colors.red.shade900,
         primaryColor: Colors.blue.shade900,
         primaryColorDark: Colors.green.shade100,
       ),
