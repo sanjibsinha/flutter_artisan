@@ -18,22 +18,37 @@ class MyHomePage extends StatelessWidget {
                 color: theme.primaryColor,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    createTitleDesign(theme),
-                    createButtonForFacebook(),
-                    designText('or', 15.0, theme),
-                    designText('Sign up with your email address', 15.0, theme),
-                    designInputField('Email', 'Your@email.com', false, theme),
-                    designInputField('Password', '', true, theme),
-                    const SizedBox(
+                  children: const [
+                    DesignTitle(),
+                    FacebookButtonDesign(),
+                    TextDesign(
+                      fontSize: 15.0,
+                      text: 'or',
+                    ),
+                    TextDesign(
+                      fontSize: 15.0,
+                      text: 'Sign up with your email address',
+                    ),
+                    InputFieldDesign(
+                      labelText: 'Email',
+                      hintText: 'name@yoursite.com',
+                      isHiding: false,
+                    ),
+                    InputFieldDesign(
+                      labelText: 'Password',
+                      hintText: '',
+                      isHiding: true,
+                    ),
+                    SizedBox(
                       height: 20.0,
                     ),
-                    designSignUp(theme),
-                    designText(
-                        'By signing up you agree with our Terms & Conditions.',
-                        15.0,
-                        theme),
-                    const SizedBox(
+                    SignUpDesign(),
+                    TextDesign(
+                      fontSize: 15.0,
+                      text:
+                          'By signing up you agree with our Terms & Conditions.',
+                    ),
+                    SizedBox(
                       height: 20.0,
                     ),
                   ],
@@ -45,8 +60,84 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Container createTitleDesign(ThemeData theme) {
+class InputFieldDesign extends StatelessWidget {
+  const InputFieldDesign({
+    Key? key,
+    required this.labelText,
+    required this.hintText,
+    required this.isHiding,
+  }) : super(key: key);
+
+  final String labelText;
+  final String hintText;
+  final bool isHiding;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: hintText,
+          hintStyle: TextStyle(color: theme.primaryColorDark),
+        ),
+        obscureText: isHiding,
+      ),
+    );
+  }
+}
+
+class SignUpDesign extends StatelessWidget {
+  const SignUpDesign({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 250.0,
+      child: ElevatedButton(
+        onPressed: () {},
+        child: const Text('Sign up with your email'),
+      ),
+    );
+  }
+}
+
+class TextDesign extends StatelessWidget {
+  const TextDesign({
+    Key? key,
+    required this.fontSize,
+    required this.text,
+  }) : super(key: key);
+
+  final double fontSize;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: theme.primaryColorDark,
+          fontSize: fontSize,
+        ),
+      ),
+    );
+  }
+}
+
+class DesignTitle extends StatelessWidget {
+  const DesignTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.only(bottom: 10.0),
       alignment: Alignment.bottomCenter,
@@ -60,63 +151,36 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+}
 
-  SizedBox createButtonForFacebook() {
+class FacebookButtonDesign extends StatelessWidget {
+  const FacebookButtonDesign({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SizedBox(
       width: 250.0,
       child: TextButton(
         onPressed: () {},
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: const <Widget>[
-            Icon(
+          children: [
+            const Icon(
               MdiIcons.facebook,
               size: 20.0,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10.0,
             ),
-            Text('Use Facebook Account'),
+            Text(
+              'Use Facebook Account',
+              style: TextStyle(
+                color: theme.primaryColorLight,
+              ),
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Padding designText(String text, double fontSize, ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: theme.primaryColorDark,
-          fontSize: fontSize,
-        ),
-      ),
-    );
-  }
-
-  Padding designInputField(
-      String labelText, String hintText, bool isHiding, ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: labelText,
-          hintText: hintText,
-          hintStyle: TextStyle(color: theme.primaryColorDark),
-        ),
-        obscureText: isHiding,
-      ),
-    );
-  }
-
-  SizedBox designSignUp(ThemeData theme) {
-    return SizedBox(
-      width: 250.0,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text('Sign up with your email'),
       ),
     );
   }
