@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -7,6 +8,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Animated Button Demo',
+        ),
+      ),
       body: Center(
         child: AnnimatedButton(
           onTap: () {},
@@ -53,30 +59,44 @@ class _AnnimatedButtonState extends State<AnnimatedButton>
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(400),
-      onTap: widget.onTap,
-      child: AnimatedBuilder(
-        animation: _animation,
-        builder: (context, _) {
-          return Ink(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-              boxShadow: [
-                for (int i = 1; i <= 8; i++)
-                  BoxShadow(
-                    color: Colors.black38
-                        .withOpacity(_animationController.value / 2),
-                    spreadRadius: _animation.value * i,
-                  )
-              ],
-            ),
-            child: widget.icon,
-          );
-        },
-      ),
+    final TextStyle headline4 = Theme.of(context).textTheme.headline4!;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'Animated Button Example',
+          style: GoogleFonts.allura(
+            color: Colors.white,
+            textStyle: headline4,
+          ),
+        ),
+        InkWell(
+          borderRadius: BorderRadius.circular(400),
+          onTap: widget.onTap,
+          child: AnimatedBuilder(
+            animation: _animation,
+            builder: (context, _) {
+              return Ink(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    for (int i = 1; i <= 8; i++)
+                      BoxShadow(
+                        color: Colors.black38
+                            .withOpacity(_animationController.value / 2),
+                        spreadRadius: _animation.value * i,
+                      )
+                  ],
+                ),
+                child: widget.icon,
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
