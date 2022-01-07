@@ -32,70 +32,16 @@ class AllLocations extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const WestBengal())),
-            child: Chip(
-              avatar: CircleAvatar(
-                backgroundColor: Colors.blue.shade900,
-                child: const Hero(
-                  tag: 'wb',
-                  child: Text('WB'),
-                ),
-              ),
-              label: const Text(
-                'West Bengal',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              shadowColor: Colors.black,
-              elevation: 20,
-              onDeleted: () {},
-            ),
-          ),
-          Chip(
-            avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900,
-              child: const Text('MH'),
-            ),
-            label: const Text(
-              'Maharastra',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            child: Hero(
+              tag: 'wb',
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                width: 100,
+                height: 100,
+                child: Image.network(
+                    'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
               ),
             ),
-            shadowColor: Colors.black,
-            elevation: 20,
-          ),
-          Chip(
-            avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900,
-              child: const Text('TM'),
-            ),
-            label: const Text(
-              'Tamilnadu',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            shadowColor: Colors.black,
-            elevation: 20,
-          ),
-          Chip(
-            avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900,
-              child: const Text('AP'),
-            ),
-            label: const Text(
-              'Andhra Pradesh',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            shadowColor: Colors.black,
-            elevation: 20,
           ),
         ],
       ),
