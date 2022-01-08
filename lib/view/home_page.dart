@@ -28,14 +28,14 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          final action = await MyDialog.yesAbortDialog(
+          final action = await ViewDialogs.yesAbortDialog(
             context,
             'Subscription',
             'Waant to be notified about the '
                 'upcoming events and shows? Please subscribe to '
                 'our News Channel.',
           );
-          if (action == MyDialogAction.yes) {
+          if (action == ViewDialogsAction.yes) {
             setState(() => tappedYes = true);
           } else {
             setState(() => tappedYes = false);
