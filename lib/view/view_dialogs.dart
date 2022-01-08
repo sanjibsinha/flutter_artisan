@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-enum MyDialogAction { yes, no }
+enum ViewDialogsAction { yes, no }
 
-class MyDialog {
-  static Future<MyDialogAction> yesAbortDialog(
+class ViewDialogs {
+  static Future<ViewDialogsAction> yesAbortDialog(
     BuildContext context,
     String title,
     String body,
@@ -20,11 +20,11 @@ class MyDialog {
           content: Text(body),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.of(context).pop(MyDialogAction.no),
+              onPressed: () => Navigator.of(context).pop(ViewDialogsAction.no),
               child: const Text('Not Necessary'),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(MyDialogAction.yes),
+              onPressed: () => Navigator.of(context).pop(ViewDialogsAction.yes),
               child: const Text(
                 'Want to be Notified',
                 style: TextStyle(
@@ -36,6 +36,6 @@ class MyDialog {
         );
       },
     );
-    return (action != null) ? action : MyDialogAction.no;
+    return (action != null) ? action : ViewDialogsAction.no;
   }
 }
