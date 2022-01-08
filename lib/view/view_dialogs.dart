@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-enum DialogAction { yes, abort }
+enum MyDialogAction { yes, no }
 
-class Dialogs {
-  static Future<DialogAction> yesAbortDialog(
+class MyDialog {
+  static Future<MyDialogAction> yesAbortDialog(
     BuildContext context,
     String title,
     String body,
@@ -20,15 +20,15 @@ class Dialogs {
           content: Text(body),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.of(context).pop(DialogAction.abort),
-              child: const Text('No'),
+              onPressed: () => Navigator.of(context).pop(MyDialogAction.no),
+              child: const Text('Not Necessary'),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(DialogAction.yes),
+              onPressed: () => Navigator.of(context).pop(MyDialogAction.yes),
               child: const Text(
-                'Yes',
+                'Want to be Notified',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.blueAccent,
                 ),
               ),
             ),
@@ -36,6 +36,6 @@ class Dialogs {
         );
       },
     );
-    return (action != null) ? action : DialogAction.abort;
+    return (action != null) ? action : MyDialogAction.no;
   }
 }

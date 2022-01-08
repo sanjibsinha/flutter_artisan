@@ -2,42 +2,46 @@ import 'package:flutter/material.dart';
 import 'view_dialogs.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  static const String title = 'Alert Dialog Sample';
   bool tappedYes = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text(title),
       ),
       body: Center(
         child: Text(
-          tappedYes.toString(),
+          tappedYes ? 'You\'re Subscribed...' : 'You\'re not Subscribed yet...',
           style: const TextStyle(
             fontSize: 28,
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          final action =
-              await Dialogs.yesAbortDialog(context, 'My title', 'My Body');
-          if (action == DialogAction.yes) {
+          final action = await MyDialog.yesAbortDialog(
+            context,
+            'Subscription',
+            'Waant to be notified about the '
+                'upcoming events and shows? Please subscribe to '
+                'our News Channel.',
+          );
+          if (action == MyDialogAction.yes) {
             setState(() => tappedYes = true);
           } else {
             setState(() => tappedYes = false);
           }
         },
-        child: Icon(Icons.add),
+        label: const Text('Show me Notification'),
       ),
     );
   }
