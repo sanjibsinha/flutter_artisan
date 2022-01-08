@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum ViewDialogsAction { yes, no }
 
 class ViewDialogs {
-  static Future<ViewDialogsAction> yesAbortDialog(
+  static Future<ViewDialogsAction> yesOrNoDialog(
     BuildContext context,
     String title,
     String body,
@@ -14,7 +14,7 @@ class ViewDialogs {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
           title: Text(title),
           content: Text(body),

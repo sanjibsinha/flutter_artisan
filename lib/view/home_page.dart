@@ -22,13 +22,13 @@ class _HomePageState extends State<HomePage> {
         child: Text(
           tappedYes ? 'You\'re Subscribed...' : 'You\'re not Subscribed yet...',
           style: const TextStyle(
-            fontSize: 28,
+            fontSize: 40.0,
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          final action = await ViewDialogs.yesAbortDialog(
+          final action = await ViewDialogs.yesOrNoDialog(
             context,
             'Subscription',
             'Waant to be notified about the '
