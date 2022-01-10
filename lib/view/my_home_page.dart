@@ -57,8 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Future futureValue = showDialog(
       context: context,
       builder: (BuildContext context) {
-        return SimpleDialog(
-          title: const Text('Select a writer:'),
+        return ListView(
+          //title: const Text('Select a writer:'),
           children: writers
               .map(
                 (writer) => SimpleDialog(
