@@ -10,14 +10,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Writer? selectedwriter;
-  var writers = [
-    Writer('Rabindranath Tagore'),
-    Writer('Leo Tolstoy'),
-    Writer('Ernest Hemingway'),
-    Writer('George Simone'),
-    Writer('James Hadley Chase'),
-    Writer('Arthur Conan Doyele'),
-  ];
 
   @override
   Widget build(BuildContext context) {
