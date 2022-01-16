@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'my_home_page.dart';
+import 'my_app_home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  static const String title = 'Explicit Animation';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'A Simple Dialog Example',
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const MyHomePage(),
+      title: title,
+      home: MyAppHome(),
     );
   }
 }
