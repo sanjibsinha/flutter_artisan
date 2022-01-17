@@ -11,7 +11,8 @@ class MyAppHome extends StatefulWidget {
 
 class _MyAppHomeState extends State<MyAppHome> with TickerProviderStateMixin {
   late final AnimationController controller = AnimationController(
-    duration: const Duration(seconds: 10),
+    /// reducing the number increases the speed of rotation
+    duration: const Duration(seconds: 3),
     vsync: this,
   )..repeat();
 
