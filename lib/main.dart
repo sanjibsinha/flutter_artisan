@@ -14,33 +14,33 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
         body: const Center(
-          child: MyStatefulWidget(),
+          child: TweenAnimationExample(),
         ),
       ),
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class TweenAnimationExample extends StatefulWidget {
+  const TweenAnimationExample({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<TweenAnimationExample> createState() => _TweenAnimationExampleState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  double targetValue = 24.0;
+class _TweenAnimationExampleState extends State<TweenAnimationExample> {
+  double endValue = 24.0;
 
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
-      tween: Tween<double>(begin: 0, end: targetValue),
+      tween: Tween<double>(begin: 0, end: endValue),
       duration: const Duration(seconds: 1),
       builder: (BuildContext context, double size, Widget? child) {
         return TextButton(
           onPressed: () {
             setState(() {
-              targetValue = targetValue == 24.0 ? 72.0 : 24.0;
+              endValue = endValue == 24.0 ? 72.0 : 24.0;
             });
           },
           child: Text(
