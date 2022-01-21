@@ -40,7 +40,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         return TextButton(
           onPressed: () {
             setState(() {
-              targetValue = targetValue == 24.0 ? 48.0 : 24.0;
+              targetValue = targetValue == 24.0 ? 72.0 : 24.0;
             });
           },
           child: Text(
