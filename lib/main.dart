@@ -35,11 +35,11 @@ class _TweenAnimationExampleState extends State<TweenAnimationExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         TweenAnimationBuilder<double>(
           tween: Tween<double>(begin: 0, end: targetValue),
-          duration: const Duration(seconds: 1),
+          duration: const Duration(seconds: 20),
           builder: (BuildContext context, double size, Widget? child) {
             return TextButton(
               onPressed: () {
@@ -59,23 +59,28 @@ class _TweenAnimationExampleState extends State<TweenAnimationExample> {
         const SizedBox(
           height: 10.0,
         ),
-        TweenAnimationBuilder<Color>(
-          tween: Tween<Color>(begin: Colors.amber, end: endValue),
-          duration: const Duration(seconds: 1),
-          builder: (BuildContext context, Color color, Widget? child) {
-            return TextButton(
-              onPressed: () {
-                setState(() {
-                  endValue =
-                      endValue == Colors.amber ? Colors.pink : Colors.amber;
-                });
-              },
-              child: Text(
-                'Tap Me',
-                style: TextStyle(
-                  color: color,
+        TweenAnimationBuilder<Color?>(
+          // <-- Color might be null
+          tween: ColorTween(begin: Colors.yellow, end: Colors.blue),
+          duration: const Duration(seconds: 20),
+          builder: (_, Color? color, __) {
+            // <-- Color might be null
+            return Container(
+              width: 200.0,
+              height: 200.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  colorFilter: ColorFilter.mode(
+                    color ??
+                        Colors
+                            .transparent, // <-- If color is null - pass transparent
+                    BlendMode.modulate,
+                  ),
+                  image: const NetworkImage(
+                      'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_960_720.jpg'),
                 ),
               ),
+              child: Container(),
             );
           },
         ),
