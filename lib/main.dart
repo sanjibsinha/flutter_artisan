@@ -31,7 +31,8 @@ class TweenAnimationExample extends StatefulWidget {
 
 class _TweenAnimationExampleState extends State<TweenAnimationExample> {
   double targetValue = 24.0;
-  Color endValue = Colors.pink;
+  Color? endValue = Colors.red;
+  Color? color = Colors.yellow;
 
   @override
   Widget build(BuildContext context) {
@@ -60,20 +61,33 @@ class _TweenAnimationExampleState extends State<TweenAnimationExample> {
           height: 10.0,
         ),
         TweenAnimationBuilder<Color?>(
-          // <-- Color might be null
-          tween: ColorTween(begin: Colors.yellow, end: Colors.blue),
+          /// it is assumed that color might be null
+          ///
+          tween: ColorTween(begin: Colors.yellow, end: endValue),
           duration: const Duration(seconds: 20),
+          onEnd: () {
+            setState(() {
+              color = endValue == Colors.yellow ? Colors.red : Colors.yellow;
+            });
+          },
           builder: (_, Color? color, __) {
-            // <-- Color might be null
+            /// if color is null we will return transparent
+            ///
+            color = color;
+
             return Container(
-              width: 200.0,
-              height: 200.0,
+              width: 250.0,
+              height: 250.0,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   colorFilter: ColorFilter.mode(
-                    color ??
+                    color!,
+
+                    /// if color is null then use the
+                    /// floowing code
+                    /* color ??
                         Colors
-                            .transparent, // <-- If color is null - pass transparent
+                            .transparent, */
                     BlendMode.modulate,
                   ),
                   image: const NetworkImage(
