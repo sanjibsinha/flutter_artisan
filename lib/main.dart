@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 /// chnaging the name
 class TweenAnimationExample extends StatefulWidget {
   const TweenAnimationExample({Key? key}) : super(key: key);
@@ -29,28 +30,56 @@ class TweenAnimationExample extends StatefulWidget {
 }
 
 class _TweenAnimationExampleState extends State<TweenAnimationExample> {
-  double endValue = 24.0;
+  double targetValue = 24.0;
+  Color endValue = Colors.pink;
 
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween<double>(begin: 0, end: endValue),
-      duration: const Duration(seconds: 1),
-      builder: (BuildContext context, double size, Widget? child) {
-        return TextButton(
-          onPressed: () {
-            setState(() {
-              endValue = endValue == 24.0 ? 72.0 : 24.0;
-            });
+    return Column(
+      children: [
+        TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 0, end: targetValue),
+          duration: const Duration(seconds: 1),
+          builder: (BuildContext context, double size, Widget? child) {
+            return TextButton(
+              onPressed: () {
+                setState(() {
+                  targetValue = targetValue == 24.0 ? 72.0 : 24.0;
+                });
+              },
+              child: Text(
+                'Tap Me',
+                style: TextStyle(
+                  fontSize: size,
+                ),
+              ),
+            );
           },
-          child: Text(
-            'Tap Me',
-            style: TextStyle(
-              fontSize: size,
-            ),
-          ),
-        );
-      },
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        TweenAnimationBuilder<Color>(
+          tween: Tween<Color>(begin: Colors.amber, end: endValue),
+          duration: const Duration(seconds: 1),
+          builder: (BuildContext context, Color color, Widget? child) {
+            return TextButton(
+              onPressed: () {
+                setState(() {
+                  endValue =
+                      endValue == Colors.amber ? Colors.pink : Colors.amber;
+                });
+              },
+              child: Text(
+                'Tap Me',
+                style: TextStyle(
+                  color: color,
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }
