@@ -13,92 +13,113 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const Center(
-          child: TweenAnimationExample(),
-        ),
+        body: const MyStatefulWidget(),
       ),
     );
   }
 }
 
-/// chnaging the name
-class TweenAnimationExample extends StatefulWidget {
-  const TweenAnimationExample({Key? key}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
-  State<TweenAnimationExample> createState() => _TweenAnimationExampleState();
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
-class _TweenAnimationExampleState extends State<TweenAnimationExample> {
-  double targetValue = 24.0;
-  Color? endValue = Colors.red;
-  Color? color = Colors.yellow;
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TweenAnimationBuilder<double>(
-          tween: Tween<double>(begin: 0, end: targetValue),
-          duration: const Duration(seconds: 20),
-          builder: (BuildContext context, double size, Widget? child) {
-            return TextButton(
-              onPressed: () {
-                setState(() {
-                  targetValue = targetValue == 24.0 ? 72.0 : 24.0;
-                });
-              },
-              child: Text(
-                'Tap Me',
-                style: TextStyle(
-                  fontSize: size,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = !selected;
+        });
+      },
+      child: ListView(
+        children: [
+          Center(
+            child: Container(
+              width: 100.0,
+              height: 100.0,
+              color: Colors.red,
+              child: AnimatedAlign(
+                alignment:
+                    selected ? Alignment.topCenter : Alignment.bottomCenter,
+                duration: const Duration(seconds: 20),
+                curve: Curves.fastOutSlowIn,
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  color: Colors.yellow,
                 ),
               ),
-            );
-          },
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-        TweenAnimationBuilder<Color?>(
-          /// it is assumed that color might be null
-          ///
-          tween: ColorTween(begin: Colors.yellow, end: endValue),
-          duration: const Duration(seconds: 20),
-          onEnd: () {
-            setState(() {
-              color = endValue == Colors.yellow ? Colors.red : Colors.yellow;
-            });
-          },
-          builder: (_, Color? color, __) {
-            /// if color is null we will return transparent
-            ///
-            color = color;
-
-            return Container(
-              width: 250.0,
-              height: 250.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  colorFilter: ColorFilter.mode(
-                    color!,
-
-                    /// if color is null then use the
-                    /// floowing code
-                    /* color ??
-                        Colors
-                            .transparent, */
-                    BlendMode.modulate,
-                  ),
-                  image: const NetworkImage(
-                      'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_960_720.jpg'),
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Center(
+            child: Container(
+              width: 100.0,
+              height: 100.0,
+              color: Colors.purple.shade300,
+              child: AnimatedAlign(
+                alignment: selected ? Alignment.topLeft : Alignment.bottomRight,
+                duration: const Duration(seconds: 20),
+                curve: Curves.fastOutSlowIn,
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  color: Colors.green.shade600,
                 ),
               ),
-              child: Container(),
-            );
-          },
-        ),
-      ],
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Center(
+            child: Container(
+              width: 100.0,
+              height: 100.0,
+              color: Colors.orange,
+              child: AnimatedAlign(
+                alignment:
+                    selected ? Alignment.bottomCenter : Alignment.topCenter,
+                duration: const Duration(seconds: 20),
+                curve: Curves.fastOutSlowIn,
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  color: Colors.blue.shade600,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Center(
+            child: Container(
+              width: 100.0,
+              height: 100.0,
+              color: Colors.purple.shade300,
+              child: AnimatedAlign(
+                alignment: selected ? Alignment.bottomLeft : Alignment.topRight,
+                duration: const Duration(seconds: 20),
+                curve: Curves.fastOutSlowIn,
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  color: Colors.green.shade600,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
