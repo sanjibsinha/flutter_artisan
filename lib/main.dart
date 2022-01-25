@@ -123,3 +123,5 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+
+/// adding branch animated default text style
