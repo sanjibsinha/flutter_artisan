@@ -39,85 +39,42 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       },
       child: ListView(
         children: [
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.red,
-              child: AnimatedAlign(
-                alignment:
-                    selected ? Alignment.topCenter : Alignment.bottomCenter,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.yellow,
-                ),
-              ),
+          AnimatedDefaultTextStyle(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const <Widget>[
+                Text('Flutter'),
+                Text(' is '),
+                Text('awesome '),
+              ],
             ),
+            style: selected
+                ? const TextStyle(
+                    color: Colors.blue,
+                    fontSize: 26,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 4,
+                  )
+                : const TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w100,
+                    fontSize: 14,
+                    letterSpacing: 1,
+                  ),
+            duration: const Duration(milliseconds: 1000),
+            curve: Curves.elasticOut,
           ),
           const SizedBox(
-            height: 20.0,
+            height: 50,
           ),
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.purple.shade300,
-              child: AnimatedAlign(
-                alignment: selected ? Alignment.topLeft : Alignment.bottomRight,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.green.shade600,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.orange,
-              child: AnimatedAlign(
-                alignment:
-                    selected ? Alignment.bottomCenter : Alignment.topCenter,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.blue.shade600,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.purple.shade300,
-              child: AnimatedAlign(
-                alignment: selected ? Alignment.bottomLeft : Alignment.topRight,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.green.shade600,
-                ),
-              ),
-            ),
-          ),
+          TextButton(
+            child: const Text('Animate'),
+            onPressed: () {
+              setState(() {
+                selected = !selected;
+              });
+            },
+          )
         ],
       ),
     );
