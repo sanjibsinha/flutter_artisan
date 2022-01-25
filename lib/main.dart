@@ -39,42 +39,49 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       },
       child: ListView(
         children: [
-          AnimatedDefaultTextStyle(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text('Flutter'),
-                Text(' is '),
-                Text('awesome '),
-              ],
+          Center(
+            child: AnimatedDefaultTextStyle(
+              child: Container(
+                margin: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
+                child: const Text('Flutter'),
+              ),
+              style: selected
+                  ? const TextStyle(
+                      color: Colors.blue,
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 4,
+                    )
+                  : const TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w100,
+                      fontSize: 25,
+                      letterSpacing: 2,
+                    ),
+              duration: const Duration(seconds: 10),
+              curve: Curves.elasticOut,
             ),
-            style: selected
-                ? const TextStyle(
-                    color: Colors.blue,
-                    fontSize: 26,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 4,
-                  )
-                : const TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w100,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                  ),
-            duration: const Duration(milliseconds: 1000),
-            curve: Curves.elasticOut,
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
-          TextButton(
-            child: const Text('Animate'),
-            onPressed: () {
-              setState(() {
-                selected = !selected;
-              });
-            },
-          )
+          Ink(
+            decoration: const ShapeDecoration(
+              color: Colors.deepPurple,
+              shape: CircleBorder(),
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.bluetooth),
+              iconSize: 40,
+              color: Colors.white,
+              onPressed: () {
+                setState(() {
+                  selected = !selected;
+                });
+              },
+            ),
+          ),
         ],
       ),
     );
