@@ -40,82 +40,46 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child: ListView(
         children: [
           Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.red,
-              child: AnimatedAlign(
-                alignment:
-                    selected ? Alignment.topCenter : Alignment.bottomCenter,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.yellow,
-                ),
+            child: AnimatedDefaultTextStyle(
+              child: Container(
+                margin: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
+                child: const Text('Flutter'),
               ),
+              style: selected
+                  ? const TextStyle(
+                      color: Colors.blue,
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 4,
+                    )
+                  : const TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w100,
+                      fontSize: 25,
+                      letterSpacing: 2,
+                    ),
+              duration: const Duration(seconds: 10),
+              curve: Curves.elasticOut,
             ),
           ),
           const SizedBox(
-            height: 20.0,
+            height: 20,
           ),
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.purple.shade300,
-              child: AnimatedAlign(
-                alignment: selected ? Alignment.topLeft : Alignment.bottomRight,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.green.shade600,
-                ),
-              ),
+          Ink(
+            decoration: const ShapeDecoration(
+              color: Colors.deepPurple,
+              shape: CircleBorder(),
             ),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.orange,
-              child: AnimatedAlign(
-                alignment:
-                    selected ? Alignment.bottomCenter : Alignment.topCenter,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.blue.shade600,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          Center(
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.purple.shade300,
-              child: AnimatedAlign(
-                alignment: selected ? Alignment.bottomLeft : Alignment.topRight,
-                duration: const Duration(seconds: 20),
-                curve: Curves.fastOutSlowIn,
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  color: Colors.green.shade600,
-                ),
-              ),
+            child: IconButton(
+              icon: const Icon(Icons.bluetooth),
+              iconSize: 40,
+              color: Colors.white,
+              onPressed: () {
+                setState(() {
+                  selected = !selected;
+                });
+              },
             ),
           ),
         ],
@@ -123,5 +87,3 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
-
-/// adding branch animated default text style
