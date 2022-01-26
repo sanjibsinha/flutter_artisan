@@ -24,7 +24,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Flutter Animated Scale';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class MyStatelessWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         ElevatedButton(
-          child: const Text('Scale Logo'),
+          child: const Text('Scale Image'),
           onPressed: scale.changeScale,
         ),
         Padding(
