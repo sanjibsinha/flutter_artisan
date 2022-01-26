@@ -23,67 +23,34 @@ class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<MyStatefulWidget> createState() => MyStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  bool selected = false;
+class MyStatefulWidgetState extends State<MyStatefulWidget> {
+  double scale = 1.0;
+
+  void _changeScale() {
+    setState(() => scale = scale == 1.0 ? 3.0 : 1.0);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selected = !selected;
-        });
-      },
-      child: ListView(
-        children: [
-          Center(
-            child: AnimatedDefaultTextStyle(
-              child: Container(
-                margin: const EdgeInsets.all(20.0),
-                padding: const EdgeInsets.all(20.0),
-                child: const Text('Flutter'),
-              ),
-              style: selected
-                  ? const TextStyle(
-                      color: Colors.blue,
-                      fontSize: 60,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 4,
-                    )
-                  : const TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.w100,
-                      fontSize: 25,
-                      letterSpacing: 2,
-                    ),
-              duration: const Duration(seconds: 10),
-              curve: Curves.elasticOut,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        ElevatedButton(
+          child: const Text('Scale Logo'),
+          onPressed: _changeScale,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(50),
+          child: AnimatedScale(
+            scale: scale,
+            duration: const Duration(seconds: 2),
+            child: const FlutterLogo(),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Ink(
-            decoration: const ShapeDecoration(
-              color: Colors.deepPurple,
-              shape: CircleBorder(),
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.bluetooth),
-              iconSize: 40,
-              color: Colors.white,
-              onPressed: () {
-                setState(() {
-                  selected = !selected;
-                });
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
