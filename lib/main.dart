@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,15 +49,9 @@ class RotationTransitionExample extends StatefulWidget {
 
 class _RotationTransitionExampleState extends State<RotationTransitionExample>
     with TickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 20),
-    vsync: this,
-  )..repeat(reverse: true);
-  late final Animation<double> _animation = CurvedAnimation(
-    parent: _controller,
-    curve: Curves.easeIn,
-    reverseCurve: Curves.easeOut,
-  );
+  late final AnimationController _controller =
+      AnimationController(vsync: this, duration: const Duration(seconds: 2))
+        ..repeat();
 
   @override
   void dispose() {
@@ -67,21 +62,28 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RotationTransition(
-        turns: _animation,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              width: 250,
-              height: 250,
-              child: Image.network(
-                  'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
-            ),
+      body: Center(
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (_, child) {
+            return Transform.rotate(
+              angle: _controller.value * 2 * math.pi,
+              child: child,
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            width: 250,
+            height: 250,
+            child: Image.network(
+                'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
           ),
         ),
       ),
     );
   }
 }
+
+/**
+ * 
+ */
