@@ -2,10 +2,15 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ChangeRotation with ChangeNotifier {
-  double turns = 1.0;
-  void changeRotation() {
-    turns = turns += 1.0 / 4.0;
+class ChangePosition with ChangeNotifier {
+  Offset offset = Offset.zero;
+  void changePositionUp() {
+    offset = offset -= const Offset(0, 1);
+    notifyListeners();
+  }
+
+  void changePositionDown() {
+    offset = offset += const Offset(0, 1);
     notifyListeners();
   }
 }
@@ -15,7 +20,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ChangeRotation()),
+        ChangeNotifierProvider(create: (_) => ChangePosition()),
       ],
       child: const MyApp(),
     ),
@@ -25,7 +30,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Animated Rotation';
+  static const String _title = 'Flutter Slide Animation';
 
   @override
   Widget build(BuildContext context) {
@@ -33,51 +38,66 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const RotationTransitionExample(),
+        body: const SlideanimatedExample(),
       ),
     );
   }
 }
 
-class RotationTransitionExample extends StatefulWidget {
-  const RotationTransitionExample({Key? key}) : super(key: key);
-
-  @override
-  State<RotationTransitionExample> createState() =>
-      _RotationTransitionExampleState();
-}
-
-class _RotationTransitionExampleState extends State<RotationTransitionExample>
-    with TickerProviderStateMixin {
-  late final AnimationController _controller =
-      AnimationController(vsync: this, duration: const Duration(seconds: 2))
-        ..repeat();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class SlideanimatedExample extends StatelessWidget {
+  const SlideanimatedExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ChangePosition position = Provider.of<ChangePosition>(context);
     return Scaffold(
       body: Center(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (_, child) {
-            return Transform.rotate(
-              angle: _controller.value * 2 * math.pi,
-              child: child,
-            );
-          },
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            width: 250,
-            height: 250,
-            child: Image.network(
-                'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: position.changePositionDown,
+              child: const Text('Slide Down'),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: position.changePositionUp,
+              child: const Text('Slide Up'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(50),
+              child: AnimatedSlide(
+                offset: position.offset,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      width: 150,
+                      height: 150,
+                      child: Image.network(
+                        'https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_960_720.jpg',
+                      ),
+                    ),
+                    const Divider(
+                      thickness: 20,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      width: 150,
+                      height: 150,
+                      child: Image.network(
+                        'https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
