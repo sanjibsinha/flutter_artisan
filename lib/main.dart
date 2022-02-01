@@ -1,24 +1,8 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-class ChangeRotation with ChangeNotifier {
-  double turns = 1.0;
-  void changeRotation() {
-    turns = turns += 1.0 / 4.0;
-    notifyListeners();
-  }
-}
 
 void main() {
-  Provider.debugCheckInvalidValueType = null;
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ChangeRotation()),
-      ],
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -33,57 +17,60 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const RotationTransitionExample(),
+        body: const AlignTransitionExample(),
       ),
     );
   }
 }
 
-class RotationTransitionExample extends StatefulWidget {
-  const RotationTransitionExample({Key? key}) : super(key: key);
+class AlignTransitionExample extends StatefulWidget {
+  const AlignTransitionExample({Key? key}) : super(key: key);
 
   @override
-  State<RotationTransitionExample> createState() =>
-      _RotationTransitionExampleState();
+  _AlignTransitionExampleState createState() => _AlignTransitionExampleState();
 }
 
-class _RotationTransitionExampleState extends State<RotationTransitionExample>
+class _AlignTransitionExampleState extends State<AlignTransitionExample>
     with TickerProviderStateMixin {
-  late final AnimationController _controller =
-      AnimationController(vsync: this, duration: const Duration(seconds: 2))
-        ..repeat();
+  late final AnimationController _animationController = AnimationController(
+    duration: const Duration(seconds: 10),
+    vsync: this,
+  )..repeat(reverse: true);
+  late final Animation<AlignmentGeometry> _tweenAndCurvedAnimation =
+      Tween<AlignmentGeometry>(
+    begin: Alignment.bottomLeft,
+    end: Alignment.center,
+  ).animate(
+    CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.bounceInOut,
+    ),
+  );
 
   @override
   void dispose() {
-    _controller.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (_, child) {
-            return Transform.rotate(
-              angle: _controller.value * 2 * math.pi,
-              child: child,
-            );
-          },
+    return Container(
+      margin: const EdgeInsets.all(20),
+      width: 400.0,
+      height: 400.0,
+      color: Colors.red,
+      child: AlignTransition(
+        alignment: _tweenAndCurvedAnimation,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
           child: Container(
-            padding: const EdgeInsets.all(10),
-            width: 250,
-            height: 250,
-            child: Image.network(
-                'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
+            width: 50.0,
+            height: 50.0,
+            color: Colors.yellow,
           ),
         ),
       ),
     );
   }
 }
-
-/**
- * 
- */
