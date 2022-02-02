@@ -52,26 +52,17 @@ class _FadeTransitionExampleState extends State<FadeTransitionExample>
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(20),
-      width: 400.0,
-      height: 400.0,
+      width: 100.0,
+      height: 100.0,
       color: Colors.red,
       child: FadeTransition(
         opacity: _curvedAnimation,
         child: Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.all(10),
           child: Container(
             width: 50.0,
             height: 50.0,
             color: Colors.yellow,
-            child: const Text(
-              'I am Fade Transition',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
           ),
         ),
       ),
