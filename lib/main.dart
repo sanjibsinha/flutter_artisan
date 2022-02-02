@@ -9,42 +9,37 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Animated Rotation';
+  static const String _title = 'Flutter Fade Transition';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const AlignTransitionExample(),
+        body: const FadeTransitionExample(),
       ),
     );
   }
 }
 
-class AlignTransitionExample extends StatefulWidget {
-  const AlignTransitionExample({Key? key}) : super(key: key);
+class FadeTransitionExample extends StatefulWidget {
+  const FadeTransitionExample({Key? key}) : super(key: key);
 
   @override
-  _AlignTransitionExampleState createState() => _AlignTransitionExampleState();
+  _FadeTransitionExampleState createState() => _FadeTransitionExampleState();
 }
 
-class _AlignTransitionExampleState extends State<AlignTransitionExample>
+class _FadeTransitionExampleState extends State<FadeTransitionExample>
     with TickerProviderStateMixin {
   late final AnimationController _animationController = AnimationController(
-    duration: const Duration(seconds: 10),
+    duration: const Duration(seconds: 2),
     vsync: this,
   )..repeat(reverse: true);
-  late final Animation<AlignmentGeometry> _tweenAndCurvedAnimation =
-      Tween<AlignmentGeometry>(
-    begin: Alignment.bottomLeft,
-    end: Alignment.center,
-  ).animate(
-    CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.bounceInOut,
-    ),
+  late final Animation<double> _curvedAnimation = CurvedAnimation(
+    parent: _animationController,
+    curve: Curves.bounceInOut,
   );
 
   @override
@@ -60,14 +55,23 @@ class _AlignTransitionExampleState extends State<AlignTransitionExample>
       width: 400.0,
       height: 400.0,
       color: Colors.red,
-      child: AlignTransition(
-        alignment: _tweenAndCurvedAnimation,
+      child: FadeTransition(
+        opacity: _curvedAnimation,
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(50),
           child: Container(
             width: 50.0,
             height: 50.0,
             color: Colors.yellow,
+            child: const Text(
+              'I am Fade Transition',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
           ),
         ),
       ),
