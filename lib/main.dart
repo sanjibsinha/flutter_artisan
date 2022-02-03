@@ -18,51 +18,84 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const FadeTransitionExample(),
+        body: const DecoratedBoxTransitionExample(),
       ),
     );
   }
 }
 
-class FadeTransitionExample extends StatefulWidget {
-  const FadeTransitionExample({Key? key}) : super(key: key);
+class DecoratedBoxTransitionExample extends StatefulWidget {
+  const DecoratedBoxTransitionExample({Key? key}) : super(key: key);
 
   @override
-  _FadeTransitionExampleState createState() => _FadeTransitionExampleState();
+  State<DecoratedBoxTransitionExample> createState() =>
+      _DecoratedBoxTransitionExampleState();
 }
 
-class _FadeTransitionExampleState extends State<FadeTransitionExample>
-    with TickerProviderStateMixin {
-  late final AnimationController _animationController = AnimationController(
-    duration: const Duration(seconds: 2),
-    vsync: this,
-  )..repeat(reverse: true);
-  late final Animation<double> _curvedAnimation = CurvedAnimation(
-    parent: _animationController,
-    curve: Curves.bounceInOut,
+class _DecoratedBoxTransitionExampleState
+    extends State<DecoratedBoxTransitionExample> with TickerProviderStateMixin {
+  final DecorationTween beginAndEndDecoration = DecorationTween(
+    begin: BoxDecoration(
+      gradient: LinearGradient(
+        colors: [
+          Colors.red.withOpacity(0.7),
+          Colors.red,
+        ],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      borderRadius: BorderRadius.circular(15),
+    ),
+    end: BoxDecoration(
+      color: Colors.blue,
+      border: Border.all(
+        color: Colors.red,
+        width: 2.0,
+        style: BorderStyle.solid,
+      ),
+      borderRadius: const BorderRadius.all(Radius.circular(40.0)),
+      boxShadow: const [
+        BoxShadow(
+          color: Colors.black54,
+          blurRadius: 20.0,
+          spreadRadius: 20.0,
+        ),
+      ],
+      gradient: const LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          Colors.red,
+          Colors.white,
+        ],
+      ),
+    ),
   );
+
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(seconds: 3),
+  )..repeat(reverse: true);
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
-      width: 100.0,
-      height: 100.0,
-      color: Colors.red,
-      child: FadeTransition(
-        opacity: _curvedAnimation,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
+      color: Colors.white,
+      child: Center(
+        child: DecoratedBoxTransition(
+          decoration: beginAndEndDecoration.animate(_controller),
           child: Container(
-            width: 50.0,
-            height: 50.0,
-            color: Colors.yellow,
+            padding: const EdgeInsets.all(10),
+            width: 200,
+            height: 200,
+            child: Image.network(
+                'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
           ),
         ),
       ),
