@@ -92,8 +92,8 @@ class _DecoratedBoxTransitionExampleState
           decoration: beginAndEndDecoration.animate(_controller),
           child: Container(
             padding: const EdgeInsets.all(10),
-            width: 200,
-            height: 200,
+            width: 100,
+            height: 100,
             child: Image.network(
                 'https://cdn.pixabay.com/photo/2021/11/13/23/06/tree-6792528_960_720.jpg'),
           ),
