@@ -32,10 +32,9 @@ class DecoratedBoxTransitionExample extends StatefulWidget {
       _DecoratedBoxTransitionExampleState();
 }
 
-/// AnimationControllers can be created with `vsync: this` because of TickerProviderStateMixin.
 class _DecoratedBoxTransitionExampleState
     extends State<DecoratedBoxTransitionExample> with TickerProviderStateMixin {
-  final DecorationTween decorationTween = DecorationTween(
+  final DecorationTween beginAndEndDecoration = DecorationTween(
     begin: BoxDecoration(
       gradient: LinearGradient(
         colors: [
@@ -90,7 +89,7 @@ class _DecoratedBoxTransitionExampleState
       color: Colors.white,
       child: Center(
         child: DecoratedBoxTransition(
-          decoration: decorationTween.animate(_controller),
+          decoration: beginAndEndDecoration.animate(_controller),
           child: Container(
             padding: const EdgeInsets.all(10),
             width: 200,
