@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ChangePadding with ChangeNotifier {
-  double padValue = 1.0;
-  void changePadding() {
-    padValue = padValue == 0.0 ? 100.0 : 0.0;
+class ChangeTextStyle with ChangeNotifier {
+  TextStyle targetTextStyle = const TextStyle(
+    color: Colors.red,
+    fontSize: 25.0,
+    fontWeight: FontWeight.bold,
+  );
+  void changeTextStyle() {
+    targetTextStyle = targetTextStyle ==
+            const TextStyle(
+              color: Colors.red,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            )
+        ? const TextStyle(
+            color: Colors.blue,
+            fontSize: 25.0,
+          )
+        : const TextStyle(
+            color: Colors.red,
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+          );
     notifyListeners();
   }
 }
@@ -14,7 +32,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ChangePadding()),
+        ChangeNotifierProvider(create: (_) => ChangeTextStyle()),
       ],
       child: const MyApp(),
     ),
@@ -24,7 +42,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Animated Padding';
+  static const String _title = 'Flutter Animated TextStyle';
 
   @override
   Widget build(BuildContext context) {
@@ -32,39 +50,96 @@ class MyApp extends StatelessWidget {
       title: _title,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const AnimatedPaddingExample(),
-      ),
+          appBar: AppBar(title: const Text(_title)),
+          body: Column(
+            children: const [
+              ImplicitTextStyleAnimation(),
+              SizedBox(
+                height: 20.0,
+              ),
+              ExplicitTextStyleAnimation(),
+            ],
+          )),
     );
   }
 }
 
-class AnimatedPaddingExample extends StatelessWidget {
-  const AnimatedPaddingExample({Key? key}) : super(key: key);
+class ImplicitTextStyleAnimation extends StatelessWidget {
+  const ImplicitTextStyleAnimation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ChangePadding _padValueChange = Provider.of(context);
+    ChangeTextStyle _targetTextStyleChange = Provider.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        AnimatedPadding(
-          padding: EdgeInsets.all(_padValueChange.padValue),
-          duration: const Duration(seconds: 2),
+        AnimatedDefaultTextStyle(
+          style: _targetTextStyleChange.targetTextStyle,
+          duration: const Duration(seconds: 1),
           curve: Curves.easeInOut,
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 5,
-            color: Colors.blue,
-          ),
+          child: const Text('Implicit Animation'),
         ),
-        Text('Padding: ${_padValueChange.padValue}'),
         ElevatedButton(
-            child: const Text('Change padding'),
+            child: const Text('Change TextStyle'),
             onPressed: () {
-              _padValueChange.changePadding();
+              _targetTextStyleChange.changeTextStyle();
             }),
       ],
+    );
+  }
+}
+
+class ExplicitTextStyleAnimation extends StatefulWidget {
+  const ExplicitTextStyleAnimation({Key? key}) : super(key: key);
+
+  @override
+  State<ExplicitTextStyleAnimation> createState() =>
+      _ExplicitTextStyleAnimationState();
+}
+
+class _ExplicitTextStyleAnimationState extends State<ExplicitTextStyleAnimation>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late TextStyleTween _styleTween;
+  late CurvedAnimation _curvedAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    )..repeat(reverse: true);
+    _styleTween = TextStyleTween(
+      begin: const TextStyle(
+        fontSize: 25,
+        color: Colors.green,
+        fontWeight: FontWeight.bold,
+      ),
+      end: const TextStyle(
+        fontSize: 25,
+        color: Colors.deepPurple,
+      ),
+    );
+    _curvedAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.bounceInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: DefaultTextStyleTransition(
+        style: _styleTween.animate(_curvedAnimation),
+        child: const Text('Explicit TextStyle'),
+      ),
     );
   }
 }
