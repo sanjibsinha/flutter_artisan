@@ -25,6 +25,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Text text = const Text('This is Text Widget');
+    Scaffold scaffold = const Scaffold();
     return Scaffold(
       appBar: AppBar(
         title: const Text('First Flutter App'),
@@ -53,9 +55,15 @@ class MyHomePage extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            'It\'s a Text Widget. Below an Image Widget.',
-            style: Theme.of(context).textTheme.headline5,
+          GestureDetector(
+            child: Text(
+              'It\'s a Text Widget. Below an Image Widget.',
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            onTap: () {
+              /* print(text.runtimeType);
+              print(scaffold.runtimeType); */
+            },
           ),
           Container(
             margin: const EdgeInsets.all(20),
