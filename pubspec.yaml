@@ -12,10 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^2.2.0
-  material_design_icons_flutter: ^5.0.6595
-  path: ^1.8.0
-  provider: ^6.0.2
-  sqflite: ^2.0.1
+  material_design_icons_flutter: ^5.0.6595  
+  circular_countdown_timer: ^0.2.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0
