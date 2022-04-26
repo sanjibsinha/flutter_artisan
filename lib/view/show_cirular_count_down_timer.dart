@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'circular_count_down_timer_widget.dart';
 
@@ -12,36 +13,49 @@ class ShowCircularCountDownTimer extends StatefulWidget {
 }
 
 class _ShowCircularCountDownTimerState extends State {
-  final CountDownController _controller = CountDownController();
+  final CountDownController _countDownController = CountDownController();
 
-  bool _isPause = false;
+  bool _isPaused = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Timer'),
+        title: Text(
+          'Count Down Begins...',
+          style: GoogleFonts.adventPro(
+            fontSize: 35.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.cyan,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Center(
-        child: CircularCountDownTimerWidget(controller: _controller),
+        child: CircularCountDownTimerWidget(controller: _countDownController),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           setState(() {
-            if (_isPause) {
-              _isPause = false;
+            if (_isPaused) {
+              _isPaused = false;
 
-              _controller.resume();
+              _countDownController.resume();
             } else {
-              _isPause = true;
+              _isPaused = true;
 
-              _controller.pause();
+              _countDownController.pause();
             }
           });
         },
-        icon: Icon(_isPause ? Icons.play_arrow : Icons.pause),
-        label: Text(_isPause ? 'Resume' : 'Pause'),
+        icon: Icon(_isPaused ? Icons.play_arrow : Icons.pause),
+        label: Text(
+          _isPaused ? 'Resume' : 'Pause',
+          style: GoogleFonts.laila(
+            fontSize: 25.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
