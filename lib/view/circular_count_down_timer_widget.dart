@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter_artisan/view/final_destination.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CircularCountDownTimerWidget extends StatelessWidget {
@@ -26,7 +27,12 @@ class CircularCountDownTimerWidget extends StatelessWidget {
       isTimerTextShown: true,
       isReverse: false,
       onComplete: () {
-        //print('Completed');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const FinalDEstination(),
+          ),
+        );
       },
       textStyle: GoogleFonts.aclonica(
         fontSize: 60.0,
