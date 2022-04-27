@@ -17,9 +17,9 @@ class CircularCountDownTimerWidget extends StatelessWidget {
     return CircularCountDownTimer(
       width: MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height / 2,
-      duration: 10,
+      duration: 5,
       fillColor: Colors.redAccent,
-      ringColor: Colors.white,
+      ringColor: Colors.white38,
       controller: _countDownController,
       backgroundColor: Colors.amber,
       strokeWidth: 10.0,
@@ -35,7 +35,7 @@ class CircularCountDownTimerWidget extends StatelessWidget {
         );
       },
       textStyle: GoogleFonts.aclonica(
-        fontSize: 60.0,
+        fontSize: 70.0,
         fontWeight: FontWeight.bold,
         color: Colors.red,
       ),
