@@ -10,7 +10,7 @@ class CountDownTimerApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const ShowCircularCountDownTimer(),
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
     );
   }
 }

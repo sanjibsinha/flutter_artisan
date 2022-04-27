@@ -26,7 +26,7 @@ class _ShowCircularCountDownTimerState extends State {
           style: GoogleFonts.adventPro(
             fontSize: 35.0,
             fontWeight: FontWeight.bold,
-            color: Colors.cyan,
+            color: Colors.yellow,
           ),
         ),
         centerTitle: true,

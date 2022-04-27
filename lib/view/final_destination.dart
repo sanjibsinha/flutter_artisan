@@ -22,7 +22,7 @@ class FinalDEstination extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.all(20.0),
           child: Text(
-            'Count Down Ends...',
+            'Count Down Ends...And a new Journey begins...',
             style: GoogleFonts.lato(
               fontSize: 55.0,
               fontWeight: FontWeight.bold,
